@@ -1,7 +1,7 @@
 /* Ramza service worker — makes the installed app work without signal.
    Pages and card data are network-first so updates land immediately when
    online; icons, fonts and other static files come from the cache. */
-const CACHE = "ramza-v1";
+const CACHE = "ramza-v3";
 const SHELL = [
   "./", "./index.html", "./cards.json", "./manifest.json",
   "./site.webmanifest", "./icon-180.png", "./icon-512.png"
@@ -40,8 +40,12 @@ self.addEventListener("fetch", (e) => {
 
   if (sameOrigin && liveData) {
     // Always try the network, so a new deck or a new build shows up at once.
+    // cache:"reload" skips the browser's own copy, which GitHub Pages otherwise
+    // lets it hold for ten minutes after an upload.
+    let live;
+    try { live = new Request(req.url, { cache: "reload" }); } catch (err) { live = req; }
     e.respondWith(
-      fetch(req).then((r) => save(req, r))
+      fetch(live).then((r) => save(req, r))
         .catch(() => caches.match(req).then((m) => m || caches.match("./index.html")))
     );
   } else {

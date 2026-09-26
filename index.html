@@ -213,6 +213,7 @@ body.taps #taps{display:flex}
       <span id="version">Loading cards…</span>
       <button type="button" class="link" id="check">Check for new cards</button>
     </div>
+    <div class="foot"><span></span><button type="button" class="link" id="hard">Force refresh</button></div>
     <button type="button" class="fs hidden" id="fshelp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg>
       <span>You're in a browser tab — <b>add Ramza to your home screen</b></span>
@@ -263,6 +264,7 @@ body.taps #taps{display:flex}
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
+const BUILD = "b8";   // shown on the home screen so we can both see what's running
 const KEY_DECK = "ramza.deck", KEY_BEST = "ramza.best", KEY_LEN = "ramza.len";
 
 const ICONS = {
@@ -368,7 +370,7 @@ function paint() {
     b.addEventListener("click", () => startRound(d));
     box.appendChild(b);
   });
-  $("version").textContent = cardCount() + " cards · deck v" + (deckFile ? deckFile.version : "?");
+  $("version").textContent = cardCount() + " cards · deck v" + (deckFile ? deckFile.version : "?") + " · " + BUILD;
 }
 
 function paintSeg() {
@@ -380,6 +382,23 @@ $("seg").addEventListener("click", (e) => {
   roundLen = Number(b.dataset.t); store.set(KEY_LEN, roundLen); paintSeg();
 });
 $("check").addEventListener("click", () => checkUpdate(true));
+// Clears the offline copy and reloads from GitHub. Scores are untouched.
+$("hard").addEventListener("click", async () => {
+  $("hard").textContent = "refreshing…";
+  try {
+    if (navigator.serviceWorker) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map((r) => r.unregister()));
+    }
+  } catch (e) {}
+  try {
+    if (window.caches) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+    }
+  } catch (e) {}
+  location.reload(true);
+});
 $("dobtn").addEventListener("click", doUpdate);
 
 /* ---------------- sound ---------------- */
@@ -681,7 +700,11 @@ gate();
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
+    // updateViaCache:"none" stops the browser serving an old worker script,
+    // which GitHub Pages otherwise lets it keep for ten minutes.
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" })
+      .then((reg) => { try { reg.update(); } catch (e) {} })
+      .catch(() => {});
   });
 }
 </script>
