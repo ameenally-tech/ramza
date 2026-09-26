@@ -26,11 +26,14 @@ body{
   font-family:'Space Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);
   -webkit-user-select:none;user-select:none;overflow:hidden;
 }
-button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;touch-action:manipulation}
 .ar{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif}
 
 /* ---------- screens ---------- */
-.screen{position:fixed;inset:0;display:none;flex-direction:column;overflow-y:auto;-webkit-overflow-scrolling:touch}
+/* Safari's toolbars sit ON TOP of the window, so 100vh runs underneath them and
+   anything near the bottom becomes untappable. dvh is the visible height. */
+.screen{position:fixed;top:0;left:0;right:0;height:100%;height:100dvh;
+        display:none;flex-direction:column;overflow-y:auto}
 .screen.on{display:flex}
 
 /* ---------- home ---------- */
@@ -74,9 +77,11 @@ body.flash-ok #play{background:#127A3E}
 body.flash-no #play{background:var(--pass)}
 /* Holding the phone sideways is the whole game. If the browser still reports
    portrait (rotation lock), turn the stage instead — iOS Safari cannot lock. */
-#stage{width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;padding:22px 44px}
+#stage{width:100vw;width:100dvw;height:100vh;height:100dvh;
+       display:flex;align-items:center;justify-content:center;padding:22px 44px}
 @media (orientation:portrait){
-  #stage{width:100vh;height:100vw;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+  #stage{width:100vh;width:100dvh;height:100vw;height:100dvw;
+         position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
 }
 .word{font-size:clamp(40px,10.5vmin,86px);font-weight:700;letter-spacing:-.03em;line-height:1.04;text-align:center}
 .big{font-size:clamp(34px,8vmin,60px);font-weight:700;text-align:center;line-height:1.15}
@@ -103,20 +108,78 @@ body.taps #taps{display:flex}
 .mk{flex:0 0 auto;width:17px;height:17px;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- sheet ---------- */
-#sheet{position:fixed;inset:0;background:rgba(20,20,22,.45);display:none;align-items:flex-end;z-index:20}
+#sheet{position:fixed;top:0;left:0;right:0;height:100%;height:100dvh;
+       background:rgba(20,20,22,.45);display:none;align-items:flex-end;z-index:20}
 #sheet.on{display:flex}
-#sheetbox{background:var(--card);width:100%;max-height:82%;overflow-y:auto;border-radius:20px 20px 0 0;padding:24px 22px max(24px,env(safe-area-inset-bottom))}
+#sheetbox{background:var(--card);width:100%;max-height:84%;overflow-y:auto;border-radius:20px 20px 0 0;
+          padding:24px 22px calc(30px + env(safe-area-inset-bottom))}
 #sheetbox h3{font-size:21px;font-weight:700;margin-bottom:11px}
 #sheetbox p{font-size:15.5px;line-height:1.62}
 #sheetbox .clues{margin-top:13px;font-size:13px;color:var(--dim)}
 #sheetbox button{margin-top:20px;width:100%;padding:14px;border-radius:13px;background:var(--teal);color:#fff;font-weight:700}
 .hidden{display:none !important}
+
+/* ---------- install gate ---------- */
+#install{padding:max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom))}
+#install .wrap{display:flex;flex-direction:column;min-height:100%}
+#install .ico{width:62px;height:62px;border-radius:15px;margin-top:6px}
+#install h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:18px;line-height:1.2}
+#install .lede{font-size:14.5px;color:var(--dim);line-height:1.55;margin-top:10px}
+.steps{background:var(--card);border-radius:15px;padding:16px 18px;margin-top:18px}
+.steps h4{font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-bottom:11px}
+.steps ol{padding-left:19px}
+.steps li{font-size:14.5px;line-height:1.55;margin-bottom:8px}
+.steps li:last-child{margin-bottom:0}
+.steps b{font-weight:600}
+.glyph{display:inline-flex;vertical-align:-3px;width:16px;height:16px;margin:0 1px}
+.glyph svg{width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#installbtn{margin-top:16px;width:100%;padding:15px;border-radius:13px;background:var(--teal);color:#fff;font-size:16px;font-weight:700}
+.warn{font-size:13px;color:var(--dim);line-height:1.5;margin-top:16px;padding:12px 14px;background:#EFEDE4;border-radius:12px}
+#skip{margin-top:auto;padding:18px 0 4px;font-size:13.5px;color:var(--faint);text-align:center;width:100%}
+#skip u{color:var(--dim)}
 </style>
 </head>
 <body>
 
+<!-- ===== INSTALL GATE ===== -->
+<section class="screen on" id="install">
+  <div class="wrap">
+    <img src="icon-180.png" alt="" class="ico">
+    <h2>Add Ramza to your home screen</h2>
+    <p class="lede">It opens in its own window like a normal app — no browser bars swallowing the word, no address bar to tap by mistake, and it keeps working without signal once the cards are loaded.</p>
+
+    <div class="steps" id="stepsios">
+      <h4>ON IPHONE</h4>
+      <ol>
+        <li>Tap the <b>Share</b> button
+          <span class="glyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4"/><path d="M8.5 7.5L12 4l3.5 3.5"/><path d="M6 12v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-7"/></svg></span>
+          at the bottom of Safari.</li>
+        <li>Scroll down and choose <b>Add to Home Screen</b>.</li>
+        <li>Tap <b>Add</b>, then open <b>Ramza</b> from your home screen.</li>
+      </ol>
+    </div>
+
+    <div class="steps" id="stepsandroid">
+      <h4>ON ANDROID</h4>
+      <ol>
+        <li>Tap the <b>⋮</b> menu at the top right of Chrome.</li>
+        <li>Choose <b>Add to Home screen</b> (or <b>Install app</b>).</li>
+        <li>Open <b>Ramza</b> from your home screen.</li>
+      </ol>
+    </div>
+
+    <button type="button" id="installbtn" class="hidden">Install Ramza</button>
+
+    <p class="warn">Staying in the browser for now? Turn the phone sideways, tap the <b>lines icon</b> just left of the web address, and choose <b>Hide Toolbar</b> — the one with two arrows pointing apart. It comes back as soon as you scroll, which is why the home screen is better.</p>
+
+    <p class="warn">Opened this from WhatsApp? You'll need to switch to a real browser first — tap the <b>⋯</b> or share icon and choose <b>Open in Safari</b> or <b>Open in Chrome</b>, then follow the steps above.</p>
+
+    <button type="button" id="skip">or <u>play in the browser for now</u></button>
+  </div>
+</section>
+
 <!-- ===== HOME ===== -->
-<section class="screen on" id="home">
+<section class="screen" id="home">
   <div class="wrap">
     <div class="brand"><h1>Ramza</h1><span class="ar">رَمْزًا</span></div>
     <p class="tag">Hold the phone sideways against your forehead. Your friends give the clues — tilt <b>down</b> when you get it, tilt <b>up</b> to pass.</p>
@@ -140,9 +203,9 @@ body.taps #taps{display:flex}
       <span id="version">Loading cards…</span>
       <button type="button" class="link" id="check">Check for new cards</button>
     </div>
-    <button type="button" class="fs" id="fshelp">
+    <button type="button" class="fs hidden" id="fshelp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg>
-      <span>Best played in full screen — <b>show me how</b></span>
+      <span>You're in a browser tab — <b>add Ramza to your home screen</b></span>
     </button>
   </div>
 </section>
@@ -332,7 +395,7 @@ function beep(up) {
 //   screen tipped to the floor → nz → +1            (correct)
 //   screen tipped to the sky   → nz → -1            (pass)
 // A tilt must also be held for DWELL ms, which keeps a stray jolt from scoring.
-const TRIG = 0.70, REARM = 0.32, DWELL = 90;
+const TRIG = 0.62, REARM = 0.30, DWELL = 60;
 let nx = 0, nz = 0, haveMotion = false, tiltDir = 0, tiltSince = 0;
 function onMotion(e) {
   const a = e.accelerationIncludingGravity;
@@ -371,7 +434,42 @@ let phase = "home", deck = null, queue = [], card = null, results = [];
 let armed = false, judging = false, inPos = 0, tEnd = 0, tPhase = 0, raf = 0;
 
 function show(id) {
-  ["home", "play", "results"].forEach((s) => $(s).classList.toggle("on", s === id));
+  ["install", "home", "play", "results"].forEach((s) => $(s).classList.toggle("on", s === id));
+}
+
+/* ---------------- install gate ---------------- */
+// Neither iOS nor the standards give a page any way to install itself, so the
+// most we can do is refuse to start until it is installed, and show the steps.
+function isInstalled() {
+  try {
+    return window.matchMedia("(display-mode: standalone)").matches ||
+           window.navigator.standalone === true;
+  } catch (e) { return false; }
+}
+
+let installEvent = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  installEvent = e;                      // Android Chrome only
+  $("installbtn").classList.remove("hidden");
+});
+$("installbtn").addEventListener("click", async () => {
+  if (!installEvent) return;
+  installEvent.prompt();
+  try { await installEvent.userChoice; } catch (e) {}
+  installEvent = null;
+  $("installbtn").classList.add("hidden");
+});
+$("skip").addEventListener("click", () => show("home"));
+
+function gate() {
+  if (isInstalled()) { show("home"); return; }
+  $("fshelp").classList.remove("hidden");   // only meaningful in a browser tab
+  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  $("stepsios").classList.toggle("hidden", !ios && /Android/.test(navigator.userAgent));
+  $("stepsandroid").classList.toggle("hidden", ios);
+  show("install");
 }
 function setStage(html) { $("stagebody").innerHTML = html; }
 
@@ -479,6 +577,14 @@ function finish(toResults) {
   if (isBest) { best[deck.name] = score; store.set(KEY_BEST, best); }
   $("fbest").classList.toggle("hidden", !isBest);
 
+  // Show the screen BEFORE filling the list. Rows laid out while the screen is
+  // display:none can keep stale tap regions on iOS — which is how a tap ends up
+  // opening the row below the one you touched.
+  show("results"); paint();
+  requestAnimationFrame(() => fillResults());
+}
+
+function fillResults() {
   const list = $("rlist"); list.textContent = "";
   results.forEach((r) => {
     const b = document.createElement("button");
@@ -493,7 +599,6 @@ function finish(toResults) {
     b.addEventListener("click", () => openSheet(r.card));
     list.appendChild(b);
   });
-  show("results"); paint();
 }
 
 function openSheet(c) {
@@ -505,29 +610,7 @@ function openSheet(c) {
   $("sheet").classList.add("on");
 }
 
-const HELP =
-  '<div class="shead">ON IPHONE</div>' +
-  "<ol id=\"ol1\">" +
-  "<li>Turn the phone <b>sideways</b>.</li>" +
-  "<li>Tap the small <b>lines icon</b> just to the left of the web address.</li>" +
-  "<li>Choose <b>Hide Toolbar</b> — the one with two arrows pointing away from each other.</li>" +
-  "</ol>" +
-  '<div class="shead">EVEN BETTER — NO BROWSER AT ALL</div>' +
-  "<ol>" +
-  "<li>iPhone: <b>Share</b> → <b>Add to Home Screen</b>.</li>" +
-  "<li>Android: <b>⋮</b> menu → <b>Add to Home screen</b>.</li>" +
-  "<li>Open Ramza from your home screen — it runs full screen with its own icon, and works without signal.</li>" +
-  "</ol>";
-
-function openHelp() {
-  $("sword").textContent = "Playing full screen";
-  $("sinfo").textContent = "The browser bars steal room from the word and can catch your fingers mid-round. Two ways to get rid of them:";
-  $("ssteps").innerHTML = HELP;
-  $("ssteps").classList.remove("hidden");
-  $("sclues").classList.add("hidden");
-  $("sheet").classList.add("on");
-}
-$("fshelp").addEventListener("click", openHelp);
+$("fshelp").addEventListener("click", () => show("install"));
 $("sclose").addEventListener("click", () => $("sheet").classList.remove("on"));
 $("sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") $("sheet").classList.remove("on"); });
 
@@ -540,6 +623,13 @@ $("stage").addEventListener("click", () => { if (phase === "ready" && !motionOK)
 
 paintSeg();
 loadCards();
+gate();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
