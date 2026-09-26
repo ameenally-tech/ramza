@@ -21,19 +21,24 @@
   --line:#E4E3DC; --teal:#0E6F63; --teal-dark:#0A5248; --pass:#B4611F;
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
+html,body{min-height:100%}
 body{
   font-family:'Space Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);
-  -webkit-user-select:none;user-select:none;overflow:hidden;
+  -webkit-user-select:none;user-select:none;
 }
+/* Only locked while a round or a sheet is up; otherwise the page scrolls
+   normally, which is the only scrolling Safari keeps in step with its
+   collapsing toolbar. */
+body.locked{overflow:hidden;position:fixed;width:100%}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;touch-action:manipulation}
 .ar{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif}
 
 /* ---------- screens ---------- */
-/* Safari's toolbars sit ON TOP of the window, so 100vh runs underneath them and
-   anything near the bottom becomes untappable. dvh is the visible height. */
-.screen{position:fixed;top:0;left:0;right:0;height:100%;height:100dvh;
-        display:none;flex-direction:column;overflow-y:auto}
+/* Scrolling screens live in normal document flow. A position:fixed box sized in
+   dvh resizes underneath your finger as Safari collapses its toolbar, which
+   leaves taps landing a row off. svh is the toolbars-shown height and never
+   changes, so nothing moves while you scroll. */
+.screen{display:none;flex-direction:column;min-height:100vh;min-height:100svh}
 .screen.on{display:flex}
 
 /* ---------- home ---------- */
@@ -72,18 +77,23 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;touch-
 .shead{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-top:20px}
 
 /* ---------- play ---------- */
-#play{background:var(--teal);color:#fff;align-items:center;justify-content:center;overflow:hidden;transition:background .14s}
+/* The round alone stays pinned to the visible area — it never scrolls. */
+#play{position:fixed;top:0;left:0;right:0;height:100dvh;min-height:0;
+      background:var(--teal);color:#fff;align-items:center;justify-content:center;overflow:hidden;transition:background .14s}
 body.flash-ok #play{background:#127A3E}
 body.flash-no #play{background:var(--pass)}
 /* Holding the phone sideways is the whole game. If the browser still reports
    portrait (rotation lock), turn the stage instead — iOS Safari cannot lock. */
 #stage{width:100vw;width:100dvw;height:100vh;height:100dvh;
-       display:flex;align-items:center;justify-content:center;padding:22px 44px}
+       display:flex;align-items:center;justify-content:center;padding:54px 26px 20px}
 @media (orientation:portrait){
   #stage{width:100vh;width:100dvh;height:100vw;height:100dvw;
          position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
 }
-.word{font-size:clamp(40px,10.5vmin,86px);font-weight:700;letter-spacing:-.03em;line-height:1.04;text-align:center}
+#stagebody{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+/* font-size is set by fitWord() — every card is grown to fill the screen */
+.word{width:100%;font-size:64px;font-weight:700;letter-spacing:-.03em;line-height:1.03;
+      text-align:center;overflow-wrap:break-word;hyphens:auto}
 .big{font-size:clamp(34px,8vmin,60px);font-weight:700;text-align:center;line-height:1.15}
 .sub{font-size:clamp(14px,2.6vmin,19px);opacity:.78;text-align:center;margin-top:12px}
 .count{font-size:clamp(90px,26vmin,190px);font-weight:700;line-height:1}
@@ -121,7 +131,7 @@ body.taps #taps{display:flex}
 
 /* ---------- install gate ---------- */
 #install{padding:max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom))}
-#install .wrap{display:flex;flex-direction:column;min-height:100%}
+#install .wrap{display:flex;flex-direction:column;flex:1}
 #install .ico{width:62px;height:62px;border-radius:15px;margin-top:6px}
 #install h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:18px;line-height:1.2}
 #install .lede{font-size:14.5px;color:var(--dim);line-height:1.55;margin-top:10px}
@@ -374,19 +384,33 @@ $("dobtn").addEventListener("click", doUpdate);
 
 /* ---------------- sound ---------------- */
 let actx = null;
-function beep(up) {
+// Safari only allows audio started from a real gesture, so open the context on
+// the tap that begins a round rather than on the first sound.
+function primeAudio() {
   try {
     actx = actx || new (window.AudioContext || window.webkitAudioContext)();
-    const o = actx.createOscillator(), g = actx.createGain();
-    o.type = "sine";
-    o.frequency.value = up ? 780 : 300;
-    g.gain.setValueAtTime(0.0001, actx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.35, actx.currentTime + 0.012);
-    g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 0.22);
-    o.connect(g); g.connect(actx.destination);
-    o.start(); o.stop(actx.currentTime + 0.24);
+    if (actx.state === "suspended") actx.resume();
   } catch (e) {}
-  if (navigator.vibrate) { try { navigator.vibrate(up ? 40 : [25, 40, 25]); } catch (e) {} }
+}
+function tone(freq, at, dur, type, vol) {
+  const t0 = actx.currentTime + at;
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = type; o.frequency.setValueAtTime(freq, t0);
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(vol, t0 + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  o.connect(g); g.connect(actx.destination);
+  o.start(t0); o.stop(t0 + dur + 0.02);
+}
+// Correct: a bright two-note rise.  Pass: a flat double buzz.
+// Meant to be told apart across a noisy room without anyone looking.
+function beep(up) {
+  try {
+    primeAudio();
+    if (up) { tone(660, 0, 0.10, "sine", 0.32); tone(990, 0.085, 0.20, "sine", 0.34); }
+    else { tone(196, 0, 0.09, "square", 0.17); tone(196, 0.125, 0.13, "square", 0.17); }
+  } catch (e) {}
+  if (navigator.vibrate) { try { navigator.vibrate(up ? 45 : [30, 55, 30]); } catch (e) {} }
 }
 
 /* ---------------- motion ---------------- */
@@ -433,8 +457,13 @@ document.addEventListener("visibilitychange", () => {
 let phase = "home", deck = null, queue = [], card = null, results = [];
 let armed = false, judging = false, inPos = 0, tEnd = 0, tPhase = 0, raf = 0;
 
+function lockScroll(on) {
+  document.body.classList.toggle("locked", on);
+}
 function show(id) {
   ["install", "home", "play", "results"].forEach((s) => $(s).classList.toggle("on", s === id));
+  lockScroll(id === "play");
+  if (id !== "play") window.scrollTo(0, 0);
 }
 
 /* ---------------- install gate ---------------- */
@@ -477,6 +506,7 @@ async function startRound(d) {
   deck = d;
   queue = d.cards.slice().sort(() => Math.random() - 0.5);
   results = []; card = null; judging = false; armed = false; inPos = 0;
+  primeAudio();
   await askMotion();
   document.body.classList.toggle("taps", !motionOK);
   $("clock").textContent = "";
@@ -497,12 +527,34 @@ function enter(p) {
   if (p === "up") { setStage('<div class="big">Time’s up</div>'); $("clock").textContent = ""; beep(false); }
 }
 
+// Grow the word until it just fills the screen — a binary search over font
+// size, so "Nikah" is enormous and "Treaty of Hudaybiyyah" still fits.
+function fitWord() {
+  const box = $("stagebody");
+  const el = box && box.querySelector(".word");
+  if (!el) return;
+  const W = box.clientWidth, H = box.clientHeight;
+  if (!W || !H) return;
+  let lo = 20, hi = 260;
+  for (let i = 0; i < 11; i++) {
+    const mid = (lo + hi) / 2;
+    el.style.fontSize = mid + "px";
+    if (el.scrollHeight <= H && el.scrollWidth <= W + 1) lo = mid; else hi = mid;
+  }
+  el.style.fontSize = Math.floor(lo) + "px";
+}
+
 function nextCard() {
   if (!queue.length) { enter("up"); return; }
   card = queue.shift();
   setStage('<div class="word"></div>');
   $("stagebody").firstChild.textContent = card.word;
+  fitWord();
 }
+
+window.addEventListener("resize", fitWord);
+window.addEventListener("orientationchange", () => setTimeout(fitWord, 250));
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWord).catch(() => {});
 
 function judge(ok) {
   if (phase !== "play" || judging || !card) return;
@@ -608,11 +660,13 @@ function openSheet(c) {
   $("ssteps").classList.add("hidden");
   $("sclues").classList.remove("hidden");
   $("sheet").classList.add("on");
+  lockScroll(true);
 }
 
 $("fshelp").addEventListener("click", () => show("install"));
-$("sclose").addEventListener("click", () => $("sheet").classList.remove("on"));
-$("sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") $("sheet").classList.remove("on"); });
+function closeSheet() { $("sheet").classList.remove("on"); lockScroll(false); }
+$("sclose").addEventListener("click", closeSheet);
+$("sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") closeSheet(); });
 
 $("quit").addEventListener("click", () => finish(results.length > 0));
 $("again").addEventListener("click", () => startRound(deck));
