@@ -44,9 +44,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;touch-
 /* ---------- home ---------- */
 #home{padding:max(18px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
 .wrap{width:100%;max-width:640px;margin:0 auto;padding-bottom:28px}
-.brand{display:flex;align-items:baseline;gap:12px;margin-top:10px}
+.brand{display:flex;align-items:center;gap:12px;margin-top:10px}
+.brand .mark{flex:0 0 auto;width:44px;height:44px;border-radius:11px;display:block}
 .brand h1{font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1}
-.brand .ar{font-size:19px;color:var(--teal)}
+.brand .ar{font-size:20px;color:var(--teal);line-height:1}
 .tag{font-size:13.5px;color:var(--dim);margin-top:9px;line-height:1.5}
 .lbl{font-size:10px;font-weight:700;letter-spacing:.17em;color:var(--dim);margin:26px 0 9px}
 .seg{display:flex;gap:5px;padding:4px;background:#E3E2DB;border-radius:13px;width:max-content}
@@ -84,21 +85,34 @@ body.flash-ok #play{background:#127A3E}
 body.flash-no #play{background:var(--pass)}
 /* Holding the phone sideways is the whole game. If the browser still reports
    portrait (rotation lock), turn the stage instead — iOS Safari cannot lock. */
-#stage{width:100vw;width:100dvw;height:100vh;height:100dvh;
-       display:flex;align-items:center;justify-content:center;padding:54px 26px 20px}
+#stage{position:relative;width:100vw;width:100dvw;height:100vh;height:100dvh;
+       display:flex;align-items:center;justify-content:center;
+       /* keeps the word clear of the Dynamic Island, which sits on one side in landscape */
+       padding-top:max(54px, calc(16px + env(safe-area-inset-top)));
+       padding-bottom:max(20px, env(safe-area-inset-bottom));
+       padding-left:calc(26px + env(safe-area-inset-left));
+       padding-right:calc(26px + env(safe-area-inset-right))}
+/* Rotation lock on: the browser still reports portrait, so turn the whole stage
+   ourselves. Which way depends on how the phone is being held — the sensor
+   decides, otherwise it is upside down for half of everyone. */
 @media (orientation:portrait){
   #stage{width:100vh;width:100dvh;height:100vw;height:100dvw;
-         position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg)}
+         position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg);
+         padding-left:58px;padding-right:58px}
+  body.rot-cw #stage{transform:translate(-50%,-50%) rotate(-90deg)}
 }
 #stagebody{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-/* font-size is set by fitWord() — every card is grown to fill the screen */
-.word{width:100%;font-size:64px;font-weight:700;letter-spacing:-.03em;line-height:1.03;
-      text-align:center;overflow-wrap:break-word;hyphens:auto}
+/* font-size is set by fitWord(). Words are never broken or hyphenated — the
+   size simply drops until the longest word fits on a line of its own. */
+.word{width:100%;font-size:64px;font-weight:700;letter-spacing:-.03em;line-height:1.08;
+      text-align:center;overflow-wrap:normal;word-break:normal;hyphens:none;-webkit-hyphens:none}
 .big{font-size:clamp(34px,8vmin,60px);font-weight:700;text-align:center;line-height:1.15}
 .sub{font-size:clamp(14px,2.6vmin,19px);opacity:.78;text-align:center;margin-top:12px}
 .count{font-size:clamp(90px,26vmin,190px);font-weight:700;line-height:1}
-#hud{position:absolute;inset:0;pointer-events:none}
-#hud .bar{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:16px 20px}
+#hud{position:absolute;inset:0;pointer-events:none}   /* inside #stage, so it turns with it */
+#hud .bar{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+          padding:max(14px, env(safe-area-inset-top)) calc(20px + env(safe-area-inset-right))
+                  14px calc(20px + env(safe-area-inset-left))}
 #quit{pointer-events:auto;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
 #quit svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round}
 #clock{font-size:26px;font-weight:500;font-variant-numeric:tabular-nums;opacity:.85}
@@ -191,7 +205,11 @@ body.taps #taps{display:flex}
 <!-- ===== HOME ===== -->
 <section class="screen" id="home">
   <div class="wrap">
-    <div class="brand"><h1>Ramza</h1><span class="ar">رَمْزًا</span></div>
+    <div class="brand">
+      <img src="icon-180.png" alt="" class="mark">
+      <h1>Ramza</h1>
+      <span class="ar">رمزا</span>
+    </div>
     <p class="tag">Hold the phone sideways against your forehead. Your friends give the clues — tilt <b>down</b> when you get it, tilt <b>up</b> to pass.</p>
 
     <div id="banner" class="banner hidden">
@@ -223,16 +241,18 @@ body.taps #taps{display:flex}
 
 <!-- ===== PLAY ===== -->
 <section class="screen" id="play">
-  <div id="stage"><div id="stagebody"></div></div>
-  <div id="hud">
-    <div class="bar">
-      <button type="button" id="quit" aria-label="End round">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>
-      </button>
-      <span id="clock"></span>
+  <div id="stage">
+    <div id="stagebody"></div>
+    <div id="hud">
+      <div class="bar">
+        <button type="button" id="quit" aria-label="End round">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>
+        </button>
+        <span id="clock"></span>
+      </div>
     </div>
+    <div id="taps"><div id="tapno"></div><div id="tapok"></div></div>
   </div>
-  <div id="taps"><div id="tapno"></div><div id="tapok"></div></div>
 </section>
 
 <!-- ===== RESULTS ===== -->
@@ -264,7 +284,7 @@ body.taps #taps{display:flex}
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
-const BUILD = "b8";   // shown on the home screen so we can both see what's running
+const BUILD = "b11";   // shown on the home screen so we can both see what's running
 const KEY_DECK = "ramza.deck", KEY_BEST = "ramza.best", KEY_LEN = "ramza.len";
 
 const ICONS = {
@@ -554,7 +574,7 @@ function fitWord() {
   if (!el) return;
   const W = box.clientWidth, H = box.clientHeight;
   if (!W || !H) return;
-  let lo = 20, hi = 260;
+  let lo = 20, hi = 136;   // big, but not so big it reads as clumsy
   for (let i = 0; i < 11; i++) {
     const mid = (lo + hi) / 2;
     el.style.fontSize = mid + "px";
@@ -589,9 +609,20 @@ function judge(ok) {
   }, 680);
 }
 
+// Rotation lock leaves the browser reporting portrait however the phone is
+// held, so read the held direction off the sensor instead.
+function setRotation() {
+  if (!haveMotion) return;
+  let portrait = true;
+  try { portrait = window.matchMedia("(orientation: portrait)").matches; } catch (e) {}
+  if (!portrait) { document.body.classList.remove("rot-cw"); return; }
+  if (Math.abs(nx) > 0.5) document.body.classList.toggle("rot-cw", nx > 0);
+}
+
 function tick(now) {
   raf = requestAnimationFrame(tick);
   if (phase === "ready") {
+    setRotation();
     // Permission granted but no sensor ever reports (desktop, odd hardware):
     // don't strand the player on this screen — offer the taps instead.
     if (motionOK && !haveMotion && now - tPhase > 4000) {
