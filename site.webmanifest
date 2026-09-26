@@ -1,0 +1,14 @@
+{
+  "name": "Ramza — the Islamic guessing game",
+  "short_name": "Ramza",
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#F2F1EC",
+  "theme_color": "#F2F1EC",
+  "icons": [
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
