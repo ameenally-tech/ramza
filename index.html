@@ -83,6 +83,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;touch-
       background:var(--teal);color:#fff;align-items:center;justify-content:center;overflow:hidden;transition:background .14s}
 body.flash-ok #play{background:#127A3E}
 body.flash-no #play{background:var(--pass)}
+/* The strip behind the Dynamic Island sits outside the page viewport and is
+   painted from the page background, so colour the page too — otherwise that
+   band stays put while everything else flashes. */
+body.playing{background:var(--teal);transition:background .14s}
+body.playing.flash-ok{background:#127A3E}
+body.playing.flash-no{background:var(--pass)}
 /* Holding the phone sideways is the whole game. If the browser still reports
    portrait (rotation lock), turn the stage instead — iOS Safari cannot lock. */
 #stage{position:relative;width:100vw;width:100dvw;height:100vh;height:100dvh;
@@ -231,7 +237,7 @@ body.taps #taps{display:flex}
       <span id="version">Loading cards…</span>
       <button type="button" class="link" id="check">Check for new cards</button>
     </div>
-    <div class="foot"><span></span><button type="button" class="link" id="hard">Force refresh</button></div>
+    <div class="foot"><span></span><button type="button" class="link" id="hard">Force app refresh</button></div>
     <button type="button" class="fs hidden" id="fshelp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg>
       <span>You're in a browser tab — <b>add Ramza to your home screen</b></span>
@@ -284,7 +290,13 @@ body.taps #taps{display:flex}
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
-const BUILD = "b11";   // shown on the home screen so we can both see what's running
+const BUILD = "b13";
+const PAPER = "#F2F1EC", TEAL = "#0E6F63", FLASH_OK = "#127A3E", FLASH_NO = "#B4611F";
+// Android paints its status bar from theme-color, so move it with the flash.
+function themeColor(c) {
+  const m = document.querySelector('meta[name="theme-color"]');
+  if (m && m.getAttribute("content") !== c) m.setAttribute("content", c);
+}   // shown on the home screen so we can both see what's running
 const KEY_DECK = "ramza.deck", KEY_BEST = "ramza.best", KEY_LEN = "ramza.len";
 
 const ICONS = {
@@ -502,6 +514,8 @@ function lockScroll(on) {
 function show(id) {
   ["install", "home", "play", "results"].forEach((s) => $(s).classList.toggle("on", s === id));
   lockScroll(id === "play");
+  document.body.classList.toggle("playing", id === "play");
+  themeColor(id === "play" ? TEAL : PAPER);
   if (id !== "play") window.scrollTo(0, 0);
 }
 
@@ -600,10 +614,12 @@ function judge(ok) {
   judging = true; armed = false;
   results.push({ card: card, ok: ok });
   document.body.classList.add(ok ? "flash-ok" : "flash-no");
+  themeColor(ok ? FLASH_OK : FLASH_NO);
   setStage('<div class="big">' + (ok ? "Correct" : "Pass") + "</div>");
   beep(ok);
   setTimeout(() => {
     document.body.classList.remove("flash-ok", "flash-no");
+    themeColor(TEAL);
     judging = false;
     if (phase === "play") nextCard();
   }, 680);
@@ -669,7 +685,8 @@ function tick(now) {
 function finish(toResults) {
   cancelAnimationFrame(raf); raf = 0;
   keepAwake(false);
-  document.body.classList.remove("flash-ok", "flash-no", "taps");
+  document.body.classList.remove("flash-ok", "flash-no", "taps", "playing");
+  themeColor(PAPER);
   const score = results.filter((r) => r.ok).length;
   if (!toResults || !results.length) { phase = "home"; show("home"); return; }
   phase = "results";
