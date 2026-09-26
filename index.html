@@ -59,6 +59,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .banner p{flex:1;line-height:1.4}
 .banner button{background:var(--teal);color:#fff;font-size:13px;font-weight:600;padding:8px 15px;border-radius:9px}
 .note{margin-top:16px;font-size:12.5px;color:var(--dim);line-height:1.5}
+.fs{display:flex;align-items:center;gap:10px;width:100%;margin-top:14px;padding:12px 14px;
+    background:var(--card);border-radius:13px;font-size:13px;color:var(--dim);text-align:left}
+.fs b{color:var(--teal)}
+.fs svg{flex:0 0 17px;width:17px;height:17px;stroke:var(--teal);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#ssteps{margin-top:14px;padding-left:20px}
+#ssteps li{font-size:15px;line-height:1.55;margin-bottom:9px}
+#ssteps li b{font-weight:600}
+.shead{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-top:20px}
 
 /* ---------- play ---------- */
 #play{background:var(--teal);color:#fff;align-items:center;justify-content:center;overflow:hidden;transition:background .14s}
@@ -132,7 +140,10 @@ body.taps #taps{display:flex}
       <span id="version">Loading cards…</span>
       <button type="button" class="link" id="check">Check for new cards</button>
     </div>
-    <p class="note" id="motionnote"></p>
+    <button type="button" class="fs" id="fshelp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg>
+      <span>Best played in full screen — <b>show me how</b></span>
+    </button>
   </div>
 </section>
 
@@ -170,6 +181,7 @@ body.taps #taps{display:flex}
   <div id="sheetbox">
     <h3 id="sword"></h3>
     <p id="sinfo"></p>
+    <div id="ssteps" class="hidden"></div>
     <div class="clues" id="sclues"></div>
     <button type="button" id="sclose">Done</button>
   </div>
@@ -315,12 +327,13 @@ function beep(up) {
 }
 
 /* ---------------- motion ---------------- */
-// accelerationIncludingGravity is the negative of the gravity direction in the
-// device frame, so nz = z/9.81 is -1 when the screen faces the floor.
+// Signs below are as measured on a real iPhone, not as the spec reads:
 //   phone sideways and upright → |nx| ≈ 1, nz ≈ 0   (the playing position)
-//   screen tipped to the floor → nz → -1            (correct)
-//   screen tipped to the sky   → nz → +1            (pass)
-let nx = 0, nz = 0, haveMotion = false;
+//   screen tipped to the floor → nz → +1            (correct)
+//   screen tipped to the sky   → nz → -1            (pass)
+// A tilt must also be held for DWELL ms, which keeps a stray jolt from scoring.
+const TRIG = 0.70, REARM = 0.32, DWELL = 90;
+let nx = 0, nz = 0, haveMotion = false, tiltDir = 0, tiltSince = 0;
 function onMotion(e) {
   const a = e.accelerationIncludingGravity;
   if (!a || a.x === null) return;
@@ -442,9 +455,11 @@ function tick(now) {
     if (secs === 0) { enter("up"); return; }
     if (!judging && motionOK && haveMotion) {
       if (armed) {
-        if (nz < -0.55) judge(true);
-        else if (nz > 0.55) judge(false);
-      } else if (Math.abs(nz) < 0.30) armed = true;
+        const dir = nz > TRIG ? 1 : (nz < -TRIG ? -1 : 0);
+        if (!dir) { tiltDir = 0; }
+        else if (dir !== tiltDir) { tiltDir = dir; tiltSince = now; }
+        else if (now - tiltSince > DWELL) { tiltDir = 0; judge(dir > 0); }
+      } else if (Math.abs(nz) < REARM) { armed = true; tiltDir = 0; }
     }
   } else if (phase === "up") {
     if (now - tPhase > 1400) finish(true);
@@ -485,8 +500,34 @@ function openSheet(c) {
   $("sword").textContent = c.word;
   $("sinfo").textContent = c.info;
   $("sclues").textContent = (c.clues || []).join(" · ");
+  $("ssteps").classList.add("hidden");
+  $("sclues").classList.remove("hidden");
   $("sheet").classList.add("on");
 }
+
+const HELP =
+  '<div class="shead">ON IPHONE</div>' +
+  "<ol id=\"ol1\">" +
+  "<li>Turn the phone <b>sideways</b>.</li>" +
+  "<li>Tap the small <b>lines icon</b> just to the left of the web address.</li>" +
+  "<li>Choose <b>Hide Toolbar</b> — the one with two arrows pointing away from each other.</li>" +
+  "</ol>" +
+  '<div class="shead">EVEN BETTER — NO BROWSER AT ALL</div>' +
+  "<ol>" +
+  "<li>iPhone: <b>Share</b> → <b>Add to Home Screen</b>.</li>" +
+  "<li>Android: <b>⋮</b> menu → <b>Add to Home screen</b>.</li>" +
+  "<li>Open Ramza from your home screen — it runs full screen with its own icon, and works without signal.</li>" +
+  "</ol>";
+
+function openHelp() {
+  $("sword").textContent = "Playing full screen";
+  $("sinfo").textContent = "The browser bars steal room from the word and can catch your fingers mid-round. Two ways to get rid of them:";
+  $("ssteps").innerHTML = HELP;
+  $("ssteps").classList.remove("hidden");
+  $("sclues").classList.add("hidden");
+  $("sheet").classList.add("on");
+}
+$("fshelp").addEventListener("click", openHelp);
 $("sclose").addEventListener("click", () => $("sheet").classList.remove("on"));
 $("sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") $("sheet").classList.remove("on"); });
 
