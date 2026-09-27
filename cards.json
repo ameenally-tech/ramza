@@ -1,5 +1,5 @@
 {
- "version": 1,
+ "version": 5,
  "updated": "2026-09-26",
  "decks": [
   {
@@ -7,6 +7,7 @@
    "subtitle": "Life of the Prophet ﷺ",
    "symbol": "moon.stars.fill",
    "tint": "green",
+   "inMixed": true,
    "cards": [
     {
      "word": "Birth of the Prophet ﷺ",
@@ -42,7 +43,8 @@
       "Jahiliyyah practice",
       "Deciding by chance"
      ],
-     "info": "A pre-Islamic practice of seeking decisions through marked arrows, forbidden in the Qur'an (5:3)."
+     "info": "A pre-Islamic practice of seeking decisions through marked arrows, forbidden in the Qur'an (5:3).",
+     "hard": true
     },
     {
      "word": "Cave of Hira",
@@ -60,7 +62,8 @@
       "Aminah's vision",
       "Light"
      ],
-     "info": "At the Prophet's ﷺ birth, his mother saw a light by which the palaces of Syria (Busra) became visible — a sign of his coming."
+     "info": "At the Prophet's ﷺ birth, his mother saw a light by which the palaces of Syria (Busra) became visible — a sign of his coming.",
+     "hard": true
     },
     {
      "word": "Idols Falling Down",
@@ -69,7 +72,8 @@
       "Signs",
       "Persia"
      ],
-     "info": "Narrations mention idols toppling and other extraordinary signs occurring at the time of the Prophet's ﷺ birth."
+     "info": "Narrations mention idols toppling and other extraordinary signs occurring at the time of the Prophet's ﷺ birth.",
+     "hard": true
     },
     {
      "word": "Zamzam Well",
@@ -114,7 +118,8 @@
       "Standing place",
       "Near the Ka'bah"
      ],
-     "info": "The stone on which Ibrahim (AS) stood while building the Ka'bah, bearing the marks of his feet."
+     "info": "The stone on which Ibrahim (AS) stood while building the Ka'bah, bearing the marks of his feet.",
+     "hard": true
     },
     {
      "word": "Building the Ka'bah",
@@ -204,7 +209,8 @@
       "Helping the oppressed",
       "Before prophethood"
      ],
-     "info": "A pact of Makkan chiefs to defend the oppressed; the Prophet ﷺ witnessed it as a youth and praised it even after Islam."
+     "info": "A pact of Makkan chiefs to defend the oppressed; the Prophet ﷺ witnessed it as a youth and praised it even after Islam.",
+     "hard": true
     },
     {
      "word": "Migration to Abyssinia",
@@ -366,7 +372,394 @@
       "Poor companions",
       "Students of knowledge"
      ],
-     "info": "Poor companions who lived on a shaded platform of Masjid Nabawi, devoting themselves to learning from the Prophet ﷺ."
+     "info": "Poor companions who lived on a shaded platform of Masjid Nabawi, devoting themselves to learning from the Prophet ﷺ.",
+     "hard": true
+    },
+    {
+     "word": "Halimah as-Sa'diyyah",
+     "clues": [
+      "His wet nurse",
+      "Banu Sa'd",
+      "Her flocks grew fat"
+     ],
+     "info": "The Prophet ﷺ spent his infancy with her tribe in the desert; her household filled with blessing while he was in her care."
+    },
+    {
+     "word": "Splitting of the Chest",
+     "clues": [
+      "Shaqq as-Sadr",
+      "Two men in white",
+      "Washed with zamzam"
+     ],
+     "info": "As a child among Banu Sa'd, two angels opened his chest and washed his heart with Zamzam water."
+    },
+    {
+     "word": "Death of Aminah at Abwa",
+     "clues": [
+      "He was six",
+      "On the way back from Madinah",
+      "Orphaned twice over"
+     ],
+     "info": "His mother died at Abwa returning from a visit to her relatives, leaving him an orphan with neither parent."
+    },
+    {
+     "word": "Abdul Muttalib's Guardianship",
+     "clues": [
+      "His grandfather",
+      "Two years of care",
+      "Seated on the Ka'bah's cushion"
+     ],
+     "info": "After Aminah's death his grandfather raised him and would seat him on his own place beside the Ka'bah.",
+     "hard": true
+    },
+    {
+     "word": "Cloak and the Black Stone",
+     "clues": [
+      "Rebuilding the Ka'bah",
+      "A dispute among the tribes",
+      "Each chief held a corner"
+     ],
+     "info": "When Quraysh argued over who would set the Black Stone, he ﷺ laid it on a cloak and had every clan carry a corner together.",
+     "hard": true
+    },
+    {
+     "word": "Zammilooni!",
+     "clues": [
+      "Cover me!",
+      "After the cave",
+      "Khadijah wrapped him"
+     ],
+     "info": "His words to Khadijah (RA) after the first revelation, as he returned from Hira."
+    },
+    {
+     "word": "Waraqah ibn Nawfal",
+     "clues": [
+      "Khadijah's cousin",
+      "Blind and elderly",
+      "Knew the former scriptures"
+     ],
+     "info": "He recognised the revelation as the same Namus sent to Musa (AS), and wished he would live to support him.",
+     "hard": true
+    },
+    {
+     "word": "Dar al-Arqam",
+     "clues": [
+      "A house on Safa",
+      "Secret gathering place",
+      "The first school"
+     ],
+     "info": "The house of al-Arqam ibn Abi al-Arqam, where the early Muslims met and learned in secret for about three years.",
+     "hard": true
+    },
+    {
+     "word": "Sumayyah",
+     "clues": [
+      "First martyr in Islam",
+      "Speared by Abu Jahl",
+      "Ammar's mother"
+     ],
+     "info": "Sumayyah bint Khayyat (RA) was the first person killed for the faith, refusing to renounce it under torture."
+    },
+    {
+     "word": "Bilal Under the Rock",
+     "clues": [
+      "Burning sand at midday",
+      "Ahad, Ahad",
+      "Umayyah ibn Khalaf"
+     ],
+     "info": "Bilal (RA) was pinned beneath a boulder in the desert heat, repeating 'One, One' until Abu Bakr bought and freed him."
+    },
+    {
+     "word": "Hamza strikes Abu Jahl",
+     "clues": [
+      "His uncle",
+      "Returned from hunting",
+      "How Hamza accepted Islam"
+     ],
+     "info": "He embraced Islam in anger at Abu Jahl's abuse of his nephew, and became a shield for the Muslims."
+    },
+    {
+     "word": "Umar first hears Revelation",
+     "clues": [
+      "Set out with a drawn sword",
+      "How Umar accepted Islam",
+      "Sura Taha"
+     ],
+     "info": "On his way to kill the Prophet ﷺ he heard Sura Taha being recited in his sister's house and accepted Islam that day."
+    },
+    {
+     "word": "An-Najashi",
+     "clues": [
+      "The Negus",
+      "King of Abyssinia",
+      "Wept at Sura Maryam"
+     ],
+     "info": "The just Christian king who sheltered the Muslim emigrants and refused to hand them back to Quraysh."
+    },
+    {
+     "word": "Angel of the Mountains",
+     "clues": [
+      "Offered to crush a city",
+      "He refused",
+      "After the stoning"
+     ],
+     "info": "At Ta'if the angel offered to destroy the town between the two mountains; he ﷺ asked instead that their descendants be believers.",
+     "hard": true
+    },
+    {
+     "word": "Addaas",
+     "clues": [
+      "A slave with a tray of grapes",
+      "From Nineveh",
+      "Kissed his hands"
+     ],
+     "info": "The Christian servant who brought grapes after Ta'if and accepted him on hearing him mention Yunus (AS).",
+     "hard": true
+    },
+    {
+     "word": "Suraqah ibn Malik",
+     "clues": [
+      "Chased them for a reward",
+      "His horse sank in the sand",
+      "Promised the bracelets of Khosrau"
+     ],
+     "info": "He pursued the emigrating Prophet ﷺ for the bounty, and was told he would one day wear the bracelets of the Persian emperor — which happened in Umar's reign.",
+     "hard": true
+    },
+    {
+     "word": "Umm Ma'bad's Sheep",
+     "clues": [
+      "A tent on the road",
+      "A barren ewe",
+      "Milk for everyone"
+     ],
+     "info": "A thin sheep too weak to graze gave abundant milk when he ﷺ touched it; her description of him is a classic of the Shamaa'il.",
+     "hard": true
+    },
+    {
+     "word": "Qaswa Chooses the Masjid Spot",
+     "clues": [
+      "He let the reins go",
+      "She knelt at a date-drying yard",
+      "Where the masjid was built"
+     ],
+     "info": "On reaching Madinah he left the choice to his camel, and the masjid was built where she stopped.",
+     "hard": true
+    },
+    {
+     "word": "Mu'aakhah",
+     "clues": [
+      "Pairing the emigrants and helpers",
+      "Muhajirun and Ansar",
+      "Brothers by decree"
+     ],
+     "info": "On arriving in Madinah he ﷺ paired each emigrant with a helper, binding the two communities into one.",
+     "hard": true
+    },
+    {
+     "word": "Constitution of Madinah",
+     "clues": [
+      "A written pact",
+      "Included the Jewish tribes",
+      "Mutual defence"
+     ],
+     "info": "A written agreement setting out rights, duties and common defence among the groups of Madinah.",
+     "hard": true
+    },
+    {
+     "word": "Change of the Qiblah",
+     "clues": [
+      "Jerusalem to Makkah",
+      "Mid-prayer",
+      "Masjid al-Qiblatayn"
+     ],
+     "info": "After about sixteen months facing Bayt al-Maqdis, the direction was turned to the Ka'bah, some of it during a prayer in progress.",
+     "hard": true
+    },
+    {
+     "word": "Letters to the Kings",
+     "clues": [
+      "Heraclius, Khosrau, the Negus",
+      "Sealed with a silver ring",
+      "After Hudaybiyyah"
+     ],
+     "info": "He ﷺ sent envoys with letters inviting the rulers of the surrounding empires to Islam.",
+     "hard": true
+    },
+    {
+     "word": "Battle of Khaybar",
+     "clues": [
+      "Fortresses",
+      "The banner given to Ali",
+      "Tomorrow I shall give the flag"
+     ],
+     "info": "The Muslim campaign against the fortified settlements of Khaybar in 7 AH, where Ali (RA) was given the standard."
+    },
+    {
+     "word": "The Poisoned Sheep",
+     "clues": [
+      "After Khaybar",
+      "A woman's plot",
+      "The shoulder spoke to him"
+     ],
+     "info": "A poisoned roast was served to him at Khaybar; he ﷺ was warned before eating much, though a companion died from it.",
+     "hard": true
+    },
+    {
+     "word": "Battle of Mu'tah",
+     "clues": [
+      "Three commanders fell",
+      "Zayd, Ja'far, Abdullah",
+      "Khalid took the banner"
+     ],
+     "info": "Against the Byzantines in 8 AH; after the three appointed commanders were martyred, Khalid ibn al-Walid (RA) saved the army.",
+     "hard": true
+    },
+    {
+     "word": "Battle of Hunayn",
+     "clues": [
+      "Just after the Conquest",
+      "Ambushed in a valley",
+      "Numbers did not help"
+     ],
+     "info": "An ambush by Hawazin in 8 AH that briefly scattered the Muslims before they regrouped around the Prophet ﷺ.",
+     "hard": true
+    },
+    {
+     "word": "Expedition of Tabuk",
+     "clues": [
+      "The army of hardship",
+      "Extreme heat and scarcity",
+      "No battle was fought"
+     ],
+     "info": "The difficult march north in 9 AH; the Byzantine force did not appear and the army returned.",
+     "hard": true
+    },
+    {
+     "word": "Bay'at ar-Ridwan",
+     "clues": [
+      "Under a tree",
+      "At Hudaybiyyah",
+      "Allah was pleased with them"
+     ],
+     "info": "The pledge taken under the tree when Uthman (RA) was believed killed; the Qur'an records Allah's pleasure with those who gave it.",
+     "hard": true
+    },
+    {
+     "word": "Umrah al-Qada",
+     "clues": [
+      "The make-up umrah",
+      "7 AH",
+      "Three days in Makkah"
+     ],
+     "info": "The umrah performed the year after Hudaybiyyah, under the terms of that treaty.",
+     "hard": true
+    },
+    {
+     "word": "Year of Delegations",
+     "clues": [
+      "9 AH",
+      "Tribes arriving from everywhere",
+      "Am al-Wufud"
+     ],
+     "info": "After the Conquest, delegations came from across Arabia to accept Islam.",
+     "hard": true
+    },
+    {
+     "word": "The Crying Palm Trunk",
+     "clues": [
+      "He used to lean on it",
+      "A new pulpit was made",
+      "It wept like a child"
+     ],
+     "info": "The trunk he had leaned on while preaching moaned when he moved to a pulpit, until he came down and comforted it.",
+     "hard": true
+    },
+    {
+     "word": "Water from His Fingers",
+     "clues": [
+      "An army with no water",
+      "It flowed between them",
+      "Everyone drank and filled their vessels"
+     ],
+     "info": "Water is reported to have sprung from between his blessed fingers on more than one occasion when the Muslims were thirsty."
+    },
+    {
+     "word": "Feeding the Army at the Trench",
+     "clues": [
+      "A little barley and a young goat",
+      "A thousand men ate",
+      "Jabir's wife cooked it"
+     ],
+     "info": "Jabir (RA) invited him to a small meal during the digging of the trench; the whole army ate and food remained.",
+     "hard": true
+    },
+    {
+     "word": "Salman's Freedom purchased",
+     "clues": [
+      "Planting date palms",
+      "A weight of gold",
+      "Bought out of slavery"
+     ],
+     "info": "The Muslims helped Salman al-Farsi (RA) meet his master's terms, planting the palms himself ﷺ.",
+     "hard": true
+    },
+    {
+     "word": "Hijrah Calendar Begins",
+     "clues": [
+      "Umar established it",
+      "Counted from the migration",
+      "Not from his birth"
+     ],
+     "info": "The Islamic calendar was set during Umar's caliphate to begin from the year of the Hijrah.",
+     "hard": true
+    },
+    {
+     "word": "Abu Bakr Leads the Prayer",
+     "clues": [
+      "During his final illness",
+      "At his own instruction",
+      "The Muslims understood the sign"
+     ],
+     "info": "In his last days he ﷺ directed that Abu Bakr (RA) lead the congregation."
+    },
+    {
+     "word": "The Final Illness",
+     "clues": [
+      "In Aisha's room",
+      "A headache",
+      "He asked his wives' permission"
+     ],
+     "info": "He spent his last days in Aisha's apartment with the permission of his other wives."
+    },
+    {
+     "word": "Passing of the Prophet ﷺ",
+     "clues": [
+      "12 Rabi al-Awwal",
+      "Umar refused to believe it",
+      "Abu Bakr recited a verse"
+     ],
+     "info": "Abu Bakr (RA) steadied the community by reciting that Muhammad ﷺ is only a messenger, and messengers pass away."
+    },
+    {
+     "word": "Ashab al-Ukhdood",
+     "clues": [
+      "People of the ditch",
+      "A boy and a king",
+      "Burned for their faith"
+     ],
+     "info": "The Qur'an recounts the believers thrown into a burning trench for refusing to abandon their faith.",
+     "hard": true
+    },
+    {
+     "word": "Masjid al-Aqsa",
+     "clues": [
+      "Jerusalem",
+      "First qiblah",
+      "Destination of the night journey"
+     ],
+     "info": "The furthest mosque, to which he ﷺ was taken on the night journey and where he led the prophets in prayer.",
+     "hard": true
     }
    ]
   },
@@ -375,6 +768,7 @@
    "subtitle": "His noble appearance and ways ﷺ",
    "symbol": "sparkles",
    "tint": "orange",
+   "inMixed": true,
    "cards": [
     {
      "word": "Turban",
@@ -392,7 +786,8 @@
       "Slight space",
       "Beauty"
      ],
-     "info": "The Prophet ﷺ had a slight, beautiful gap between his front teeth, mentioned in descriptions by the companions."
+     "info": "The Prophet ﷺ had a slight, beautiful gap between his front teeth, mentioned in descriptions by the companions.",
+     "hard": true
     },
     {
      "word": "Light From His Front Teeth",
@@ -401,7 +796,8 @@
       "Radiance",
       "Teeth"
      ],
-     "info": "Narrators describe light appearing to emanate from between his front teeth when he ﷺ spoke."
+     "info": "Narrators describe light appearing to emanate from between his front teeth when he ﷺ spoke.",
+     "hard": true
     },
     {
      "word": "Broad Forehead",
@@ -410,16 +806,18 @@
       "Wide",
       "Description"
      ],
-     "info": "Among his ﷺ described features was a broad, radiant forehead."
+     "info": "Among his ﷺ described features was a broad, radiant forehead.",
+     "hard": true
     },
     {
-     "word": "Hair Between Earlobes and Shoulders",
+     "word": "Hair neither fully straight nor curly",
      "clues": [
-      "Hair length",
+      "Hair type",
       "Wavy",
       "Description"
      ],
-     "info": "His ﷺ hair reached between his earlobes and shoulders, neither fully straight nor tightly curled."
+     "info": "His ﷺ hair reached between his earlobes and shoulders, neither fully straight nor tightly curled.",
+     "hard": true
     },
     {
      "word": "Face Slightly Rounded",
@@ -428,7 +826,8 @@
       "Moon-like",
       "Description"
      ],
-     "info": "His ﷺ face was slightly rounded with a luminous complexion, likened by companions to the full moon."
+     "info": "His ﷺ face was slightly rounded with a luminous complexion, likened by companions to the full moon.",
+     "hard": true
     },
     {
      "word": "Broad Shoulders",
@@ -437,7 +836,8 @@
       "Between them the Seal",
       "Strong build"
      ],
-     "info": "He ﷺ had broad shoulders, and between his shoulder blades was the Seal of Prophethood."
+     "info": "He ﷺ had broad shoulders, and between his shoulder blades was the Seal of Prophethood.",
+     "hard": true
     },
     {
      "word": "Thickset Palms",
@@ -446,7 +846,8 @@
       "Softer than silk",
       "Generous"
      ],
-     "info": "His ﷺ palms were full and strong, yet companions said they were softer than silk."
+     "info": "His ﷺ palms were full and strong, yet companions said they were softer than silk.",
+     "hard": true
     },
     {
      "word": "Strong Joints",
@@ -455,7 +856,8 @@
       "Physique",
       "Strength"
      ],
-     "info": "His ﷺ joints and limbs were large and strong, indicating a robust physique."
+     "info": "His ﷺ joints and limbs were large and strong, indicating a robust physique.",
+     "hard": true
     },
     {
      "word": "Arched Eyebrows",
@@ -464,7 +866,8 @@
       "Curved",
       "Eyes"
      ],
-     "info": "His ﷺ eyebrows were fine, full and gracefully arched."
+     "info": "His ﷺ eyebrows were fine, full and gracefully arched.",
+     "hard": true
     },
     {
      "word": "Eyebrows Not Joining",
@@ -473,7 +876,8 @@
       "Description",
       "Brow"
      ],
-     "info": "His ﷺ eyebrows were full but did not meet in the middle."
+     "info": "His ﷺ eyebrows were full but did not meet in the middle.",
+     "hard": true
     },
     {
      "word": "Vein Between the Eyebrows",
@@ -482,7 +886,8 @@
       "Forehead",
       "Brow"
      ],
-     "info": "A fine vein between his ﷺ eyebrows would become visible when he was angered for the sake of Allah."
+     "info": "A fine vein between his ﷺ eyebrows would become visible when he was angered for the sake of Allah.",
+     "hard": true
     },
     {
      "word": "Neck Like Silver",
@@ -491,7 +896,8 @@
       "Radiant",
       "Description"
      ],
-     "info": "His ﷺ neck was described as beautiful like a jug of pure silver in its radiance."
+     "info": "His ﷺ neck was described as beautiful like a jug of pure silver in its radiance.",
+     "hard": true
     },
     {
      "word": "Chest and Abdomen Level",
@@ -500,7 +906,8 @@
       "Flat stomach",
       "Balanced"
      ],
-     "info": "His ﷺ chest and abdomen were in line — his stomach did not protrude beyond his chest."
+     "info": "His ﷺ chest and abdomen were in line — his stomach did not protrude beyond his chest.",
+     "hard": true
     },
     {
      "word": "Water Beading Off Smooth Feet",
@@ -509,7 +916,8 @@
       "Feet",
       "Smooth"
      ],
-     "info": "His ﷺ feet were so smooth that water would run straight off them."
+     "info": "His ﷺ feet were so smooth that water would run straight off them.",
+     "hard": true
     },
     {
      "word": "Arched Feet",
@@ -518,7 +926,8 @@
       "Raised",
       "Feet"
      ],
-     "info": "His ﷺ feet had a raised, arched instep."
+     "info": "His ﷺ feet had a raised, arched instep.",
+     "hard": true
     },
     {
      "word": "Thin Line of Hair to Navel",
@@ -527,7 +936,8 @@
       "Fine hair",
       "Description"
      ],
-     "info": "A fine line of hair ran from his ﷺ chest down to his navel."
+     "info": "A fine line of hair ran from his ﷺ chest down to his navel.",
+     "hard": true
     },
     {
      "word": "Seal of Prophethood",
@@ -554,7 +964,8 @@
       "Masah",
       "Wiping"
      ],
-     "info": "The Prophet ﷺ wore leather socks (khuffain) and permitted wiping over them in wudu."
+     "info": "The Prophet ﷺ wore leather socks (khuffain) and permitted wiping over them in wudu.",
+     "hard": true
     },
     {
      "word": "Leather Sandals",
@@ -572,7 +983,8 @@
       "Stuffed with",
       "Humility"
      ],
-     "info": "His ﷺ pillow was of leather stuffed with palm fibre — a mark of his simple lifestyle."
+     "info": "His ﷺ pillow was of leather stuffed with palm fibre — a mark of his simple lifestyle.",
+     "hard": true
     },
     {
      "word": "Dates",
@@ -590,7 +1002,8 @@
       "Fresh",
       "Food"
      ],
-     "info": "He ﷺ would eat cucumber together with fresh dates."
+     "info": "He ﷺ would eat cucumber together with fresh dates.",
+     "hard": true
     },
     {
      "word": "Shoulder Meat",
@@ -599,7 +1012,8 @@
       "Lamb",
       "Food"
      ],
-     "info": "The shoulder was the cut of meat the Prophet ﷺ liked best."
+     "info": "The shoulder was the cut of meat the Prophet ﷺ liked best.",
+     "hard": true
     },
     {
      "word": "Barley Bread",
@@ -617,7 +1031,8 @@
       "Simple food",
       "With bread"
      ],
-     "info": "He ﷺ said: 'What an excellent condiment vinegar is!' — praising simple, available food."
+     "info": "He ﷺ said: 'What an excellent condiment vinegar is!' — praising simple, available food.",
+     "hard": true
     },
     {
      "word": "Honey",
@@ -656,13 +1071,14 @@
      "info": "He ﷺ wore a silver ring engraved 'Muhammad Rasulullah', used to seal letters to kings."
     },
     {
-     "word": "Walking Down a Slope",
+     "word": "Walking as if descending a slope",
      "clues": [
       "Gait",
       "Fast pace",
       "As if descending"
      ],
-     "info": "He ﷺ walked briskly and purposefully, as if descending a slope."
+     "info": "He ﷺ walked briskly and purposefully, as if descending a slope.",
+     "hard": true
     },
     {
      "word": "Most Smiling of People",
@@ -681,6 +1097,372 @@
       "Applied at night"
      ],
      "info": "He ﷺ applied ithmid kohl to his eyes and recommended it, saying it strengthens the sight."
+    },
+    {
+     "word": "Neither too tall nor short",
+     "clues": [
+      "Medium height",
+      "Yet taller than those beside him",
+      "Description"
+     ],
+     "info": "He ﷺ was of middle stature, though narrators noted he appeared taller than whoever walked with him."
+    },
+    {
+     "word": "Radiant Complexion",
+     "clues": [
+      "Like the moon",
+      "Azhar al-lawn",
+      "Not pale, not dark"
+     ],
+     "info": "His complexion was luminous and rosy-white, compared by the companions to the full moon."
+    },
+    {
+     "word": "Intensely Black Eyes",
+     "clues": [
+      "Large",
+      "Shadeed al-sawad",
+      "Long lashes"
+     ],
+     "info": "His eyes were wide and deeply black, with long lashes.",
+     "hard": true
+    },
+    {
+     "word": "Broad Mouth",
+     "clues": [
+      "A sign of eloquence",
+      "Dahiyy al-fam",
+      "Arabs praised it"
+     ],
+     "info": "A broad mouth was considered a mark of eloquence among the Arabs, and his ﷺ was described so.",
+     "hard": true
+    },
+    {
+     "word": "Thick Beard",
+     "clues": [
+      "Full",
+      "Kathth al-lihyah",
+      "He would comb it"
+     ],
+     "info": "His beard was thick and full; he cared for it and combed it regularly."
+    },
+    {
+     "word": "Fewer Than Twenty Grey Hairs",
+     "clues": [
+      "Counted by the companions",
+      "Head and beard together",
+      "Anas narrated it"
+     ],
+     "info": "Anas (RA) said that the white hairs in his head and beard together did not reach twenty.",
+     "hard": true
+    },
+    {
+     "word": "Fragrance Sweeter Than Musk",
+     "clues": [
+      "His natural scent",
+      "People knew he had passed",
+      "Better than any perfume"
+     ],
+     "info": "Companions described his natural fragrance as finer than musk, lingering wherever he had been."
+    },
+    {
+     "word": "Sweat Like Pearls",
+     "clues": [
+      "Umm Sulaym collected it",
+      "In a bottle",
+      "For its blessing"
+     ],
+     "info": "Umm Sulaym (RA) gathered his perspiration because of its fragrance and blessing.",
+     "hard": true
+    },
+    {
+     "word": "Sleeping on His Right Side",
+     "clues": [
+      "Hand under the cheek",
+      "Then a du'a",
+      "Sunnah of sleep"
+     ],
+     "info": "He ﷺ would lie on his right side, place his hand beneath his cheek, and make du'a before sleeping."
+    },
+    {
+     "word": "Marks of the Mat",
+     "clues": [
+      "On his side",
+      "A rough sleeping surface",
+      "Umar wept at the sight"
+     ],
+     "info": "Umar (RA) wept on seeing the impression of the palm-fibre mat pressed into his side.",
+     "hard": true
+    },
+    {
+     "word": "Never Criticised Food",
+     "clues": [
+      "If he liked it he ate",
+      "If not he left it",
+      "Abu Hurayrah narrated it"
+     ],
+     "info": "He never found fault with any food: he either ate it or quietly left it alone."
+    },
+    {
+     "word": "Eating With Three Fingers",
+     "clues": [
+      "Not the whole hand",
+      "Then licking them",
+      "Sunnah of eating"
+     ],
+     "info": "He ﷺ ate using three fingers and would lick them afterwards before wiping his hand."
+    },
+    {
+     "word": "Drinking in Three Breaths",
+     "clues": [
+      "Not in one gulp",
+      "Pausing between",
+      "More satisfying and wholesome"
+     ],
+     "info": "He drank in three breaths, saying it was more quenching and healthier.",
+     "hard": true
+    },
+    {
+     "word": "Tharid",
+     "clues": [
+      "Bread broken into broth",
+      "His favourite dish",
+      "Praised above other foods"
+     ],
+     "info": "A dish of bread soaked in meat broth, which he ﷺ compared favourably with other foods.",
+     "hard": true
+    },
+    {
+     "word": "Talbinah",
+     "clues": [
+      "Barley broth",
+      "For grief and illness",
+      "Aisha prescribed it"
+     ],
+     "info": "A soothing barley gruel he recommended for the sick and the bereaved.",
+     "hard": true
+    },
+    {
+     "word": "Watermelon With Dates",
+     "clues": [
+      "Eaten together",
+      "Cool and warm balanced",
+      "Fresh ripe dates"
+     ],
+     "info": "He ﷺ ate watermelon together with fresh dates, balancing the heat of one with the coolness of the other.",
+     "hard": true
+    },
+    {
+     "word": "Hais",
+     "clues": [
+      "Dates, butter and dried curd",
+      "A simple sweet",
+      "Served at a walimah"
+     ],
+     "info": "A traditional Arabian dish of dates kneaded with clarified butter and dried curd.",
+     "hard": true
+    },
+    {
+     "word": "Disliked Raw Garlic Before the Masjid",
+     "clues": [
+      "Because of the smell",
+      "The angels are troubled",
+      "Not forbidden, just avoided"
+     ],
+     "info": "He ﷺ asked those who had eaten raw garlic or onion not to come to the mosque until the smell had gone.",
+     "hard": true
+    },
+    {
+     "word": "His Laughter Was a Smile",
+     "clues": [
+      "Rarely aloud",
+      "Tabassum",
+      "His molars would show at most"
+     ],
+     "info": "His laughter was mostly a smile; at its fullest his back teeth would just show."
+    },
+    {
+     "word": "Never Struck Anyone",
+     "clues": [
+      "Not a servant, not a woman",
+      "Except in Allah's cause",
+      "Aisha narrated it"
+     ],
+     "info": "Aisha (RA) said he never struck anything with his hand except when fighting in the path of Allah."
+    },
+    {
+     "word": "Never Withdrew His Handshake First",
+     "clues": [
+      "When shaking hands",
+      "He waited for the other",
+      "Even with a child"
+     ],
+     "info": "He would not pull his hand away from a handshake until the other person released it.",
+     "hard": true
+    },
+    {
+     "word": "Turned Fully to Face You",
+     "clues": [
+      "Not just his head",
+      "His whole body",
+      "When someone spoke to him"
+     ],
+     "info": "When addressing someone he turned his entire body towards them, giving them his full attention.",
+     "hard": true
+    },
+    {
+     "word": "Looked More at the Ground",
+     "clues": [
+      "Than at the sky",
+      "Lowering the gaze",
+      "Constant reflection"
+     ],
+     "info": "His gaze was more often downward than upward, in humility and thought.",
+     "hard": true
+    },
+    {
+     "word": "Greeted Children",
+     "clues": [
+      "Passing a group of boys",
+      "He gave salaam first",
+      "Anas narrated it"
+     ],
+     "info": "He made a habit of greeting children when he passed them, and Anas (RA) continued the practice."
+    },
+    {
+     "word": "Duldul",
+     "clues": [
+      "A white mule",
+      "A gift from the Negus",
+      "He rode it at Hunayn"
+     ],
+     "info": "A mule presented to him ﷺ, which he rode on several occasions.",
+     "hard": true
+    },
+    {
+     "word": "Qaswa",
+     "clues": [
+      "His she-camel",
+      "Carried him on the Hijrah",
+      "Knelt where the masjid was built"
+     ],
+     "info": "His well-known camel, associated with the migration and the Farewell Hajj."
+    },
+    {
+     "word": "Dhul Fiqar",
+     "clues": [
+      "A sword",
+      "Taken at Badr",
+      "Later associated with Ali"
+     ],
+     "info": "A sword that came into his possession at Badr and is famously linked with Ali (RA).",
+     "hard": true
+    },
+    {
+     "word": "Hibarah",
+     "clues": [
+      "A striped Yemeni cloth",
+      "His most beloved garment",
+      "Anas narrated it"
+     ],
+     "info": "Anas (RA) reported that the garment most beloved to him ﷺ was a striped Yemeni hibarah.",
+     "hard": true
+    },
+    {
+     "word": "White Clothing",
+     "clues": [
+      "Wear it and shroud your dead in it",
+      "The best of your garments",
+      "A recommendation"
+     ],
+     "info": "He ﷺ encouraged wearing white, calling it the best of clothing and the cloth for shrouding."
+    },
+    {
+     "word": "His Comb",
+     "clues": [
+      "For hair and beard",
+      "Kept among his belongings",
+      "He parted his hair"
+     ],
+     "info": "Among his personal effects; he cared for his hair and parted it.",
+     "hard": true
+    },
+    {
+     "word": "Antimony Container",
+     "clues": [
+      "For the ithmid kohl",
+      "Applied before sleeping",
+      "Three times each eye"
+     ],
+     "info": "He kept a container of ithmid and applied it to his eyes, especially at bedtime.",
+     "hard": true
+    },
+    {
+     "word": "Mending His Own Sandals",
+     "clues": [
+      "Aisha was asked what he did at home",
+      "Patching clothes",
+      "Like any of you"
+     ],
+     "info": "Asked what he did in his house, Aisha (RA) said he mended his sandals, patched his clothes and served his family."
+    },
+    {
+     "word": "Serving His Family",
+     "clues": [
+      "In the house",
+      "Until the adhan called him",
+      "Aisha described it"
+     ],
+     "info": "He took part in ordinary household work until it was time for prayer."
+    },
+    {
+     "word": "Months Without a Fire Lit",
+     "clues": [
+      "Two or three at a time",
+      "Only dates and water",
+      "Aisha told Urwah"
+     ],
+     "info": "Aisha (RA) described months passing with no cooking fire in their homes, living on dates and water.",
+     "hard": true
+    },
+    {
+     "word": "Never Ate Reclining",
+     "clues": [
+      "He sat upright",
+      "I eat as a servant eats",
+      "Humility at meals"
+     ],
+     "info": "He ﷺ refused to eat while leaning back, saying he ate as a servant eats.",
+     "hard": true
+    },
+    {
+     "word": "Never three days of wheat bread",
+     "clues": [
+      "Never in succession",
+      "Until he passed away",
+      "The household of Muhammad ﷺ"
+     ],
+     "info": "His family never had wheat bread three days running until he departed this world.",
+     "hard": true
+    },
+    {
+     "word": "He Did Not Dye His Hair",
+     "clues": [
+      "Unlike Abu Bakr and Umar",
+      "The white was so little",
+      "A point of difference among narrators"
+     ],
+     "info": "The stronger reports indicate he did not dye, his grey being too slight to require it.",
+     "hard": true
+    },
+    {
+     "word": "Hair Between the Ears and Shoulders",
+     "clues": [
+      "Wafrah and jummah",
+      "Sometimes plaited",
+      "Length described precisely"
+     ],
+     "info": "Narrations describe his hair at different times reaching his earlobes, and at others his shoulders.",
+     "hard": true
     }
    ]
   },
@@ -689,6 +1471,7 @@
    "subtitle": "Worship and practice",
    "symbol": "drop.fill",
    "tint": "blue",
+   "inMixed": true,
    "cards": [
     {
      "word": "Salaah",
@@ -751,7 +1534,8 @@
       "Dust",
       "Dry ablution"
      ],
-     "info": "Purification using clean earth when water is unavailable or harmful to use."
+     "info": "Purification using clean earth when water is unavailable or harmful to use.",
+     "hard": true
     },
     {
      "word": "Adhan",
@@ -769,7 +1553,8 @@
       "Just before salaah",
       "Faster"
      ],
-     "info": "The shorter call given immediately before the congregational prayer begins."
+     "info": "The shorter call given immediately before the congregational prayer begins.",
+     "hard": true
     },
     {
      "word": "Qiblah",
@@ -805,7 +1590,8 @@
       "At-tahiyyat",
       "Finger raised"
      ],
-     "info": "The testification recited while sitting in prayer, ending with the declaration of faith."
+     "info": "The testification recited while sitting in prayer, ending with the declaration of faith.",
+     "hard": true
     },
     {
      "word": "Salam",
@@ -868,7 +1654,8 @@
       "Gold and silver",
       "Zakaah due"
      ],
-     "info": "The minimum amount of wealth (measured in gold or silver) upon which zakaah becomes obligatory."
+     "info": "The minimum amount of wealth (measured in gold or silver) upon which zakaah becomes obligatory.",
+     "hard": true
     },
     {
      "word": "Suhur",
@@ -895,7 +1682,8 @@
       "Last ten days",
       "Ramadan"
      ],
-     "info": "Devotional seclusion in the mosque, especially in the last ten days of Ramadan."
+     "info": "Devotional seclusion in the mosque, especially in the last ten days of Ramadan.",
+     "hard": true
     },
     {
      "word": "Laylatul Qadr",
@@ -936,9 +1724,9 @@
     {
      "word": "Arafah",
      "clues": [
-      "9th Dhul Hijjah",
-      "Standing",
-      "Hajj is Arafah"
+      "9th of Dhul Hijjah",
+      "The standing",
+      "Without it there is no Hajj"
      ],
      "info": "The plain where pilgrims stand in supplication on 9 Dhul Hijjah — the essential rite of hajj."
     },
@@ -1012,7 +1800,8 @@
       "Groom to bride",
       "Her right"
      ],
-     "info": "The obligatory gift from the groom to the bride, which is her exclusive right."
+     "info": "The obligatory gift from the groom to the bride, which is her exclusive right.",
+     "hard": true
     },
     {
      "word": "Aqiqah",
@@ -1021,7 +1810,8 @@
       "Sacrifice",
       "Seventh day"
      ],
-     "info": "The sacrifice offered on behalf of a newborn, typically on the seventh day, with the head shaved and a name given."
+     "info": "The sacrifice offered on behalf of a newborn, typically on the seventh day, with the head shaved and a name given.",
+     "hard": true
     },
     {
      "word": "Janazah",
@@ -1031,6 +1821,396 @@
       "Four takbeers"
      ],
      "info": "The funeral prayer performed standing with four takbeers — a communal obligation for the deceased."
+    },
+    {
+     "word": "Shahaadah",
+     "clues": [
+      "The testimony",
+      "First pillar",
+      "Two statements in one"
+     ],
+     "info": "The declaration that there is no god but Allah and that Muhammad ﷺ is His Messenger — the first pillar of Islam."
+    },
+    {
+     "word": "Niyyah",
+     "clues": [
+      "Intention",
+      "Before every act of worship",
+      "In the heart, not the tongue"
+     ],
+     "info": "The inward intention that turns an action into worship; the first hadith of Bukhari establishes its weight."
+    },
+    {
+     "word": "Takbeeratul Ihram",
+     "clues": [
+      "Allahu Akbar",
+      "Opening the prayer",
+      "Everything outside becomes forbidden"
+     ],
+     "info": "The opening takbeer with which salaah begins and ordinary speech and action become prohibited."
+    },
+    {
+     "word": "Qunoot",
+     "clues": [
+      "A du'a standing",
+      "In Witr",
+      "Hands raised"
+     ],
+     "info": "A supplication recited standing in prayer, most commonly in Witr and at times of calamity.",
+     "hard": true
+    },
+    {
+     "word": "Sujood as-Sahw",
+     "clues": [
+      "Two extra prostrations",
+      "For a mistake in salaah",
+      "Forgetfulness"
+     ],
+     "info": "Two prostrations that make up for an error or uncertainty in the prayer.",
+     "hard": true
+    },
+    {
+     "word": "Sujood at-Tilaawah",
+     "clues": [
+      "On reciting certain verses",
+      "Fifteen places",
+      "Listener prostrates too"
+     ],
+     "info": "The prostration made on reciting or hearing one of the verses of prostration in the Qur'an.",
+     "hard": true
+    },
+    {
+     "word": "Tahajjud",
+     "clues": [
+      "The night prayer",
+      "After sleeping",
+      "The last third"
+     ],
+     "info": "Voluntary prayer in the depth of the night, especially in its final third."
+    },
+    {
+     "word": "Duha",
+     "clues": [
+      "Mid-morning prayer",
+      "After the sun has risen well",
+      "Two to eight rak'ahs"
+     ],
+     "info": "The forenoon prayer, offered once the sun has risen and before it reaches its zenith.",
+     "hard": true
+    },
+    {
+     "word": "Salaatul Istikhaarah",
+     "clues": [
+      "Prayer for guidance",
+      "Before a decision",
+      "Two rak'ahs then a du'a"
+     ],
+     "info": "Two units of prayer followed by a supplication seeking Allah's choice in a matter.",
+     "hard": true
+    },
+    {
+     "word": "Salaatul Khusoof",
+     "clues": [
+      "During an eclipse",
+      "Longer rak'ahs",
+      "Two bowings in each unit"
+     ],
+     "info": "The prayer offered when the sun or moon is eclipsed, distinctive for its repeated ruku.",
+     "hard": true
+    },
+    {
+     "word": "Salaatul Istisqaa",
+     "clues": [
+      "Praying for rain",
+      "In an open place",
+      "Cloaks turned inside out"
+     ],
+     "info": "The prayer seeking rain in time of drought, during which the congregation reverses their cloaks.",
+     "hard": true
+    },
+    {
+     "word": "Qasr",
+     "clues": [
+      "Shortening the prayer",
+      "On a journey",
+      "Four becomes two"
+     ],
+     "info": "The traveller's concession of shortening four-rak'ah prayers to two.",
+     "hard": true
+    },
+    {
+     "word": "Jam'",
+     "clues": [
+      "Combining two prayers",
+      "Dhuhr with Asr",
+      "Travel or necessity"
+     ],
+     "info": "Joining two prayers in one time, permitted on a journey and in certain other circumstances.",
+     "hard": true
+    },
+    {
+     "word": "Masah over Khuffain",
+     "clues": [
+      "Wiping the leather socks",
+      "Instead of washing the feet",
+      "A day for the resident"
+     ],
+     "info": "Wiping over leather socks in place of washing the feet, for one day and night for a resident and three for a traveller.",
+     "hard": true
+    },
+    {
+     "word": "Istinjaa",
+     "clues": [
+      "Cleaning after relieving oneself",
+      "Water or stones",
+      "Before wudu"
+     ],
+     "info": "The purification of the private parts after answering the call of nature.",
+     "hard": true
+    },
+    {
+     "word": "Najaasah",
+     "clues": [
+      "Impurity",
+      "Must be removed before salaah",
+      "On body, clothes or place"
+     ],
+     "info": "Ritual impurity which must be cleaned from the body, garment and place of prayer.",
+     "hard": true
+    },
+    {
+     "word": "Janaabah",
+     "clues": [
+      "A state of major impurity",
+      "Requires ghusl",
+      "Cannot pray until washed"
+     ],
+     "info": "The state following marital relations or seminal discharge, removed by a full bath.",
+     "hard": true
+    },
+    {
+     "word": "Sutrah",
+     "clues": [
+      "A barrier in front",
+      "Prevents passing in front",
+      "A staff or a wall"
+     ],
+     "info": "An object placed before one praying alone to mark the limit of their prayer space.",
+     "hard": true
+    },
+    {
+     "word": "Masbooq",
+     "clues": [
+      "Latecomer",
+      "Joined after the imam started",
+      "Completes what was missed"
+     ],
+     "info": "One who joins the congregation after part of it has passed and makes up the rest afterwards.",
+     "hard": true
+    },
+    {
+     "word": "Fard",
+     "clues": [
+      "Obligatory",
+      "Leaving it is sinful",
+      "The highest category"
+     ],
+     "info": "An act whose performance is required and whose omission is blameworthy."
+    },
+    {
+     "word": "Waajib",
+     "clues": [
+      "Required",
+      "Between fard and sunnah",
+      "Hanafi terminology"
+     ],
+     "info": "A binding obligation, distinguished from fard in some schools by the strength of its evidence.",
+     "hard": true
+    },
+    {
+     "word": "Mustahabb",
+     "clues": [
+      "Recommended",
+      "Rewarded if done",
+      "No sin if left"
+     ],
+     "info": "An act that earns reward when performed and carries no blame when left.",
+     "hard": true
+    },
+    {
+     "word": "Makrooh",
+     "clues": [
+      "Disliked",
+      "Better avoided",
+      "Not sinful"
+     ],
+     "info": "An act discouraged in the Sharia without being forbidden outright.",
+     "hard": true
+    },
+    {
+     "word": "Mubaah",
+     "clues": [
+      "Permissible",
+      "Neither rewarded nor blamed",
+      "Neutral"
+     ],
+     "info": "An action that carries no ruling either way in itself.",
+     "hard": true
+    },
+    {
+     "word": "Fidyah",
+     "clues": [
+      "Compensation",
+      "For one who cannot fast",
+      "Feeding a poor person"
+     ],
+     "info": "A payment or feeding made by someone permanently unable to fast.",
+     "hard": true
+    },
+    {
+     "word": "Kaffaarah",
+     "clues": [
+      "Expiation",
+      "For a broken oath or fast",
+      "Feeding, freeing or fasting"
+     ],
+     "info": "A prescribed expiation for certain violations, such as breaking an oath or a Ramadan fast deliberately.",
+     "hard": true
+    },
+    {
+     "word": "Zakaatul Fitr",
+     "clues": [
+      "Before the Eid prayer",
+      "A measure of staple food",
+      "For every member of the household"
+     ],
+     "info": "The charity given at the end of Ramadan, payable on behalf of each person in the household before the Eid prayer.",
+     "hard": true
+    },
+    {
+     "word": "Ribaa",
+     "clues": [
+      "Interest",
+      "Declared war upon",
+      "A major sin"
+     ],
+     "info": "Usury or interest, forbidden in the Qur'an in the severest terms."
+    },
+    {
+     "word": "Talaaq",
+     "clues": [
+      "Divorce",
+      "The most disliked permitted thing",
+      "Pronounced by the husband"
+     ],
+     "info": "The dissolution of a marriage, permitted but described as the most detested of lawful things."
+    },
+    {
+     "word": "Iddah",
+     "clues": [
+      "A waiting period",
+      "After divorce or widowhood",
+      "Before remarrying"
+     ],
+     "info": "The period a woman waits before she may remarry, differing by circumstance.",
+     "hard": true
+    },
+    {
+     "word": "Mahram",
+     "clues": [
+      "A relative one cannot marry",
+      "Travel companion",
+      "Permanent relationship"
+     ],
+     "info": "A relative within a degree that forbids marriage, such as a parent, sibling or child.",
+     "hard": true
+    },
+    {
+     "word": "Waleemah",
+     "clues": [
+      "The marriage feast",
+      "Hosted by the groom",
+      "Even with one sheep"
+     ],
+     "info": "The wedding banquet held after the marriage, a confirmed sunnah."
+    },
+    {
+     "word": "Khutbah",
+     "clues": [
+      "A sermon",
+      "Before the Jumu'ah prayer",
+      "Standing, in two parts"
+     ],
+     "info": "The address delivered before the Friday prayer and on other occasions such as Eid and nikah."
+    },
+    {
+     "word": "Talbiyah",
+     "clues": [
+      "Labbayk Allahumma labbayk",
+      "Called out in ihram",
+      "Repeated aloud"
+     ],
+     "info": "The pilgrim's call of response, recited from entering ihram until the stoning on Eid day.",
+     "hard": true
+    },
+    {
+     "word": "Tawaaful Wadaa'",
+     "clues": [
+      "The farewell circuit",
+      "Last act in Makkah",
+      "Before leaving"
+     ],
+     "info": "The final tawaf performed by pilgrims as they depart Makkah.",
+     "hard": true
+    },
+    {
+     "word": "Tamattu'",
+     "clues": [
+      "One of three ways to perform Hajj",
+      "Umrah first, then Hajj",
+      "Requires a sacrifice"
+     ],
+     "info": "Performing umrah in the Hajj season, leaving ihram, then entering it again for Hajj.",
+     "hard": true
+    },
+    {
+     "word": "Rak'ah",
+     "clues": [
+      "One unit of prayer",
+      "Standing, bowing, two prostrations",
+      "Counted in every salaah"
+     ],
+     "info": "A single cycle of the prayer, from the standing recitation through to the second prostration."
+    },
+    {
+     "word": "Sadaqah Jaariyah",
+     "clues": [
+      "Charity that keeps giving",
+      "Continues after death",
+      "A well, a masjid, knowledge"
+     ],
+     "info": "Ongoing charity whose reward continues after a person dies, named in the hadith of the three lasting deeds.",
+     "hard": true
+    },
+    {
+     "word": "Qadaa",
+     "clues": [
+      "Making up a missed obligation",
+      "A prayer or a fast",
+      "Owed later"
+     ],
+     "info": "The performance of an obligatory act after its appointed time has passed.",
+     "hard": true
+    },
+    {
+     "word": "Dhabh",
+     "clues": [
+      "Islamic slaughter",
+      "Bismillah, Allahu Akbar",
+      "A sharp blade"
+     ],
+     "info": "The prescribed method of slaughter, with the name of Allah pronounced over the animal.",
+     "hard": true
     }
    ]
   },
@@ -1039,231 +2219,497 @@
    "subtitle": "Famous sayings",
    "symbol": "text.quote",
    "tint": "brown",
+   "inMixed": true,
    "cards": [
     {
-     "word": "Do Not Get Angry",
+     "word": "Actions are by intentions",
      "clues": [
-      "Repeated advice",
-      "La taghdab",
-      "Asked for counsel"
+      "Bukhari, hadith one",
+      "Nawawi's Forty opens with it",
+      "Why you did it, not what you did"
      ],
-     "info": "A man repeatedly asked for advice and the Prophet ﷺ said each time: 'Do not get angry' (Bukhari)."
+     "info": "The opening hadith of Sahih al-Bukhari, narrated by Umar (RA): every deed is judged by the intention behind it, and a man gets only what he intended."
     },
     {
-     "word": "Cleanliness Is Half of Faith",
+     "word": "Purity is half of faith",
      "clues": [
-      "Purity",
-      "Tahara",
-      "Shatru'l-iman"
+      "Muslim",
+      "Nawawi's Forty",
+      "Wudu, ghusl, the miswak"
      ],
-     "info": "'Purity is half of faith' (Muslim) — outward and inward cleanliness is central to Islam."
+     "info": "From a long hadith of Abu Malik al-Ash'ari (RA) in Sahih Muslim listing the weight of purification, dhikr and patience."
     },
     {
-     "word": "Nikah Is From My Sunnah",
+     "word": "Religion is sincere counsel",
      "clues": [
-      "Marriage",
-      "My way",
-      "Turning away"
+      "Muslim",
+      "Nawawi's Forty",
+      "They asked: to whom?"
      ],
-     "info": "The Prophet ﷺ declared marriage his sunnah, and that whoever turns away from his sunnah is not of him."
+     "info": "Tamim ad-Dari (RA) narrated it; when the Companions asked 'To whom?', the Prophet ﷺ answered: to Allah, His Book, His Messenger, the leaders of the Muslims, and their common folk."
     },
     {
-     "word": "Ali Is His Patron",
+     "word": "Let him speak good or remain silent",
      "clues": [
-      "Ghadir",
-      "Mawla",
-      "Whoever takes me"
+      "Bukhari and Muslim",
+      "Nawawi's Forty",
+      "Guarding the tongue"
      ],
-     "info": "'Whoever takes me as a patron, Ali is his patron' — the Prophet's ﷺ declaration of love and loyalty for Ali (RA)."
+     "info": "Part of the hadith of Abu Hurayrah (RA): whoever believes in Allah and the Last Day should speak good or keep silent — and should honour his neighbour and his guest."
     },
     {
-     "word": "Actions Are by Intentions",
+     "word": "None of you believes until he loves for his brother what he loves for himself",
      "clues": [
-      "First hadith of Bukhari",
-      "Niyyah",
-      "Innamal a'malu"
+      "Bukhari and Muslim",
+      "Nawawi's Forty",
+      "Anas ibn Malik narrated it"
      ],
-     "info": "'Actions are only by intentions' (Bukhari & Muslim) — every deed is judged by what was intended by it."
+     "info": "Faith is incomplete while a Muslim wants for himself what he does not want for his brother."
     },
     {
-     "word": "Dua Is the Weapon of the Believer",
+     "word": "The Muslim is the one from whose tongue and hand the Muslims are safe",
      "clues": [
-      "Supplication",
-      "Silah",
-      "Strength"
+      "Bukhari and Muslim",
+      "Definition of a Muslim",
+      "Tongue and hand"
      ],
-     "info": "Supplication is described as the believer's weapon — the means of seeking Allah's help in all matters."
+     "info": "Abdullah ibn Amr (RA) narrated it; the same hadith defines the emigrant as one who abandons what Allah forbade."
     },
     {
-     "word": "Religion Is Sincerity",
+     "word": "The best of you are those who learn the Qur'an and teach it",
      "clues": [
-      "Naseehah",
-      "To Allah, His Book...",
-      "Well-wishing"
+      "Bukhari",
+      "Uthman narrated it",
+      "Said to every hafiz"
      ],
-     "info": "'The religion is sincere counsel' — to Allah, His Book, His Messenger, and the leaders and common Muslims (Muslim)."
+     "info": "Narrated by Uthman ibn Affan (RA) — the standard of excellence tied to learning the Qur'an and passing it on."
     },
     {
-     "word": "Love for Your Brother",
+     "word": "Make things easy and do not make them difficult",
      "clues": [
-      "None of you believes until",
-      "What you love for yourself",
-      "Faith"
+      "Bukhari and Muslim",
+      "Said to Mu'adh and Abu Musa",
+      "Sent to Yemen"
      ],
-     "info": "'None of you truly believes until he loves for his brother what he loves for himself' (Bukhari & Muslim)."
+     "info": "Instruction to Mu'adh ibn Jabal and Abu Musa al-Ash'ari (RA) on being sent to Yemen; it continues: give glad tidings and do not drive people away."
     },
     {
-     "word": "Best Are Those Who Learn the Qur'an",
+     "word": "Allah does not look at your forms and your wealth, but at your hearts and your deeds",
      "clues": [
-      "And teach it",
-      "Khairukum",
-      "Students and teachers"
+      "Muslim",
+      "Abu Hurayrah",
+      "Not appearance, not money"
      ],
-     "info": "'The best of you are those who learn the Qur'an and teach it' (Bukhari)."
+     "info": "What is weighed is the state of the heart and the action, not outward form or property.",
+     "hard": true
     },
     {
-     "word": "Smiling Is Charity",
+     "word": "Every act of kindness is charity",
      "clues": [
-      "In your brother's face",
-      "Sadaqah",
-      "Easy good deed"
+      "Bukhari and Muslim",
+      "Kullu ma'rufin sadaqah",
+      "Even the smallest"
      ],
-     "info": "'Your smile in the face of your brother is charity' (Tirmidhi)."
+     "info": "Narrated by Jabir (RA) — any good turn counts as sadaqah, which opens charity to those with nothing to give."
     },
     {
-     "word": "The Strong One",
+     "word": "Do not get angry",
      "clues": [
-      "Not the wrestler",
-      "Controls anger",
-      "Self-restraint"
+      "Bukhari",
+      "Nawawi's Forty",
+      "He asked for advice again and again"
      ],
-     "info": "'The strong is not the one who overcomes others; the strong is the one who controls himself when angry' (Bukhari & Muslim)."
+     "info": "A man asked the Prophet ﷺ for advice and he said 'Do not get angry', repeating it each time the man asked again."
     },
     {
-     "word": "Modesty Is a Branch of Faith",
+     "word": "The strong man is the one who controls himself when angry",
      "clues": [
-      "Haya",
-      "Only brings good",
-      "Iman"
+      "Bukhari and Muslim",
+      "Not the good wrestler",
+      "Strength redefined"
      ],
-     "info": "Modesty (haya) is a branch of faith and brings nothing but good (Bukhari & Muslim)."
+     "info": "The full wording contrasts physical strength with self-mastery: the strong is not the one who overcomes people in wrestling."
     },
     {
-     "word": "Seeking Knowledge Is Obligatory",
+     "word": "He who shows no mercy will not be shown mercy",
      "clues": [
-      "Every Muslim",
-      "Talab al-ilm",
-      "Fard"
+      "Bukhari and Muslim",
+      "Said when he kissed his grandson",
+      "A bedouin was surprised"
      ],
-     "info": "'Seeking knowledge is an obligation upon every Muslim' (Ibn Majah)."
+     "info": "Said when a man remarked that he had ten children and had never kissed one of them."
     },
     {
-     "word": "Speak Good or Remain Silent",
+     "word": "The deeds most beloved to Allah are the most constant, even if few",
      "clues": [
-      "Believes in Allah and Last Day",
-      "Tongue",
-      "Guard speech"
+      "Bukhari and Muslim",
+      "Aisha narrated it",
+      "Little and regular beats much and rare"
      ],
-     "info": "'Whoever believes in Allah and the Last Day, let him speak good or remain silent' (Bukhari & Muslim)."
+     "info": "Aisha (RA) reported this as the Prophet's ﷺ own habit in worship — steady rather than intense in bursts."
     },
     {
-     "word": "Others Safe From Your Tongue and Hand",
+     "word": "Whoever believes in Allah and the Last Day, let him honour his guest",
      "clues": [
-      "Others are safe",
-      "Harming none",
-      "Definition"
+      "Bukhari and Muslim",
+      "Nawawi's Forty",
+      "Hospitality"
      ],
-     "info": "'The Muslim is the one from whose tongue and hand the Muslims are safe' (Bukhari & Muslim)."
+     "info": "One of three clauses in the hadith of Abu Hurayrah (RA), alongside honouring the neighbour and guarding the tongue."
     },
     {
-     "word": "Make Things Easy",
+     "word": "Whoever believes in Allah and the Last Day, let him not harm his neighbour",
      "clues": [
-      "Do not make difficult",
-      "Give glad tidings",
-      "Do not repel"
+      "Bukhari and Muslim",
+      "The one next door",
+      "Same hadith as honouring the guest"
      ],
-     "info": "'Make things easy and do not make them difficult; give glad tidings and do not drive people away' (Bukhari & Muslim)."
+     "info": "Jibril (AS) kept urging the Prophet ﷺ about the neighbour until he thought the neighbour would be made an heir."
     },
     {
-     "word": "Allah Is Beautiful and Loves Beauty",
+     "word": "Modesty is a branch of faith",
      "clues": [
-      "Jameel",
-      "No pride",
-      "Beauty"
+      "Bukhari and Muslim",
+      "Al-haya",
+      "Part of the seventy-odd branches"
      ],
-     "info": "'Allah is beautiful and loves beauty' — said when explaining that pride, not fine clothing, is blameworthy (Muslim)."
+     "info": "From the hadith listing faith's branches — the highest being the declaration of tawhid and the least removing harm from the road."
     },
     {
-     "word": "The Upper Hand Is Better",
+     "word": "Removing harm from the road is charity",
      "clues": [
-      "Than the lower",
-      "Giving over taking",
-      "Charity"
+      "Bukhari and Muslim",
+      "The lowest branch of faith",
+      "A thorn, a stone"
      ],
-     "info": "'The upper hand is better than the lower hand' — the giving hand is superior to the receiving one (Bukhari & Muslim)."
+     "info": "Named in the same hadith as the least of faith's branches, and elsewhere as an act of sadaqah in itself.",
+     "hard": true
     },
     {
-     "word": "Fear Allah Wherever You Are",
+     "word": "The upper hand is better than the lower hand",
      "clues": [
-      "Follow evil with good",
-      "Good character",
-      "Taqwa"
+      "Bukhari and Muslim",
+      "Giving and receiving",
+      "Said in a sermon on charity"
      ],
-     "info": "'Fear Allah wherever you are, follow a bad deed with a good deed to erase it, and treat people with good character' (Tirmidhi)."
+     "info": "The hand that gives is above the hand that takes; the hadith urges self-sufficiency and restraint from asking."
     },
     {
-     "word": "Whoever Shows No Mercy",
+     "word": "The world is the believer's prison and the disbeliever's paradise",
      "clues": [
-      "Will be shown none",
-      "Rahmah",
-      "Kindness"
+      "Muslim",
+      "Abu Hurayrah",
+      "Perspective on the dunya"
      ],
-     "info": "'Whoever does not show mercy will not be shown mercy' (Bukhari & Muslim)."
+     "info": "However comfortable this life becomes for a believer, it is confinement next to what waits; the reverse for one who denies it."
     },
     {
-     "word": "The World Is a Prison for the Believer",
+     "word": "Whoever takes a path seeking knowledge, Allah makes easy for him a path to Paradise",
      "clues": [
-      "Paradise for disbeliever",
-      "Dunya",
-      "Perspective"
+      "Muslim",
+      "On seeking ilm",
+      "The angels lower their wings"
      ],
-     "info": "'The world is the believer's prison and the disbeliever's paradise' (Muslim) — the believer's true reward lies ahead."
+     "info": "From a long hadith of Abu Hurayrah (RA) on the standing of students and scholars.",
+     "hard": true
     },
     {
-     "word": "Deeds Are Judged by Endings",
+     "word": "When a person dies his deeds end except three",
      "clues": [
-      "Khawatim",
-      "Final state",
-      "Perseverance"
+      "Muslim",
+      "Sadaqah jariyah",
+      "A righteous child who prays for him"
      ],
-     "info": "'Actions are judged by their endings' (Bukhari) — what matters is the state in which one concludes."
+     "info": "The three are ongoing charity, knowledge benefited from, and a righteous child who supplicates for him."
     },
     {
-     "word": "Paradise Under the Mother's Feet",
+     "word": "Paradise is surrounded by hardships and the Fire by desires",
      "clues": [
-      "Serve your mother",
-      "Honour parents",
-      "Jannah"
+      "Muslim",
+      "What guards each one",
+      "Anas narrated it"
      ],
-     "info": "A famous expression of the immense status of mothers — serving them is a path to Paradise."
+     "info": "The road to Paradise runs through what the self dislikes; the road to the Fire through what it craves.",
+     "hard": true
     },
     {
-     "word": "Best of You to His Family",
+     "word": "No one eats better food than what he earns with his own hands",
      "clues": [
-      "Khairukum li ahlihi",
-      "I am the best",
-      "Kindness at home"
+      "Bukhari",
+      "Miqdam narrated it",
+      "Dawud (AS) ate from his own work"
      ],
-     "info": "'The best of you is the best to his family, and I am the best of you to my family' (Tirmidhi)."
+     "info": "The hadith adds that the Prophet of Allah Dawud (AS) used to eat from the work of his own hand.",
+     "hard": true
     },
     {
-     "word": "Islam Is Built on Five",
+     "word": "Allah is beautiful and loves beauty",
      "clues": [
-      "Pillars",
-      "Shahadah first",
-      "Foundation"
+      "Muslim",
+      "Said about fine clothing",
+      "A man feared it was pride"
      ],
-     "info": "'Islam is built upon five' — testimony of faith, salaah, zakaah, hajj and fasting Ramadan (Bukhari & Muslim)."
+     "info": "Said when a man asked whether liking good clothes and shoes was arrogance; the answer was that pride is something else entirely."
+    },
+    {
+     "word": "Pride is rejecting the truth and looking down on people",
+     "clues": [
+      "Muslim",
+      "The definition of kibr",
+      "Given in the same breath as 'Allah is beautiful'"
+     ],
+     "info": "The Prophet's ﷺ own definition, given to distinguish arrogance from simply liking what is good.",
+     "hard": true
+    },
+    {
+     "word": "Whoever deceives us is not one of us",
+     "clues": [
+      "Muslim",
+      "Said at a heap of grain",
+      "His hand went inside and found it wet"
+     ],
+     "info": "Said after the Prophet ﷺ put his hand into a pile of food for sale and found the lower part damp while the top looked dry."
+    },
+    {
+     "word": "A good word is charity",
+     "clues": [
+      "Bukhari and Muslim",
+      "Costs nothing",
+      "Counted as sadaqah"
+     ],
+     "info": "Listed among the acts of charity available to everyone, whatever their means.",
+     "hard": true
+    },
+    {
+     "word": "Whoever builds a mosque for Allah, Allah builds for him a house in Paradise",
+     "clues": [
+      "Bukhari and Muslim",
+      "Uthman quoted it when rebuilding the Prophet's mosque",
+      "Masjid"
+     ],
+     "info": "Uthman (RA) recited this hadith when criticised for rebuilding and expanding the Prophet's mosque.",
+     "hard": true
+    },
+    {
+     "word": "Prayer in congregation is twenty-seven times better than praying alone",
+     "clues": [
+      "Bukhari and Muslim",
+      "A number",
+      "Jama'ah"
+     ],
+     "info": "Narrated by Ibn Umar (RA); another authentic narration gives the figure as twenty-five.",
+     "hard": true
+    },
+    {
+     "word": "Whoever prays Fajr is under Allah's protection",
+     "clues": [
+      "Muslim",
+      "The dawn prayer",
+      "Jundub narrated it"
+     ],
+     "info": "The hadith warns against falling short in anything that would remove a person from that protection.",
+     "hard": true
+    },
+    {
+     "word": "Ramadan to Ramadan expiates what is between them",
+     "clues": [
+      "Muslim",
+      "Fasting",
+      "As long as major sins are avoided"
+     ],
+     "info": "Paired in the same hadith with the five daily prayers and Jumu'ah to Jumu'ah, conditional on avoiding major sins."
+    },
+    {
+     "word": "Whoever fasts Ramadan out of faith and seeking reward is forgiven",
+     "clues": [
+      "Bukhari and Muslim",
+      "Iman wa ihtisab",
+      "His past sins"
+     ],
+     "info": "The same formula — faith and seeking the reward — is used for standing in prayer during Ramadan and on Laylatul Qadr."
+    },
+    {
+     "word": "Umrah to Umrah is an expiation for what is between them",
+     "clues": [
+      "Bukhari and Muslim",
+      "The lesser pilgrimage",
+      "Paired with accepted Hajj"
+     ],
+     "info": "The hadith continues: and an accepted Hajj has no reward but Paradise.",
+     "hard": true
+    },
+    {
+     "word": "An accepted Hajj has no reward but Paradise",
+     "clues": [
+      "Bukhari and Muslim",
+      "Hajj mabrur",
+      "Follows the hadith on Umrah"
+     ],
+     "info": "A hajj free of sin and accepted by Allah, whose only fitting recompense is Jannah.",
+     "hard": true
+    },
+    {
+     "word": "Charity does not decrease wealth",
+     "clues": [
+      "Muslim",
+      "Three things he swore to",
+      "Giving does not impoverish"
+     ],
+     "info": "One of three things the Prophet ﷺ swore an oath upon, along with forgiveness raising a man's honour and humility raising his rank.",
+     "hard": true
+    },
+    {
+     "word": "Allah's mercy overcomes His wrath",
+     "clues": [
+      "Bukhari and Muslim",
+      "Written above the Throne",
+      "Qudsi"
+     ],
+     "info": "A hadith qudsi: when Allah decreed creation He wrote with Him above the Throne that His mercy prevails over His anger."
+    },
+    {
+     "word": "The believer is not stung twice from the same hole",
+     "clues": [
+      "Bukhari and Muslim",
+      "A snake and a hole",
+      "Learn from it the first time"
+     ],
+     "info": "A believer does not let himself be deceived twice by the same trick.",
+     "hard": true
+    },
+    {
+     "word": "Beware of suspicion, for suspicion is the most false of speech",
+     "clues": [
+      "Bukhari and Muslim",
+      "Su' adh-dhann",
+      "Do not spy, do not envy"
+     ],
+     "info": "The hadith continues with a chain of prohibitions: do not spy, do not compete in vanity, do not envy, do not hate, and be brothers."
+    },
+    {
+     "word": "Do not envy one another, do not hate one another, be brothers",
+     "clues": [
+      "Bukhari and Muslim",
+      "A chain of prohibitions",
+      "Ends by defining brotherhood"
+     ],
+     "info": "The famous closing of the hadith on suspicion, ending: be servants of Allah, brothers."
+    },
+    {
+     "word": "A Muslim is the brother of a Muslim",
+     "clues": [
+      "Bukhari and Muslim",
+      "He does not wrong him or hand him over",
+      "Brotherhood"
+     ],
+     "info": "The hadith adds that whoever relieves a Muslim's distress will have his own distress relieved on the Day of Judgement."
+    },
+    {
+     "word": "Richness is the richness of the soul",
+     "clues": [
+      "Bukhari and Muslim",
+      "Not many possessions",
+      "Contentment"
+     ],
+     "info": "Real wealth is not an abundance of goods but a contented heart.",
+     "hard": true
+    },
+    {
+     "word": "Whoever loves to meet Allah, Allah loves to meet him",
+     "clues": [
+      "Bukhari and Muslim",
+      "About death",
+      "Aisha asked about disliking death"
+     ],
+     "info": "When Aisha (RA) said that all of them dislike death, he ﷺ explained it refers to the moment the believer is given glad tidings.",
+     "hard": true
+    },
+    {
+     "word": "Be in this world as a stranger or a traveller",
+     "clues": [
+      "Bukhari",
+      "Nawawi's Forty",
+      "Ibn Umar took hold of his shoulders"
+     ],
+     "info": "The Prophet ﷺ took Ibn Umar (RA) by the shoulders and said it; Ibn Umar would add: when evening comes do not expect the morning.",
+     "hard": true
+    },
+    {
+     "word": "Whoever calls to guidance has a reward like the rewards of those who follow it",
+     "clues": [
+      "Muslim",
+      "And the same for misguidance",
+      "The reward keeps coming"
+     ],
+     "info": "Without anything being diminished from their own rewards — and the same applies, in reverse, to calling to error.",
+     "hard": true
+    },
+    {
+     "word": "The best of you is the best to his family",
+     "clues": [
+      "Tirmidhi — check grading",
+      "And I am the best of you to my family",
+      "Judged at home"
+     ],
+     "info": "Graded hasan sahih by at-Tirmidhi. Outside the two Sahihs, so worth verifying before publishing."
+    },
+    {
+     "word": "Fear Allah wherever you are",
+     "clues": [
+      "Tirmidhi — check grading",
+      "Nawawi's Forty",
+      "Follow a bad deed with a good one"
+     ],
+     "info": "Advice to Abu Dharr (RA); it continues: follow a bad deed with a good deed to wipe it out, and treat people with good character. Graded hasan."
+    },
+    {
+     "word": "Leave what makes you doubt for what does not make you doubt",
+     "clues": [
+      "Tirmidhi and Nasa'i — check grading",
+      "Nawawi's Forty",
+      "Hasan and Husayn's grandfather said it to Hasan"
+     ],
+     "info": "Narrated by al-Hasan ibn Ali (RA); graded sahih by at-Tirmidhi. Outside the two Sahihs.",
+     "hard": true
+    },
+    {
+     "word": "Part of a person's good Islam is leaving what does not concern him",
+     "clues": [
+      "Tirmidhi — check grading",
+      "Nawawi's Forty",
+      "Minding your own business"
+     ],
+     "info": "Graded hasan; widely cited as a principle of adab. Outside the two Sahihs.",
+     "hard": true
+    },
+    {
+     "word": "Your smile in the face of your brother is charity",
+     "clues": [
+      "Tirmidhi — check grading",
+      "The easiest sadaqah",
+      "Costs nothing at all"
+     ],
+     "info": "Graded hasan by at-Tirmidhi. Outside the two Sahihs, so verify before publishing."
+    },
+    {
+     "word": "Whoever is not grateful to people is not grateful to Allah",
+     "clues": [
+      "Abu Dawud and Tirmidhi — check grading",
+      "Shukr",
+      "Thanking people"
+     ],
+     "info": "Graded sahih by at-Tirmidhi. Outside the two Sahihs.",
+     "hard": true
+    },
+    {
+     "word": "All the children of Adam are sinners, and the best of sinners are those who repent",
+     "clues": [
+      "Tirmidhi and Ibn Majah — check grading",
+      "Tawbah",
+      "Nobody is exempt"
+     ],
+     "info": "Graded hasan. Outside the two Sahihs, so worth confirming.",
+     "hard": true
     }
    ]
   },
@@ -1272,6 +2718,7 @@
    "subtitle": "Suras, verses and themes",
    "symbol": "book.closed.fill",
    "tint": "indigo",
+   "inMixed": true,
    "cards": [
     {
      "word": "Sura Fatiha",
@@ -1352,7 +2799,8 @@
       "The Most Merciful",
       "Repeated verse"
      ],
-     "info": "Distinguished by its refrain 'Which of your Lord's favours will you both deny?', repeated 31 times."
+     "info": "Distinguished by its refrain 'Which of your Lord's favours will you both deny?', repeated 31 times.",
+     "hard": true
     },
     {
      "word": "Ayatul Kursi",
@@ -1370,7 +2818,8 @@
       "Three groups",
       "Protection from poverty"
      ],
-     "info": "Describes the Day of Judgement dividing mankind into three groups; traditionally recited seeking protection from poverty."
+     "info": "Describes the Day of Judgement dividing mankind into three groups; traditionally recited seeking protection from poverty.",
+     "hard": true
     },
     {
      "word": "Sura Kawthar",
@@ -1496,7 +2945,8 @@
       "Over Jahannam",
       "Thinner than a hair"
      ],
-     "info": "The bridge over Hellfire that all must cross on the Day of Judgement, traversed according to one's deeds."
+     "info": "The bridge over Hellfire that all must cross on the Day of Judgement, traversed according to one's deeds.",
+     "hard": true
     },
     {
      "word": "Mizan",
@@ -1505,7 +2955,8 @@
       "Weighing deeds",
       "Day of Judgement"
      ],
-     "info": "The scale on which deeds are weighed on the Day of Judgement."
+     "info": "The scale on which deeds are weighed on the Day of Judgement.",
+     "hard": true
     },
     {
      "word": "Hawdh al-Kawthar",
@@ -1514,7 +2965,8 @@
       "Whiter than milk",
       "Never thirst again"
      ],
-     "info": "The Prophet's ﷺ pond, whose drink is whiter than milk and sweeter than honey; whoever drinks from it never thirsts again."
+     "info": "The Prophet's ﷺ pond, whose drink is whiter than milk and sweeter than honey; whoever drinks from it never thirsts again.",
+     "hard": true
     },
     {
      "word": "Bismillah",
@@ -1559,7 +3011,375 @@
       "Everything written",
       "With Allah"
      ],
-     "info": "The Preserved Tablet with Allah, on which all decree is recorded."
+     "info": "The Preserved Tablet with Allah, on which all decree is recorded.",
+     "hard": true
+    },
+    {
+     "word": "Sura Taha",
+     "clues": [
+      "Umar's sister was reciting it",
+      "Musa and the burning bush",
+      "Chapter 20"
+     ],
+     "info": "The sura whose recitation moved Umar (RA) to Islam; it recounts at length the story of Musa (AS)."
+    },
+    {
+     "word": "Sura Luqman",
+     "clues": [
+      "A father's advice to his son",
+      "Do not associate partners",
+      "Chapter 31"
+     ],
+     "info": "Named after the wise man whose counsel to his son is preserved in it."
+    },
+    {
+     "word": "Sura Hujuraat",
+     "clues": [
+      "Manners between believers",
+      "Do not backbite",
+      "Created you as nations and tribes"
+     ],
+     "info": "The sura of social etiquette, containing the verse that the noblest of people are the most God-conscious.",
+     "hard": true
+    },
+    {
+     "word": "Sura Naba",
+     "clues": [
+      "The great news",
+      "Begins the last juz",
+      "They ask one another"
+     ],
+     "info": "The opening sura of Juz Amma, describing the Day they question one another about."
+    },
+    {
+     "word": "Sura A'laa",
+     "clues": [
+      "Glorify the name of your Lord",
+      "Recited in Eid and Jumu'ah",
+      "The Most High"
+     ],
+     "info": "A short Makkan sura frequently recited in the Eid and Friday prayers.",
+     "hard": true
+    },
+    {
+     "word": "Sura Ghaashiyah",
+     "clues": [
+      "The overwhelming",
+      "Paired with al-A'laa",
+      "Faces humbled that Day"
+     ],
+     "info": "Often recited alongside Sura al-A'laa in the Friday and Eid prayers.",
+     "hard": true
+    },
+    {
+     "word": "Sura Fajr",
+     "clues": [
+      "By the dawn",
+      "Ten nights",
+      "The soul at rest"
+     ],
+     "info": "Opens with oaths by the dawn and the ten nights, and ends addressing the tranquil soul."
+    },
+    {
+     "word": "Sura Shams",
+     "clues": [
+      "By the sun and its brightness",
+      "He who purifies his soul",
+      "Thamud is mentioned"
+     ],
+     "info": "A short Makkan sura on the purification of the soul and the fate of Thamud."
+    },
+    {
+     "word": "Sura Layl",
+     "clues": [
+      "By the night when it covers",
+      "Two different efforts",
+      "Giving and God-consciousness"
+     ],
+     "info": "Contrasts the one who gives and fears Allah with the one who is miserly and turns away."
+    },
+    {
+     "word": "Sura Sharh",
+     "clues": [
+      "Did We not expand your breast",
+      "With hardship comes ease",
+      "Twice repeated"
+     ],
+     "info": "A consolation to the Prophet ﷺ, containing the famous promise that with difficulty comes ease."
+    },
+    {
+     "word": "Sura Teen",
+     "clues": [
+      "By the fig and the olive",
+      "The best of moulds",
+      "Mount Sinai"
+     ],
+     "info": "Opens with oaths by the fig, the olive and Mount Sinai, and states that man was created in the finest form."
+    },
+    {
+     "word": "Sura Alaq",
+     "clues": [
+      "Read in the name of your Lord",
+      "First revelation",
+      "The clot"
+     ],
+     "info": "The first verses ever revealed, brought to him ﷺ in the Cave of Hira."
+    },
+    {
+     "word": "Sura Bayyinah",
+     "clues": [
+      "The clear proof",
+      "Recited to Ubayy by command",
+      "Chapter 98"
+     ],
+     "info": "The Prophet ﷺ told Ubayy ibn Ka'b (RA) that Allah had commanded him to recite this sura to him.",
+     "hard": true
+    },
+    {
+     "word": "Sura Aadiyaat",
+     "clues": [
+      "By the charging steeds",
+      "Striking sparks",
+      "Man is ungrateful to his Lord"
+     ],
+     "info": "Opens with an oath by galloping warhorses before turning to man's ingratitude.",
+     "hard": true
+    },
+    {
+     "word": "Sura Qaari'ah",
+     "clues": [
+      "The striking hour",
+      "Scales heavy or light",
+      "People like scattered moths"
+     ],
+     "info": "Describes the Day of Judgement and the weighing of deeds."
+    },
+    {
+     "word": "Sura Takaathur",
+     "clues": [
+      "Competition in increase",
+      "Until you visit the graves",
+      "Chapter 102"
+     ],
+     "info": "Warns against being distracted by rivalry in worldly accumulation until death arrives."
+    },
+    {
+     "word": "Sura Humazah",
+     "clues": [
+      "Woe to every slanderer",
+      "Hoarding wealth and counting it",
+      "The crushing Fire"
+     ],
+     "info": "Condemns the backbiter and the one obsessed with amassing wealth.",
+     "hard": true
+    },
+    {
+     "word": "Sura Kaafiroon",
+     "clues": [
+      "To you your religion",
+      "Recited before sleeping",
+      "A declaration of separation"
+     ],
+     "info": "A clear statement of disassociation from disbelief, recommended before sleep."
+    },
+    {
+     "word": "Ayatud Dayn",
+     "clues": [
+      "The longest verse",
+      "About writing down debts",
+      "In Sura Baqarah"
+     ],
+     "info": "The verse of debt, the longest in the Qur'an, instructing that loans be written down and witnessed.",
+     "hard": true
+    },
+    {
+     "word": "Ayatun Noor",
+     "clues": [
+      "Allah is the light of the heavens and the earth",
+      "A lamp in a niche",
+      "Olive oil"
+     ],
+     "info": "The celebrated Verse of Light in Sura an-Nur, describing divine light through an extended image."
+    },
+    {
+     "word": "Verses of Sajdah",
+     "clues": [
+      "Prostrate on reciting them",
+      "About fifteen places",
+      "Marked in the mushaf"
+     ],
+     "info": "The verses at which a prostration is made by the reciter and the listener.",
+     "hard": true
+    },
+    {
+     "word": "Manzil",
+     "clues": [
+      "Seven portions",
+      "A way of completing the Qur'an weekly",
+      "Also recited for protection"
+     ],
+     "info": "A division of the Qur'an into seven parts, and a known selection of verses recited for protection.",
+     "hard": true
+    },
+    {
+     "word": "Juz",
+     "clues": [
+      "One of thirty parts",
+      "A month of reading",
+      "Marked in every mushaf"
+     ],
+     "info": "One of the thirty equal divisions by which the Qur'an is commonly read.",
+     "hard": true
+    },
+    {
+     "word": "Makki and Madani",
+     "clues": [
+      "Before and after the Hijrah",
+      "Two classes of suras",
+      "A science in itself"
+     ],
+     "info": "The classification of revelation by whether it came before or after the migration to Madinah.",
+     "hard": true
+    },
+    {
+     "word": "Tafseer",
+     "clues": [
+      "Explanation of the Qur'an",
+      "Ibn Kathir, Tabari",
+      "A whole discipline"
+     ],
+     "info": "The science of explaining the meanings of the Qur'an.",
+     "hard": true
+    },
+    {
+     "word": "Tarteel",
+     "clues": [
+      "Measured recitation",
+      "Recite it slowly and distinctly",
+      "Commanded in Sura Muzzammil"
+     ],
+     "info": "Reciting the Qur'an slowly and clearly, as the Qur'an itself instructs.",
+     "hard": true
+    },
+    {
+     "word": "Qiraa'aat",
+     "clues": [
+      "Modes of recitation",
+      "Ten canonical ones",
+      "Hafs is the most widespread"
+     ],
+     "info": "The authenticated variant readings of the Qur'an transmitted from the Prophet ﷺ.",
+     "hard": true
+    },
+    {
+     "word": "Mushaf",
+     "clues": [
+      "The written copy",
+      "Standardised under Uthman",
+      "Bound between two covers"
+     ],
+     "info": "The Qur'an in its written, bound form.",
+     "hard": true
+    },
+    {
+     "word": "Wahy",
+     "clues": [
+      "Revelation",
+      "Sometimes like the ringing of a bell",
+      "Brought by Jibril"
+     ],
+     "info": "Divine revelation, which came to the Prophet ﷺ in several described forms.",
+     "hard": true
+    },
+    {
+     "word": "Twenty-Three Years",
+     "clues": [
+      "The span of revelation",
+      "Makkah then Madinah",
+      "Gradual, not all at once"
+     ],
+     "info": "The Qur'an was revealed in stages across roughly twenty-three years of prophethood.",
+     "hard": true
+    },
+    {
+     "word": "Isti'aadhah",
+     "clues": [
+      "A'udhu billahi minash shaytanir rajeem",
+      "Before reciting",
+      "Seeking refuge"
+     ],
+     "info": "The formula of seeking refuge in Allah, said before beginning recitation.",
+     "hard": true
+    },
+    {
+     "word": "Khatm",
+     "clues": [
+      "Completing the Qur'an",
+      "A du'a at the end",
+      "Often in Ramadan"
+     ],
+     "info": "The completion of a full reading of the Qur'an, traditionally marked with supplication.",
+     "hard": true
+    },
+    {
+     "word": "Sura Nooh",
+     "clues": [
+      "A prophet's complaint",
+      "Night and day I called them",
+      "Chapter 71"
+     ],
+     "info": "Recounts Nuh (AS) calling his people over centuries and their persistent refusal.",
+     "hard": true
+    },
+    {
+     "word": "Sura Saff",
+     "clues": [
+      "Ranks in battle",
+      "A solid structure",
+      "Glad tidings of Ahmad"
+     ],
+     "info": "Contains Isa's (AS) announcement of a messenger to come after him named Ahmad.",
+     "hard": true
+    },
+    {
+     "word": "Sura Jumu'ah",
+     "clues": [
+      "Hasten to the remembrance",
+      "Leave off trade",
+      "Recited on Fridays"
+     ],
+     "info": "Commands believers to leave business for the Friday prayer when the call is made.",
+     "hard": true
+    },
+    {
+     "word": "Sura Munaafiqoon",
+     "clues": [
+      "The hypocrites",
+      "Recited in Jumu'ah",
+      "Their words differ from their hearts"
+     ],
+     "info": "Exposes the hypocrites of Madinah; commonly recited in the second rak'ah of Jumu'ah.",
+     "hard": true
+    },
+    {
+     "word": "Sura Talaaq",
+     "clues": [
+      "Rules of divorce",
+      "Whoever fears Allah, He makes a way out",
+      "Chapter 65"
+     ],
+     "info": "Sets out the law of divorce and contains the promise of relief and provision for the God-fearing.",
+     "hard": true
+    },
+    {
+     "word": "Sura Buruj",
+     "clues": [
+      "The great constellations",
+      "People of the ditch",
+      "A boy and a sorcerer"
+     ],
+     "info": "Recounts the believers burned in the trench for holding to their faith.",
+     "hard": true
     }
    ]
   },
@@ -1568,6 +3388,7 @@
    "subtitle": "Prophets, family and companions",
    "symbol": "person.2.fill",
    "tint": "purple",
+   "inMixed": true,
    "cards": [
     {
      "word": "Muhammad ﷺ",
@@ -1608,11 +3429,12 @@
     {
      "word": "Hashim",
      "clues": [
-      "Great-grandfather",
-      "Banu Hashim",
-      "Fed the pilgrims"
+      "His great-grandfather",
+      "The clan is named after him",
+      "Fed the pilgrims broth"
      ],
-     "info": "The Prophet's ﷺ great-grandfather, after whom his clan Banu Hashim is named, famed for feeding pilgrims."
+     "info": "The Prophet's ﷺ great-grandfather, after whom his clan Banu Hashim is named, famed for feeding pilgrims.",
+     "hard": true
     },
     {
      "word": "Abdul Muttalib",
@@ -1630,7 +3452,8 @@
       "Quraysh lineage",
       "Forefather"
      ],
-     "info": "An ancestor of the Prophet ﷺ in the noble line of Quraysh."
+     "info": "An ancestor of the Prophet ﷺ in the noble line of Quraysh.",
+     "hard": true
     },
     {
      "word": "Abu Talib",
@@ -1774,7 +3597,8 @@
       "Teacher in Madinah",
       "Left luxury"
      ],
-     "info": "The wealthy youth who gave up luxury for Islam and was sent as the first teacher to Madinah before the Hijrah."
+     "info": "The wealthy youth who gave up luxury for Islam and was sent as the first teacher to Madinah before the Hijrah.",
+     "hard": true
     },
     {
      "word": "Zayd ibn Harithah (RA)",
@@ -1783,7 +3607,8 @@
       "Only companion named in Qur'an",
       "Chose the Prophet"
      ],
-     "info": "The Prophet's ﷺ freed servant who chose to stay with him over his own family — the only companion named in the Qur'an."
+     "info": "The Prophet's ﷺ freed servant who chose to stay with him over his own family — the only companion named in the Qur'an.",
+     "hard": true
     },
     {
      "word": "Anas ibn Malik (RA)",
@@ -1792,7 +3617,8 @@
       "Never told off",
       "Young helper"
      ],
-     "info": "Served the Prophet ﷺ for ten years, saying he was never once rebuked with even a word of complaint."
+     "info": "Served the Prophet ﷺ for ten years, saying he was never once rebuked with even a word of complaint.",
+     "hard": true
     },
     {
      "word": "Adam (AS)",
@@ -1909,7 +3735,8 @@
       "Sun held back",
       "Successor"
      ],
-     "info": "Successor of Musa (AS), for whom the sun was held back until victory was achieved."
+     "info": "Successor of Musa (AS), for whom the sun was held back until victory was achieved.",
+     "hard": true
     },
     {
      "word": "Dawud (AS)",
@@ -2099,6 +3926,1648 @@
       "Shaytan"
      ],
      "info": "The jinn who refused to prostrate to Adam out of pride and became the avowed enemy of mankind."
+    },
+    {
+     "word": "Fatimah bint Asad",
+     "clues": [
+      "Ali's mother",
+      "Raised the Prophet ﷺ like her own",
+      "He gave her his shirt for a shroud"
+     ],
+     "info": "Wife of Abu Talib who cared for the orphaned Prophet ﷺ; he honoured her deeply at her death.",
+     "hard": true
+    },
+    {
+     "word": "Umm Ayman",
+     "clues": [
+      "Barakah",
+      "Inherited from his father",
+      "He called her 'my mother after my mother'"
+     ],
+     "info": "The freed servant who nursed and cared for him ﷺ from childhood and remained devoted all her life.",
+     "hard": true
+    },
+    {
+     "word": "Zaynab bint Muhammad ﷺ",
+     "clues": [
+      "His eldest daughter",
+      "Married Abu al-As",
+      "Migrated with difficulty"
+     ],
+     "info": "The Prophet's ﷺ eldest daughter, whose husband later accepted Islam.",
+     "hard": true
+    },
+    {
+     "word": "Ruqayyah",
+     "clues": [
+      "His daughter",
+      "Married Uthman",
+      "Died during Badr"
+     ],
+     "info": "Daughter of the Prophet ﷺ and wife of Uthman (RA); she passed away while the Muslims were at Badr.",
+     "hard": true
+    },
+    {
+     "word": "Umm Kulthum",
+     "clues": [
+      "His daughter",
+      "Married Uthman after her sister",
+      "Dhun-Nurayn"
+     ],
+     "info": "Her marriage to Uthman (RA) after Ruqayyah's death earned him the title of the possessor of two lights.",
+     "hard": true
+    },
+    {
+     "word": "Ibrahim ibn Muhammad ﷺ",
+     "clues": [
+      "His infant son",
+      "Mother was Mariyah",
+      "The sun eclipsed on the day he died"
+     ],
+     "info": "His son who died in infancy; he ﷺ corrected those who linked the eclipse that day to the death.",
+     "hard": true
+    },
+    {
+     "word": "Sawdah bint Zam'ah",
+     "clues": [
+      "Married him after Khadijah",
+      "An early emigrant to Abyssinia",
+      "Gave her day to Aisha"
+     ],
+     "info": "The first woman he ﷺ married after Khadijah's death.",
+     "hard": true
+    },
+    {
+     "word": "Hafsah bint Umar",
+     "clues": [
+      "Umar's daughter",
+      "Mother of the believers",
+      "Kept the first written mushaf"
+     ],
+     "info": "The compiled pages of the Qur'an were entrusted to her keeping after Abu Bakr's death.",
+     "hard": true
+    },
+    {
+     "word": "Umm Salamah",
+     "clues": [
+      "Mother of the believers",
+      "Her advice at Hudaybiyyah",
+      "Widow of Abu Salamah"
+     ],
+     "info": "Her counsel at Hudaybiyyah resolved a moment of crisis when the companions hesitated.",
+     "hard": true
+    },
+    {
+     "word": "Safiyyah bint Huyayy",
+     "clues": [
+      "Mother of the believers",
+      "From Khaybar",
+      "Of the lineage of Harun (AS)"
+     ],
+     "info": "She accepted Islam and married the Prophet ﷺ after Khaybar.",
+     "hard": true
+    },
+    {
+     "word": "Maymunah",
+     "clues": [
+      "The last he married",
+      "At Sarif",
+      "Ibn Abbas's aunt"
+     ],
+     "info": "The last of the Mothers of the Believers he ﷺ married, during the umrah of 7 AH.",
+     "hard": true
+    },
+    {
+     "word": "Mariyah al-Qibtiyyah",
+     "clues": [
+      "A gift from the ruler of Egypt",
+      "Mother of Ibrahim",
+      "Coptic"
+     ],
+     "info": "Sent to the Prophet ﷺ by the Muqawqis of Egypt; mother of his son Ibrahim.",
+     "hard": true
+    },
+    {
+     "word": "Abbas ibn Abdul Muttalib",
+     "clues": [
+      "His uncle",
+      "Captured at Badr",
+      "Ancestor of a dynasty"
+     ],
+     "info": "Uncle of the Prophet ﷺ, taken prisoner at Badr before later accepting Islam openly.",
+     "hard": true
+    },
+    {
+     "word": "Ja'far ibn Abi Talib",
+     "clues": [
+      "Spoke before the Negus",
+      "Two wings in Paradise",
+      "Martyred at Mu'tah"
+     ],
+     "info": "Ali's brother, who led the Abyssinian emigrants and was martyred at Mu'tah.",
+     "hard": true
+    },
+    {
+     "word": "Abdullah ibn Abbas",
+     "clues": [
+      "Interpreter of the Qur'an",
+      "The Prophet ﷺ prayed for his understanding",
+      "Habr al-Ummah"
+     ],
+     "info": "Cousin of the Prophet ﷺ and one of the greatest authorities in tafsir.",
+     "hard": true
+    },
+    {
+     "word": "Abdullah ibn Mas'ud",
+     "clues": [
+      "Among the first to accept Islam",
+      "Recited the Qur'an aloud in Makkah",
+      "Thin legs, heavy on the scales"
+     ],
+     "info": "An early convert renowned for his recitation and knowledge of the Qur'an.",
+     "hard": true
+    },
+    {
+     "word": "Ubayy ibn Ka'b",
+     "clues": [
+      "Master of the reciters",
+      "Allah commanded me to recite to you",
+      "Sayyid al-Qurra"
+     ],
+     "info": "The companion to whom the Prophet ﷺ was commanded to recite Sura al-Bayyinah.",
+     "hard": true
+    },
+    {
+     "word": "Zayd ibn Thabit",
+     "clues": [
+      "Scribe of revelation",
+      "Compiled the Qur'an",
+      "Learned other languages"
+     ],
+     "info": "He recorded revelation and later compiled the Qur'an into one volume under Abu Bakr (RA).",
+     "hard": true
+    },
+    {
+     "word": "Mu'adh ibn Jabal",
+     "clues": [
+      "Sent to Yemen",
+      "Most knowledgeable in halal and haram",
+      "I love you, so say this du'a"
+     ],
+     "info": "A young companion sent to teach in Yemen, to whom the Prophet ﷺ expressed his love.",
+     "hard": true
+    },
+    {
+     "word": "Abu Ubaydah ibn al-Jarrah",
+     "clues": [
+      "The trustworthy one of this nation",
+      "Amin al-Ummah",
+      "Commander in Syria"
+     ],
+     "info": "Given the title of the nation's trustworthy one; a commander in the later conquests.",
+     "hard": true
+    },
+    {
+     "word": "Sa'd ibn Abi Waqqas",
+     "clues": [
+      "First to shoot an arrow in Islam",
+      "His mother refused to eat",
+      "May Allah answer your supplications"
+     ],
+     "info": "Among the earliest Muslims, famed for his accepted du'a and his role at al-Qadisiyyah.",
+     "hard": true
+    },
+    {
+     "word": "Talhah",
+     "clues": [
+      "Shielded him at Uhud",
+      "His hand was paralysed",
+      "A living martyr"
+     ],
+     "info": "He shielded the Prophet ﷺ with his own body at Uhud, losing the use of his hand.",
+     "hard": true
+    },
+    {
+     "word": "Zubayr ibn al-Awwam",
+     "clues": [
+      "The disciple",
+      "First to draw a sword for Islam",
+      "Married Asma"
+     ],
+     "info": "Called the Prophet's ﷺ hawari; among the ten given glad tidings of Paradise.",
+     "hard": true
+    },
+    {
+     "word": "Abdur Rahman ibn Awf",
+     "clues": [
+      "Refused a gift of wealth",
+      "Just show me the market",
+      "Enormously successful in trade"
+     ],
+     "info": "When offered help on arriving in Madinah he asked only to be shown the marketplace.",
+     "hard": true
+    },
+    {
+     "word": "Abu Dharr al-Ghifari",
+     "clues": [
+      "Declared Islam aloud in Makkah alone",
+      "Truthful and ascetic",
+      "From Ghifar"
+     ],
+     "info": "Known for his outspoken truthfulness and severe simplicity of life.",
+     "hard": true
+    },
+    {
+     "word": "Ammar ibn Yasir",
+     "clues": [
+      "Son of Sumayyah",
+      "Tortured with his parents",
+      "A rebellious party will kill him"
+     ],
+     "info": "Among the tortured early Muslims; his parents were the first martyrs of Islam.",
+     "hard": true
+    },
+    {
+     "word": "Khabbab ibn al-Aratt",
+     "clues": [
+      "A blacksmith",
+      "Tortured on hot coals",
+      "Asked the Prophet ﷺ to pray for relief"
+     ],
+     "info": "An early Muslim whose back bore the scars of torture for his faith.",
+     "hard": true
+    },
+    {
+     "word": "Suhayb ar-Roomi",
+     "clues": [
+      "The Roman",
+      "Bought his freedom with all his wealth",
+      "A profitable trade"
+     ],
+     "info": "He gave up everything he owned to emigrate; the Prophet ﷺ said his trade had profited.",
+     "hard": true
+    },
+    {
+     "word": "Sa'd ibn Mu'adh",
+     "clues": [
+      "Chief of the Aws",
+      "The Throne shook at his death",
+      "Judged Banu Qurayzah"
+     ],
+     "info": "A leader of the Ansar whose death was marked by the trembling of the Throne of the Merciful.",
+     "hard": true
+    },
+    {
+     "word": "Abu Ayyub al-Ansari",
+     "clues": [
+      "Hosted him in Madinah",
+      "His camel knelt at his door",
+      "Buried near Constantinople"
+     ],
+     "info": "The Prophet ﷺ stayed in his home on arriving in Madinah; he died far away on a campaign.",
+     "hard": true
+    },
+    {
+     "word": "Hassan ibn Thabit",
+     "clues": [
+      "The poet of the Prophet ﷺ",
+      "Defended him in verse",
+      "Jibril supports you"
+     ],
+     "info": "The poet who answered the attacks of Quraysh in verse and was supported in it.",
+     "hard": true
+    },
+    {
+     "word": "Asma bint Abu Bakr",
+     "clues": [
+      "Dhat an-Nitaqayn",
+      "Tore her belt in two",
+      "Carried food to the cave"
+     ],
+     "info": "She carried provisions to the cave during the Hijrah, tearing her waistband to fasten the bundle.",
+     "hard": true
+    },
+    {
+     "word": "Nusaybah bint Ka'b",
+     "clues": [
+      "Umm Ammarah",
+      "Fought at Uhud",
+      "Shielded the Prophet ﷺ with her body"
+     ],
+     "info": "She defended the Prophet ﷺ at Uhud, taking wounds in doing so.",
+     "hard": true
+    },
+    {
+     "word": "Umm Sulaym",
+     "clues": [
+      "Anas's mother",
+      "Her dowry was Islam",
+      "Collected his perspiration"
+     ],
+     "info": "She accepted Abu Talhah's proposal on condition that he accept Islam, making that her dowry.",
+     "hard": true
+    },
+    {
+     "word": "Usamah ibn Zayd",
+     "clues": [
+      "The beloved son of the beloved",
+      "Commanded an army as a youth",
+      "Zayd's son"
+     ],
+     "info": "Appointed to lead an expedition while still very young, to some people's surprise.",
+     "hard": true
+    },
+    {
+     "word": "Abdullah ibn Salam",
+     "clues": [
+      "A rabbi who accepted Islam",
+      "Recognised him at once",
+      "Given glad tidings of Paradise"
+     ],
+     "info": "A learned Jewish scholar of Madinah who accepted Islam on meeting the Prophet ﷺ.",
+     "hard": true
+    },
+    {
+     "word": "Uways al-Qarani",
+     "clues": [
+      "From Yemen",
+      "Never met the Prophet ﷺ",
+      "Umar was told to seek his du'a"
+     ],
+     "info": "The Prophet ﷺ described him to Umar (RA) and instructed that his supplication be sought.",
+     "hard": true
+    },
+    {
+     "word": "Khidr",
+     "clues": [
+      "Travelled with Musa (AS)",
+      "The boat, the boy, the wall",
+      "Given knowledge from Us"
+     ],
+     "info": "The figure in Sura al-Kahf whose actions Musa (AS) could not bear to watch in silence.",
+     "hard": true
+    },
+    {
+     "word": "Hajar",
+     "clues": [
+      "Isma'il's mother",
+      "Ran between two hills",
+      "Left in a barren valley"
+     ],
+     "info": "Left in the valley of Makkah with her infant son; her search for water is re-enacted in Sa'ee."
+    },
+    {
+     "word": "Sarah",
+     "clues": [
+      "Ibrahim's wife",
+      "Laughed at the news",
+      "Mother of Ishaq"
+     ],
+     "info": "Given glad tidings of Ishaq (AS) in her old age.",
+     "hard": true
+    },
+    {
+     "word": "Bilqis",
+     "clues": [
+      "Queen of Sheba",
+      "A hoopoe brought news of her",
+      "A throne and a glass floor"
+     ],
+     "info": "The queen whose story with Sulaiman (AS) is told in Sura an-Naml.",
+     "hard": true
+    },
+    {
+     "word": "Talut",
+     "clues": [
+      "Chosen as king",
+      "Tested his army at a river",
+      "Bani Isra'il questioned the choice"
+     ],
+     "info": "The king appointed over Bani Isra'il who tested his soldiers at the river before facing Jalut.",
+     "hard": true
+    },
+    {
+     "word": "Jalut",
+     "clues": [
+      "Goliath",
+      "Slain by Dawud (AS)",
+      "A giant"
+     ],
+     "info": "The tyrant defeated by the young Dawud (AS).",
+     "hard": true
+    },
+    {
+     "word": "Qarun",
+     "clues": [
+      "Immense treasure",
+      "Keys too heavy to carry",
+      "Swallowed by the earth"
+     ],
+     "info": "A man of Musa's (AS) people whose wealth made him arrogant until the earth swallowed him and his house.",
+     "hard": true
+    },
+    {
+     "word": "Haman",
+     "clues": [
+      "Firawn's minister",
+      "Build me a tower",
+      "Named in the Qur'an"
+     ],
+     "info": "The associate of Firawn who was ordered to build a lofty tower.",
+     "hard": true
+    },
+    {
+     "word": "Saamiri",
+     "clues": [
+      "Made the golden calf",
+      "A handful of dust",
+      "Touch me not"
+     ],
+     "info": "The one who fashioned the calf that Bani Isra'il worshipped in Musa's (AS) absence.",
+     "hard": true
+    },
+    {
+     "word": "Ashaabul Kahf",
+     "clues": [
+      "The sleepers",
+      "A cave and a dog",
+      "Three hundred and nine years"
+     ],
+     "info": "The young believers who took refuge in a cave and slept for centuries, recounted in Sura al-Kahf."
+    },
+    {
+     "word": "Dhul Kifl",
+     "clues": [
+      "Named among the patient",
+      "A prophet in the Qur'an",
+      "Little is related about him"
+     ],
+     "info": "Mentioned twice in the Qur'an among the patient and the righteous.",
+     "hard": true
+    },
+    {
+     "word": "Al-Yasa'",
+     "clues": [
+      "Elisha",
+      "Successor of Ilyas",
+      "Among the chosen"
+     ],
+     "info": "A prophet of Bani Isra'il named among the excellent in the Qur'an.",
+     "hard": true
+    },
+    {
+     "word": "Ilyas",
+     "clues": [
+      "Elias",
+      "Called his people from Ba'l",
+      "Peace be upon Il Yasin"
+     ],
+     "info": "A prophet who called his people away from the worship of Ba'l.",
+     "hard": true
+    },
+    {
+     "word": "Uzair",
+     "clues": [
+      "Ezra",
+      "Slept a hundred years",
+      "His donkey and his food"
+     ],
+     "info": "Caused to die for a century and then revived, with his food unspoiled and his donkey restored before his eyes.",
+     "hard": true
+    }
+   ]
+  },
+  {
+   "name": "Kids",
+   "subtitle": "Simple cards for young children",
+   "symbol": "figure.2.and.child.holdinghands",
+   "tint": "pink",
+   "inMixed": false,
+   "cards": [
+    {
+     "word": "Ka'bah",
+     "clues": [
+      "The black cube",
+      "In Makkah",
+      "Everyone faces it to pray"
+     ],
+     "info": "The house of Allah in Makkah that Muslims all over the world face when they pray."
+    },
+    {
+     "word": "Masjid",
+     "clues": [
+      "Where we pray together",
+      "Has a minaret",
+      "Take your shoes off"
+     ],
+     "info": "The mosque — the place where Muslims gather for prayer."
+    },
+    {
+     "word": "Wudu",
+     "clues": [
+      "Washing before salaah",
+      "Face, arms, head, feet",
+      "Three times each"
+     ],
+     "info": "The washing done before prayer: face, arms to the elbows, wiping the head, and the feet."
+    },
+    {
+     "word": "Adhan",
+     "clues": [
+      "The call to prayer",
+      "Allahu Akbar",
+      "Bilal did it first"
+     ],
+     "info": "The call that tells everyone it is time to pray."
+    },
+    {
+     "word": "Prayer Mat",
+     "clues": [
+      "You roll it out",
+      "Points to the Qiblah",
+      "Soft to make sajdah on"
+     ],
+     "info": "The mat Muslims pray on, laid facing the direction of the Ka'bah."
+    },
+    {
+     "word": "Sajdah",
+     "clues": [
+      "Forehead on the ground",
+      "Closest to Allah",
+      "Part of every salaah"
+     ],
+     "info": "Putting the forehead on the ground in prayer — the position closest to Allah."
+    },
+    {
+     "word": "Ramadaan",
+     "clues": [
+      "A whole month",
+      "No food until sunset",
+      "The Qur'an came down in it"
+     ],
+     "info": "The month in which Muslims fast from dawn until sunset."
+    },
+    {
+     "word": "Iftaar",
+     "clues": [
+      "When the sun goes down",
+      "Break the fast",
+      "Start with dates"
+     ],
+     "info": "The meal that breaks the fast at sunset, usually begun with dates and water."
+    },
+    {
+     "word": "Suhoor",
+     "clues": [
+      "Very early morning",
+      "Before the sun comes up",
+      "The last meal before fasting"
+     ],
+     "info": "The meal eaten before dawn by someone who is going to fast."
+    },
+    {
+     "word": "Eid",
+     "clues": [
+      "Everyone wears new clothes",
+      "Sweets and presents",
+      "Two times a year"
+     ],
+     "info": "The two celebrations of the Muslim year, after Ramadan and at the time of Hajj."
+    },
+    {
+     "word": "Dates",
+     "clues": [
+      "Small, sweet and brown",
+      "Grow on palm trees",
+      "He ﷺ loved them"
+     ],
+     "info": "The fruit the Prophet ﷺ loved and broke his fast with."
+    },
+    {
+     "word": "Zamzam",
+     "clues": [
+      "Water in Makkah",
+      "It never runs dry",
+      "A baby's heel made it come"
+     ],
+     "info": "The well that sprang up in the desert for baby Isma'il (AS) and his mother, still flowing today."
+    },
+    {
+     "word": "Salaam",
+     "clues": [
+      "What you say when you arrive",
+      "Peace be upon you",
+      "Answer it back"
+     ],
+     "info": "The Muslim greeting of peace, which should always be returned."
+    },
+    {
+     "word": "Bismillah",
+     "clues": [
+      "Say it before you eat",
+      "In the name of Allah",
+      "At the start of everything"
+     ],
+     "info": "Said at the beginning of anything good — eating, drinking, starting work."
+    },
+    {
+     "word": "Alhamdulillah",
+     "clues": [
+      "Say it after you eat",
+      "All praise is for Allah",
+      "Also when you sneeze"
+     ],
+     "info": "Praise and thanks to Allah, said after eating and at every blessing."
+    },
+    {
+     "word": "Qur'an",
+     "clues": [
+      "The holy book",
+      "Kept up high",
+      "Read it in Arabic"
+     ],
+     "info": "The book Allah revealed to the Prophet ﷺ, treated with the greatest respect."
+    },
+    {
+     "word": "Du'aa",
+     "clues": [
+      "Asking Allah for something",
+      "Hands raised up",
+      "Before you sleep"
+     ],
+     "info": "Supplication — speaking to Allah and asking Him for what you need."
+    },
+    {
+     "word": "Tasbeeh",
+     "clues": [
+      "Beads you count on",
+      "SubhanAllah",
+      "Slides through your fingers"
+     ],
+     "info": "Counting the praises of Allah, often on a string of beads."
+    },
+    {
+     "word": "Miswaak",
+     "clues": [
+      "A stick for your teeth",
+      "From a tree",
+      "Before every salaah"
+     ],
+     "info": "The natural toothbrush the Prophet ﷺ used and encouraged."
+    },
+    {
+     "word": "Imaam",
+     "clues": [
+      "Stands in front",
+      "Everyone follows him",
+      "Leads the salaah"
+     ],
+     "info": "The one who leads the congregation in prayer."
+    },
+    {
+     "word": "Jumu'ah",
+     "clues": [
+      "Friday",
+      "A talk before the prayer",
+      "Everyone comes to the masjid"
+     ],
+     "info": "The Friday prayer, when Muslims gather together to listen and pray."
+    },
+    {
+     "word": "Angels",
+     "clues": [
+      "Made of light",
+      "They never disobey",
+      "Jibril is one"
+     ],
+     "info": "Creatures made of light who carry out Allah's commands and never disobey."
+    },
+    {
+     "word": "Jannah",
+     "clues": [
+      "Gardens with rivers",
+      "Where good people go",
+      "Nobody is ever sad there"
+     ],
+     "info": "Paradise — the beautiful home Allah has promised to those who believe and do good."
+    },
+    {
+     "word": "Shaytaan",
+     "clues": [
+      "He whispers bad ideas",
+      "Made of fire",
+      "Say A'udhu billah"
+     ],
+     "info": "The enemy who tries to make people forget Allah; we seek refuge from him."
+    },
+    {
+     "word": "Nuh's Ark",
+     "clues": [
+      "A huge boat",
+      "Two of every animal",
+      "It rained and rained"
+     ],
+     "info": "The boat Nuh (AS) built, which carried the believers and the animals through the great flood."
+    },
+    {
+     "word": "Yunus and the Whale",
+     "clues": [
+      "Swallowed up",
+      "Dark inside",
+      "He called out to Allah"
+     ],
+     "info": "Yunus (AS) was swallowed by a great fish and called on Allah in the darkness until he was saved."
+    },
+    {
+     "word": "Ibrahim in the Fire",
+     "clues": [
+      "A huge bonfire",
+      "Allah made it cool",
+      "He was not burned"
+     ],
+     "info": "When Ibrahim (AS) was thrown into the fire, Allah commanded it to be cool and safe for him."
+    },
+    {
+     "word": "Musa's Staff",
+     "clues": [
+      "A wooden stick",
+      "It turned into a snake",
+      "It split the sea"
+     ],
+     "info": "The staff of Musa (AS), which became a serpent and parted the sea for his people."
+    },
+    {
+     "word": "Sulaiman and the Ant",
+     "clues": [
+      "A tiny voice",
+      "She warned the others",
+      "He understood animals"
+     ],
+     "info": "Sulaiman (AS) understood the ant who warned her colony to move before the army arrived."
+    },
+    {
+     "word": "The Hoopoe",
+     "clues": [
+      "A bird with a crest",
+      "Brought news of a queen",
+      "Sulaiman's messenger"
+     ],
+     "info": "The bird that brought Sulaiman (AS) news of the Queen of Sheba."
+    },
+    {
+     "word": "Salih's Camel",
+     "clues": [
+      "A special she-camel",
+      "A sign from Allah",
+      "They hurt her"
+     ],
+     "info": "The miraculous she-camel given to the people of Thamud as a sign, which they killed."
+    },
+    {
+     "word": "The Spider's Web",
+     "clues": [
+      "Across a cave entrance",
+      "It hid them",
+      "Quraysh walked past"
+     ],
+     "info": "A spider's web at the mouth of the cave helped conceal the Prophet ﷺ and Abu Bakr (RA) during the Hijrah."
+    },
+    {
+     "word": "Cave of Thawr",
+     "clues": [
+      "They hid inside",
+      "A spider and a dove",
+      "Abu Bakr was with him"
+     ],
+     "info": "The cave where the Prophet ﷺ and Abu Bakr (RA) sheltered on their way to Madinah."
+    },
+    {
+     "word": "The Elephant Army",
+     "clues": [
+      "They came to break the Ka'bah",
+      "Birds with stones",
+      "Abrahah's army"
+     ],
+     "info": "The army that marched on the Ka'bah with elephants and was destroyed by flocks of birds."
+    },
+    {
+     "word": "Maryam and the Date Palm",
+     "clues": [
+      "Shake the tree",
+      "Fresh dates fell",
+      "She was alone"
+     ],
+     "info": "Maryam (AS) was told to shake the palm trunk so ripe dates would fall for her."
+    },
+    {
+     "word": "Yusuf's Dream",
+     "clues": [
+      "Eleven stars",
+      "The sun and the moon",
+      "He told his father"
+     ],
+     "info": "Yusuf (AS) dreamed that eleven stars, the sun and the moon bowed to him."
+    },
+    {
+     "word": "The Well",
+     "clues": [
+      "Yusuf was thrown in",
+      "His brothers did it",
+      "A caravan found him"
+     ],
+     "info": "Yusuf's (AS) brothers threw him into a well, where a passing caravan found him."
+    },
+    {
+     "word": "Isma'il and Hajar",
+     "clues": [
+      "A mother running",
+      "Between two hills",
+      "Then water came"
+     ],
+     "info": "Hajar ran between Safa and Marwa looking for water for her baby, and Zamzam appeared."
+    },
+    {
+     "word": "Five Daily Prayers",
+     "clues": [
+      "Fajr, Dhuhr, Asr...",
+      "Count them",
+      "Every single day"
+     ],
+     "info": "The five prayers every Muslim performs each day."
+    },
+    {
+     "word": "Fajr",
+     "clues": [
+      "The first prayer",
+      "Before the sun rises",
+      "Hard to wake up for"
+     ],
+     "info": "The dawn prayer, offered before sunrise."
+    },
+    {
+     "word": "Maghrib",
+     "clues": [
+      "When the sun sets",
+      "Time to eat in Ramadan",
+      "Three rak'ahs"
+     ],
+     "info": "The prayer at sunset."
+    },
+    {
+     "word": "Qiblah",
+     "clues": [
+      "The direction we face",
+      "Towards Makkah",
+      "There is an arrow in hotel rooms"
+     ],
+     "info": "The direction of the Ka'bah, which Muslims face in prayer."
+    },
+    {
+     "word": "Sadaqah",
+     "clues": [
+      "Giving to someone in need",
+      "Even a smile counts",
+      "Makes Allah happy"
+     ],
+     "info": "Charity — anything given to help another person."
+    },
+    {
+     "word": "Honesty",
+     "clues": [
+      "Always tell the truth",
+      "He ﷺ was called Al-Amin",
+      "Never lie"
+     ],
+     "info": "Truthfulness, one of the qualities the Prophet ﷺ was known for even before prophethood."
+    },
+    {
+     "word": "Kindness to Animals",
+     "clues": [
+      "Give the cat water",
+      "Do not hurt them",
+      "A woman was forgiven for it"
+     ],
+     "info": "A woman was forgiven for giving water to a thirsty dog; Islam teaches mercy to every creature."
+    },
+    {
+     "word": "Respecting Parents",
+     "clues": [
+      "Say it with your mum and dad",
+      "Never say 'uff'",
+      "Paradise is near them"
+     ],
+     "info": "Honouring parents is commanded in the Qur'an right after worshipping Allah alone."
+    },
+    {
+     "word": "Sharing",
+     "clues": [
+      "Give some to your friend",
+      "Do not keep it all",
+      "The Prophet ﷺ always did"
+     ],
+     "info": "Giving others a share of what you have, which the Prophet ﷺ practised all his life."
+    },
+    {
+     "word": "Smiling",
+     "clues": [
+      "Do it with your face",
+      "It is charity",
+      "Free to give"
+     ],
+     "info": "The Prophet ﷺ said smiling at your brother is charity."
+    },
+    {
+     "word": "Saying Sorry",
+     "clues": [
+      "When you do something wrong",
+      "Ask to be forgiven",
+      "Allah loves it"
+     ],
+     "info": "Admitting a mistake and asking forgiveness, from Allah and from people."
+    },
+    {
+     "word": "Crescent Moon",
+     "clues": [
+      "A thin curve in the sky",
+      "It means a new month",
+      "We look for it before Ramadan"
+     ],
+     "info": "The new moon that marks the start of each Islamic month."
+    },
+    {
+     "word": "Minaret",
+     "clues": [
+      "Tall and thin",
+      "On top of the masjid",
+      "The adhan comes from it"
+     ],
+     "info": "The tower of a mosque from which the call to prayer is given."
+    },
+    {
+     "word": "Taking Off Your Shoes",
+     "clues": [
+      "Before you go in",
+      "At the masjid door",
+      "Keep the carpet clean"
+     ],
+     "info": "Shoes are removed before entering the prayer area to keep it clean."
+    },
+    {
+     "word": "Right Hand",
+     "clues": [
+      "Use it to eat",
+      "And to give",
+      "The Prophet ﷺ liked it for good things"
+     ],
+     "info": "The Prophet ﷺ used his right hand for eating, drinking and all good things."
+    },
+    {
+     "word": "Wearing a Topi",
+     "clues": [
+      "Goes on your head",
+      "At the masjid",
+      "Small and round"
+     ],
+     "info": "A cap worn on the head, often for prayer."
+    },
+    {
+     "word": "Hajj",
+     "clues": [
+      "Everyone wears white",
+      "Walking around the Ka'bah",
+      "Once in a lifetime"
+     ],
+     "info": "The great pilgrimage to Makkah that every able Muslim makes once if they can."
+    },
+    {
+     "word": "Tawaaf",
+     "clues": [
+      "Going round and round",
+      "Seven times",
+      "Around the Ka'bah"
+     ],
+     "info": "Walking seven times around the Ka'bah."
+    },
+    {
+     "word": "Qurbani",
+     "clues": [
+      "An animal is given",
+      "On Eid",
+      "Meat is shared out"
+     ],
+     "info": "The sacrifice made at Eid al-Adha, with the meat shared with family, neighbours and the poor."
+    },
+    {
+     "word": "Bilal",
+     "clues": [
+      "The first to call the adhan",
+      "He was a slave and was freed",
+      "Ahad, Ahad"
+     ],
+     "info": "The companion who became the first caller to prayer in Islam."
+    },
+    {
+     "word": "Prophet Muhammad ﷺ",
+     "clues": [
+      "The last prophet",
+      "Born in Makkah",
+      "We send salawat on him"
+     ],
+     "info": "The final Messenger of Allah, sent as a mercy to all the worlds."
+    },
+    {
+     "word": "Aisha",
+     "clues": [
+      "One of his wives",
+      "She taught many people",
+      "Abu Bakr's daughter"
+     ],
+     "info": "A wife of the Prophet ﷺ who became one of the greatest teachers of Islam."
+    },
+    {
+     "word": "Fatimah",
+     "clues": [
+      "His daughter",
+      "Married Ali",
+      "Mother of Hasan and Husayn"
+     ],
+     "info": "The beloved daughter of the Prophet ﷺ."
+    },
+    {
+     "word": "Washing Hands Before Eating",
+     "clues": [
+      "Do it first",
+      "Then say Bismillah",
+      "Keeps you clean"
+     ],
+     "info": "Cleanliness before eating is part of the manners the Prophet ﷺ taught."
+    },
+    {
+     "word": "Sleeping on Your Right",
+     "clues": [
+      "Lie on this side",
+      "Hand under your cheek",
+      "Say your du'a first"
+     ],
+     "info": "The way the Prophet ﷺ lay down to sleep."
+    },
+    {
+     "word": "Dhuhr",
+     "clues": [
+      "The middle of the day",
+      "When the sun is high",
+      "Four rak'ahs"
+     ],
+     "info": "The prayer offered after the sun passes its highest point."
+    },
+    {
+     "word": "Isha",
+     "clues": [
+      "The last prayer",
+      "When it is dark",
+      "Before you sleep"
+     ],
+     "info": "The night prayer, the last of the five."
+    },
+    {
+     "word": "Takbeer",
+     "clues": [
+      "Allahu Akbar",
+      "Hands go up to your ears",
+      "Starts the salaah"
+     ],
+     "info": "Saying Allahu Akbar, with which the prayer begins."
+    },
+    {
+     "word": "Ameen",
+     "clues": [
+      "Say it after Surah Fatiha",
+      "Everyone says it together",
+      "One word"
+     ],
+     "info": "Said at the end of Surah al-Fatihah in prayer."
+    },
+    {
+     "word": "Surah Fatihah",
+     "clues": [
+      "The very first surah",
+      "In every rak'ah",
+      "Seven verses"
+     ],
+     "info": "The opening chapter of the Qur'an, recited in every unit of prayer."
+    },
+    {
+     "word": "Surah Ikhlas",
+     "clues": [
+      "Say: He is Allah, One",
+      "Very short",
+      "Worth a third of the Qur'an"
+     ],
+     "info": "The short surah about Allah being One, whose reward equals a third of the Qur'an."
+    },
+    {
+     "word": "Ayatul Kursi",
+     "clues": [
+      "The biggest verse",
+      "Read it before sleeping",
+      "Keeps you safe"
+     ],
+     "info": "The Verse of the Throne, recited for protection after prayers and before sleep."
+    },
+    {
+     "word": "Madrasah",
+     "clues": [
+      "Where you learn Qur'an",
+      "After school",
+      "The teacher is called apa or moulana"
+     ],
+     "info": "The class where Muslim children learn to read the Qur'an and about their religion."
+    },
+    {
+     "word": "Taraweeh",
+     "clues": [
+      "Long prayer at night",
+      "Only in Ramadan",
+      "After Isha"
+     ],
+     "info": "The extra night prayers performed during Ramadan."
+    },
+    {
+     "word": "Eidi",
+     "clues": [
+      "Money from your uncles",
+      "On Eid day",
+      "Put it in your pocket"
+     ],
+     "info": "The gift of money children traditionally receive at Eid."
+    },
+    {
+     "word": "New Clothes on Eid",
+     "clues": [
+      "Everyone gets them",
+      "Worn to the Eid salaah",
+      "Smell nice too"
+     ],
+     "info": "Wearing your best and clean clothes on the day of Eid."
+    },
+    {
+     "word": "Hugging on Eid",
+     "clues": [
+      "After the prayer",
+      "Three times",
+      "Eid Mubarak!"
+     ],
+     "info": "The embrace and greeting exchanged after the Eid prayer."
+    },
+    {
+     "word": "Black Stone",
+     "clues": [
+      "In the corner of the Ka'bah",
+      "Pilgrims try to kiss it",
+      "Hajar al-Aswad"
+     ],
+     "info": "The stone set into the corner of the Ka'bah that pilgrims greet as they pass."
+    },
+    {
+     "word": "Safa and Marwa",
+     "clues": [
+      "Two small hills",
+      "Walk between them seven times",
+      "Hajar ran here"
+     ],
+     "info": "The two hills pilgrims walk between, remembering Hajar's search for water."
+    },
+    {
+     "word": "Ihram",
+     "clues": [
+      "Two white cloths",
+      "No sewing in them",
+      "Everyone looks the same"
+     ],
+     "info": "The simple white garments worn for Hajj and Umrah."
+    },
+    {
+     "word": "Camel",
+     "clues": [
+      "It can go days without water",
+      "A hump on its back",
+      "Lives in the desert"
+     ],
+     "info": "The animal of the desert, mentioned in the Qur'an as a sign for people to reflect on."
+    },
+    {
+     "word": "Bees",
+     "clues": [
+      "They make honey",
+      "The Qur'an has a surah about them",
+      "Buzz"
+     ],
+     "info": "Allah taught the bee to make honey, which the Qur'an describes as a healing."
+    },
+    {
+     "word": "Ants",
+     "clues": [
+      "Very tiny",
+      "They work together",
+      "One warned Sulaiman's army"
+     ],
+     "info": "The ant that warned her colony when Sulaiman's (AS) army approached."
+    },
+    {
+     "word": "Cats",
+     "clues": [
+      "Abu Hurairah loved them",
+      "Soft and furry",
+      "Never be cruel to them"
+     ],
+     "info": "The Prophet ﷺ was kind to cats, and Abu Hurairah was named for the kitten he carried."
+    },
+    {
+     "word": "Musa in the Basket",
+     "clues": [
+      "A baby on the river",
+      "His mother let him go",
+      "Firawn's wife found him"
+     ],
+     "info": "Musa (AS) was placed in a basket on the river as a baby and found by Firawn's household."
+    },
+    {
+     "word": "Parting of the Sea",
+     "clues": [
+      "The water split in two",
+      "A dry path appeared",
+      "Firawn's army drowned"
+     ],
+     "info": "Musa (AS) struck the sea with his staff and it opened a path for his people."
+    },
+    {
+     "word": "Ibrahim Breaks the Idols",
+     "clues": [
+      "He used an axe",
+      "He left the biggest one",
+      "Ask them yourselves"
+     ],
+     "info": "Ibrahim (AS) broke the idols of his people and told them to ask the largest one what happened."
+    },
+    {
+     "word": "The Ram",
+     "clues": [
+      "It came instead of his son",
+      "At Mina",
+      "We remember it on Eid"
+     ],
+     "info": "Allah sent a ram in place of Ibrahim's (AS) son, remembered every Eid al-Adha."
+    },
+    {
+     "word": "Isa Speaks in the Cradle",
+     "clues": [
+      "A tiny baby talking",
+      "Defending his mother",
+      "A miracle"
+     ],
+     "info": "Isa (AS) spoke while still an infant to defend Maryam (AS)."
+    },
+    {
+     "word": "Dawud's Voice",
+     "clues": [
+      "The mountains joined in",
+      "So beautiful",
+      "He was given the Zabur"
+     ],
+     "info": "Dawud (AS) had so beautiful a voice that the mountains and birds praised Allah with him."
+    },
+    {
+     "word": "Ayyub's Patience",
+     "clues": [
+      "He was ill a long time",
+      "He never complained",
+      "Allah made him well again"
+     ],
+     "info": "Ayyub (AS) endured long illness and loss without losing patience."
+    },
+    {
+     "word": "Adam in the Garden",
+     "clues": [
+      "The very first man",
+      "Do not eat from that tree",
+      "He said sorry"
+     ],
+     "info": "Adam (AS), the first human, who repented after his mistake and was forgiven."
+    },
+    {
+     "word": "Ninety-Nine Names",
+     "clues": [
+      "Allah has them",
+      "Ar-Rahman is one",
+      "Learn them all"
+     ],
+     "info": "The beautiful names of Allah, describing His mercy, power and kindness."
+    },
+    {
+     "word": "Allahu Akbar",
+     "clues": [
+      "Allah is the greatest",
+      "In the adhan and salaah",
+      "Said many times a day"
+     ],
+     "info": "A declaration that Allah is greater than everything."
+    },
+    {
+     "word": "SubhanAllah",
+     "clues": [
+      "When you see something amazing",
+      "Glory be to Allah",
+      "Say it 33 times"
+     ],
+     "info": "Said in wonder at Allah's creation and in remembrance after prayer."
+    },
+    {
+     "word": "MashaAllah",
+     "clues": [
+      "When something is lovely",
+      "Allah willed it",
+      "Say it about your friend's new bike"
+     ],
+     "info": "Said to show appreciation for a blessing, without envy."
+    },
+    {
+     "word": "InshaAllah",
+     "clues": [
+      "If Allah wills",
+      "Say it about tomorrow",
+      "Never promise without it"
+     ],
+     "info": "Said about anything in the future, because nothing happens except by Allah's will."
+    },
+    {
+     "word": "JazakAllah",
+     "clues": [
+      "Instead of thank you",
+      "May Allah reward you",
+      "Say it back"
+     ],
+     "info": "A way of thanking someone by asking Allah to reward them."
+    },
+    {
+     "word": "Astaghfirullah",
+     "clues": [
+      "When you make a mistake",
+      "Asking for forgiveness",
+      "Allah loves to forgive"
+     ],
+     "info": "Seeking Allah's forgiveness."
+    },
+    {
+     "word": "Muharram",
+     "clues": [
+      "The first month",
+      "Comes after Hajj",
+      "The new Islamic year"
+     ],
+     "info": "The first month of the Islamic calendar."
+    },
+    {
+     "word": "Rabi al-Awwal",
+     "clues": [
+      "The month he was born",
+      "Third month",
+      "People send salawat"
+     ],
+     "info": "The month in which the Prophet ﷺ was born."
+    },
+    {
+     "word": "Dhul Hijjah",
+     "clues": [
+      "The Hajj month",
+      "Eid al-Adha is in it",
+      "The twelfth month"
+     ],
+     "info": "The month of the pilgrimage and of Eid al-Adha."
+    },
+    {
+     "word": "Visiting the Sick",
+     "clues": [
+      "Go and see them",
+      "Take something nice",
+      "The angels pray for you"
+     ],
+     "info": "Visiting someone who is unwell, which the Prophet ﷺ strongly encouraged."
+    },
+    {
+     "word": "Helping Your Neighbour",
+     "clues": [
+      "The person next door",
+      "Share your food",
+      "Jibril kept reminding him ﷺ"
+     ],
+     "info": "Neighbours have great rights in Islam, whoever they are."
+    },
+    {
+     "word": "Looking After Orphans",
+     "clues": [
+      "Children with no parents",
+      "He ﷺ was one",
+      "Like two fingers together in Jannah"
+     ],
+     "info": "The Prophet ﷺ promised closeness in Paradise to whoever cares for an orphan."
+    },
+    {
+     "word": "Feeding Someone Hungry",
+     "clues": [
+      "Give them food",
+      "Even if you have little",
+      "A way into Jannah"
+     ],
+     "info": "Feeding the hungry is among the deeds most praised in the Qur'an and Sunnah."
+    },
+    {
+     "word": "Not Telling Lies",
+     "clues": [
+      "Always say what is true",
+      "Even when it is hard",
+      "He ﷺ never did"
+     ],
+     "info": "Truthfulness is a central quality of a Muslim."
+    },
+    {
+     "word": "Not Being Greedy",
+     "clues": [
+      "Do not take it all",
+      "Leave some for others",
+      "Share instead"
+     ],
+     "info": "Islam teaches moderation and generosity rather than taking more than you need."
+    },
+    {
+     "word": "Queuing Straight in Salaah",
+     "clues": [
+      "Shoulder to shoulder",
+      "No gaps",
+      "The imam says straighten the rows"
+     ],
+     "info": "Worshippers stand in straight, close rows for congregational prayer."
+    },
+    {
+     "word": "Shoe Rack",
+     "clues": [
+      "Where they go at the masjid",
+      "Do not lose yours",
+      "Outside the prayer hall"
+     ],
+     "info": "Where shoes are left when entering the prayer area."
+    },
+    {
+     "word": "Minbar",
+     "clues": [
+      "Steps at the front",
+      "The imam stands on it",
+      "For the Friday talk"
+     ],
+     "info": "The pulpit from which the Friday sermon is delivered."
+    },
+    {
+     "word": "Mihrab",
+     "clues": [
+      "A curved shape in the wall",
+      "Shows the Qiblah",
+      "The imam stands in it"
+     ],
+     "info": "The niche in a mosque wall marking the direction of prayer."
+    },
+    {
+     "word": "Ghusl on Friday",
+     "clues": [
+      "A proper wash",
+      "Before Jumu'ah",
+      "Then put on clean clothes"
+     ],
+     "info": "The full bath recommended before the Friday prayer."
+    },
+    {
+     "word": "Halal",
+     "clues": [
+      "Allowed to eat",
+      "The opposite of haram",
+      "Check the label"
+     ],
+     "info": "What Allah has made permissible."
+    },
+    {
+     "word": "Haram",
+     "clues": [
+      "Not allowed",
+      "Pork is one",
+      "We stay away from it"
+     ],
+     "info": "What Allah has forbidden."
+    },
+    {
+     "word": "Sunnah",
+     "clues": [
+      "The way he ﷺ did things",
+      "Follow it and get reward",
+      "Eating with your right hand is one"
+     ],
+     "info": "The example and practice of the Prophet ﷺ."
+    },
+    {
+     "word": "Hadith",
+     "clues": [
+      "Words of the Prophet ﷺ",
+      "Written in big books",
+      "Bukhari collected them"
+     ],
+     "info": "A recorded saying or action of the Prophet ﷺ."
+    },
+    {
+     "word": "One Allah",
+     "clues": [
+      "No partners",
+      "Nothing is like Him",
+      "La ilaha illallah"
+     ],
+     "info": "The heart of Islam: that Allah is One and has no partner."
+    },
+    {
+     "word": "Tawbah",
+     "clues": [
+      "Saying sorry to Allah",
+      "Promise not to do it again",
+      "He always forgives"
+     ],
+     "info": "Turning back to Allah and asking forgiveness."
+    },
+    {
+     "word": "Kiswah",
+     "clues": [
+      "The black cloth",
+      "Covers the Ka'bah",
+      "Gold writing on it"
+     ],
+     "info": "The embroidered black covering of the Ka'bah."
+    },
+    {
+     "word": "Mina Tents",
+     "clues": [
+      "Thousands of white tents",
+      "Pilgrims sleep there",
+      "In the valley"
+     ],
+     "info": "The tent city where pilgrims stay during the days of Hajj."
+    },
+    {
+     "word": "Dhikr",
+     "clues": [
+      "Remembering Allah",
+      "Say it quietly",
+      "Keeps your heart calm"
+     ],
+     "info": "Remembrance of Allah through repeated words of praise."
+    },
+    {
+     "word": "Salawat",
+     "clues": [
+      "Sending blessings on him ﷺ",
+      "Say it when you hear his name",
+      "Allahumma salli ala Muhammad"
+     ],
+     "info": "Asking Allah to bless the Prophet ﷺ, said whenever his name is mentioned."
+    },
+    {
+     "word": "Whispering of Shaytaan",
+     "clues": [
+      "Bad ideas in your head",
+      "Say A'udhu billah",
+      "Do not listen"
+     ],
+     "info": "The promptings of Shaytan, from which we seek Allah's refuge."
+    },
+    {
+     "word": "Washing Your Nose in Wudu",
+     "clues": [
+      "Sniff the water in",
+      "Then blow it out",
+      "Three times"
+     ],
+     "info": "Part of wudu: taking water into the nose and expelling it."
+    },
+    {
+     "word": "Rinsing Your Mouth",
+     "clues": [
+      "Swish the water",
+      "Part of wudu",
+      "Three times"
+     ],
+     "info": "Part of wudu: rinsing the mouth."
+    },
+    {
+     "word": "Wiping Your Head",
+     "clues": [
+      "Wet hands over your hair",
+      "Front to back",
+      "No need to wash it"
+     ],
+     "info": "Part of wudu: wiping over the head with wet hands."
     }
    ]
   }
