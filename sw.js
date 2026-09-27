@@ -1,7 +1,7 @@
 /* Ramza service worker — makes the installed app work without signal.
    Pages and card data are network-first so updates land immediately when
    online; icons, fonts and other static files come from the cache. */
-const CACHE = "ramza-v3";
+const CACHE = "ramza-v4";
 const SHELL = [
   "./", "./index.html", "./cards.json", "./manifest.json",
   "./site.webmanifest", "./icon-180.png", "./icon-512.png"

@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Ramza — the Islamic guessing game</title>
+<meta name="description" content="Hold the phone to your forehead, your friends give clues, and guess as many as you can before the time runs out.">
+<meta name="theme-color" content="#F2F1EC">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Ramza">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-180.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F1EC; --card:#FFFFFF; --ink:#15161A; --dim:#5C5E66; --faint:#8E9098;
+  --line:#E4E3DC; --teal:#0E6F63; --teal-dark:#0A5248; --pass:#B4611F;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{min-height:100%}
+body{
+  font-family:'Space Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+  -webkit-user-select:none;user-select:none;
+}
+/* Only locked while a round or a sheet is up; otherwise the page scrolls
+   normally, which is the only scrolling Safari keeps in step with its
+   collapsing toolbar. */
+body.locked{overflow:hidden;position:fixed;width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;touch-action:manipulation}
+.ar{font-family:'IBM Plex Sans Arabic',system-ui,sans-serif}
+
+/* ---------- screens ---------- */
+/* Scrolling screens live in normal document flow. A position:fixed box sized in
+   dvh resizes underneath your finger as Safari collapses its toolbar, which
+   leaves taps landing a row off. svh is the toolbars-shown height and never
+   changes, so nothing moves while you scroll. */
+.screen{display:none;flex-direction:column;min-height:100vh;min-height:100svh}
+.screen.on{display:flex}
+
+/* ---------- home ---------- */
+#home{padding:max(18px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) max(18px,env(safe-area-inset-bottom)) max(18px,env(safe-area-inset-left))}
+.wrap{width:100%;max-width:640px;margin:0 auto;padding-bottom:28px}
+.brand{display:flex;align-items:center;gap:12px;margin-top:10px}
+.brand .mark{flex:0 0 auto;width:44px;height:44px;border-radius:11px;display:block}
+.brand h1{font-size:40px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.brand .ar{font-size:20px;color:var(--teal);line-height:1}
+.tag{font-size:13.5px;color:var(--dim);margin-top:9px;line-height:1.5}
+.lbl{font-size:10px;font-weight:700;letter-spacing:.17em;color:var(--dim);margin:26px 0 9px}
+.seg{display:flex;gap:5px;padding:4px;background:#E3E2DB;border-radius:13px;width:max-content}
+.seg button{font-size:14px;font-weight:500;padding:9px 20px;border-radius:9px;color:#3D3F45}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--teal);font-weight:700;box-shadow:0 1px 2px rgba(0,0,0,.07)}
+.list{background:var(--card);border-radius:16px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;width:100%;padding:11px 15px;border-bottom:1px solid var(--line);text-align:left;min-height:56px}
+.row:last-child{border-bottom:0}
+.row:active{background:#F4F3EE}
+.chip{flex:0 0 30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center}
+.chip svg{width:17px;height:17px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.rname{flex:1;min-width:0;font-size:15px;font-weight:600}
+.rmeta{font-size:12.5px;color:var(--dim);white-space:nowrap}
+.chev{flex:0 0 auto;width:13px;height:13px;stroke:#BFBEB7;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;font-size:12.5px;color:var(--dim)}
+.link{font-weight:600;color:var(--teal)}
+.banner{display:flex;align-items:center;gap:12px;background:#E3F0ED;border:1px solid #BFDCD6;border-radius:13px;padding:12px 14px;margin-top:16px;font-size:13.5px}
+.banner p{flex:1;line-height:1.4}
+.banner button{background:var(--teal);color:#fff;font-size:13px;font-weight:600;padding:8px 15px;border-radius:9px}
+.note{margin-top:16px;font-size:12.5px;color:var(--dim);line-height:1.5}
+.fs{display:flex;align-items:center;gap:10px;width:100%;margin-top:14px;padding:12px 14px;
+    background:var(--card);border-radius:13px;font-size:13px;color:var(--dim);text-align:left}
+.fs b{color:var(--teal)}
+.fs svg{flex:0 0 17px;width:17px;height:17px;stroke:var(--teal);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#ssteps{margin-top:14px;padding-left:20px}
+#ssteps li{font-size:15px;line-height:1.55;margin-bottom:9px}
+#ssteps li b{font-weight:600}
+.shead{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-top:20px}
+
+/* ---------- play ---------- */
+/* The round alone stays pinned to the visible area — it never scrolls. */
+#play{position:fixed;top:0;left:0;right:0;height:100dvh;min-height:0;
+      background:var(--teal);color:#fff;align-items:center;justify-content:center;overflow:hidden;transition:background .14s}
+body.flash-ok #play{background:#127A3E}
+body.flash-no #play{background:var(--pass)}
+/* The strip behind the Dynamic Island sits outside the page viewport and is
+   painted from the page background, so colour the page too — otherwise that
+   band stays put while everything else flashes. */
+body.playing{background:var(--teal);transition:background .14s}
+body.playing.flash-ok{background:#127A3E}
+body.playing.flash-no{background:var(--pass)}
+/* Holding the phone sideways is the whole game. If the browser still reports
+   portrait (rotation lock), turn the stage instead — iOS Safari cannot lock. */
+#stage{position:relative;width:100vw;width:100dvw;height:100vh;height:100dvh;
+       display:flex;align-items:center;justify-content:center;
+       /* keeps the word clear of the Dynamic Island, which sits on one side in landscape */
+       padding-top:max(54px, calc(16px + env(safe-area-inset-top)));
+       padding-bottom:max(20px, env(safe-area-inset-bottom));
+       padding-left:calc(26px + env(safe-area-inset-left));
+       padding-right:calc(26px + env(safe-area-inset-right))}
+/* Rotation lock on: the browser still reports portrait, so turn the whole stage
+   ourselves. Which way depends on how the phone is being held — the sensor
+   decides, otherwise it is upside down for half of everyone. */
+@media (orientation:portrait){
+  #stage{width:100vh;width:100dvh;height:100vw;height:100dvw;
+         position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(90deg);
+         padding-left:58px;padding-right:58px}
+  body.rot-cw #stage{transform:translate(-50%,-50%) rotate(-90deg)}
+}
+#stagebody{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+/* font-size is set by fitWord(). Words are never broken or hyphenated — the
+   size simply drops until the longest word fits on a line of its own. */
+.word{width:100%;font-size:64px;font-weight:700;letter-spacing:-.03em;line-height:1.08;
+      text-align:center;overflow-wrap:normal;word-break:normal;hyphens:none;-webkit-hyphens:none}
+.big{font-size:clamp(34px,8vmin,60px);font-weight:700;text-align:center;line-height:1.15}
+.sub{font-size:clamp(14px,2.6vmin,19px);opacity:.78;text-align:center;margin-top:12px}
+.tname{font-size:clamp(13px,2.4vmin,17px);font-weight:700;letter-spacing:.14em;opacity:.7;text-align:center;margin-bottom:14px}
+.count{font-size:clamp(90px,26vmin,190px);font-weight:700;line-height:1}
+#hud{position:absolute;inset:0;pointer-events:none}   /* inside #stage, so it turns with it */
+#hud .bar{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
+          padding:max(14px, env(safe-area-inset-top)) calc(20px + env(safe-area-inset-right))
+                  14px calc(20px + env(safe-area-inset-left))}
+#quit{pointer-events:auto;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center}
+#quit svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round}
+#clock{font-size:26px;font-weight:500;font-variant-numeric:tabular-nums;opacity:.85}
+#taps{position:absolute;inset:0;display:none}
+#taps div{flex:1}
+body.taps #taps{display:flex}
+
+/* ---------- results ---------- */
+#results{padding:max(18px,env(safe-area-inset-top)) 18px max(18px,env(safe-area-inset-bottom))}
+.score{font-size:70px;font-weight:700;color:var(--teal);line-height:1;text-align:center;margin-top:8px}
+.scap{text-align:center;color:var(--dim);font-size:13.5px;margin-top:6px}
+.best{display:block;text-align:center;color:#B4611F;font-weight:600;font-size:13px;margin-top:8px}
+.bar2{display:flex;gap:10px;margin-top:18px}
+.bar2 button{flex:1;padding:14px;border-radius:13px;font-size:15px;font-weight:700}
+.primary{background:var(--teal);color:#fff}
+.ghost{border:1px solid #CFCEC6;color:var(--ink)}
+.mk{flex:0 0 auto;width:17px;height:17px;stroke-width:2.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- sheet ---------- */
+#sheet{position:fixed;top:0;left:0;right:0;height:100%;height:100dvh;
+       background:rgba(20,20,22,.45);display:none;align-items:flex-end;z-index:20}
+#sheet.on{display:flex}
+#sheetbox{background:var(--card);width:100%;max-height:84%;border-radius:20px 20px 0 0;
+          display:flex;flex-direction:column;min-height:0;
+          padding:24px 22px calc(30px + env(safe-area-inset-bottom))}
+#sheetscroll{flex:1 1 auto;min-height:0;overflow-y:auto}
+#sheetbox h3{font-size:21px;font-weight:700;margin-bottom:11px}
+#sheetbox p{font-size:15.5px;line-height:1.62}
+#sheetbox .clues{margin-top:13px;font-size:13px;color:var(--dim)}
+#sheetbox button{flex:0 0 auto;margin-top:20px;width:100%;padding:17px;border-radius:13px;
+                 background:var(--teal);color:#fff;font-weight:700;touch-action:manipulation}
+.hidden{display:none !important}
+
+/* ---------- install gate ---------- */
+#install{padding:max(20px,env(safe-area-inset-top)) 20px max(20px,env(safe-area-inset-bottom))}
+#install .wrap{display:flex;flex-direction:column;flex:1}
+#install .ico{width:62px;height:62px;border-radius:15px;margin-top:6px}
+#install h2{font-size:26px;font-weight:700;letter-spacing:-.02em;margin-top:18px;line-height:1.2}
+#install .lede{font-size:14.5px;color:var(--dim);line-height:1.55;margin-top:10px}
+.steps{background:var(--card);border-radius:15px;padding:16px 18px;margin-top:18px}
+.steps h4{font-size:10.5px;font-weight:700;letter-spacing:.14em;color:var(--dim);margin-bottom:11px}
+.steps ol{padding-left:19px}
+.steps li{font-size:14.5px;line-height:1.55;margin-bottom:8px}
+.steps li:last-child{margin-bottom:0}
+.steps b{font-weight:600}
+.glyph{display:inline-flex;vertical-align:-3px;width:16px;height:16px;margin:0 1px}
+.glyph svg{width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#installbtn{margin-top:16px;width:100%;padding:15px;border-radius:13px;background:var(--teal);color:#fff;font-size:16px;font-weight:700}
+.warn{font-size:13px;color:var(--dim);line-height:1.5;margin-top:16px;padding:12px 14px;background:#EFEDE4;border-radius:12px}
+#skip{margin-top:auto;padding:18px 0 4px;font-size:13.5px;color:var(--faint);text-align:center;width:100%}
+#skip u{color:var(--dim)}
+</style>
+</head>
+<body>
+
+<!-- ===== INSTALL GATE ===== -->
+<section class="screen on" id="install">
+  <div class="wrap">
+    <img src="icon-180.png" alt="" class="ico">
+    <h2>Add Ramza to your home screen</h2>
+    <p class="lede">It opens in its own window like a normal app — no browser bars swallowing the word, no address bar to tap by mistake, and it keeps working without signal once the cards are loaded.</p>
+
+    <div class="steps" id="stepsios">
+      <h4>ON IPHONE</h4>
+      <ol>
+        <li>Tap the <b>Share</b> button
+          <span class="glyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4"/><path d="M8.5 7.5L12 4l3.5 3.5"/><path d="M6 12v7a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-7"/></svg></span>
+          at the bottom of Safari.</li>
+        <li>Scroll down and choose <b>Add to Home Screen</b>.</li>
+        <li>Tap <b>Add</b>, then open <b>Ramza</b> from your home screen.</li>
+      </ol>
+    </div>
+
+    <div class="steps" id="stepsandroid">
+      <h4>ON ANDROID</h4>
+      <ol>
+        <li>Tap the <b>⋮</b> menu at the top right of Chrome.</li>
+        <li>Choose <b>Add to Home screen</b> (or <b>Install app</b>).</li>
+        <li>Open <b>Ramza</b> from your home screen.</li>
+      </ol>
+    </div>
+
+    <button type="button" id="installbtn" class="hidden">Install Ramza</button>
+
+    <p class="warn">Staying in the browser for now? Turn the phone sideways, tap the <b>lines icon</b> just left of the web address, and choose <b>Hide Toolbar</b> — the one with two arrows pointing apart. It comes back as soon as you scroll, which is why the home screen is better.</p>
+
+    <p class="warn">Opened this from WhatsApp? You'll need to switch to a real browser first — tap the <b>⋯</b> or share icon and choose <b>Open in Safari</b> or <b>Open in Chrome</b>, then follow the steps above.</p>
+
+    <button type="button" id="skip">or <u>play in the browser for now</u></button>
+  </div>
+</section>
+
+<!-- ===== HOME ===== -->
+<section class="screen" id="home">
+  <div class="wrap">
+    <div class="brand">
+      <img src="icon-180.png" alt="" class="mark">
+      <h1>Ramza</h1>
+      <span class="ar">رمزا</span>
+    </div>
+    <p class="tag">Hold the phone sideways against your forehead. Your friends give the clues — tilt <b>down</b> when you get it, tilt <b>up</b> to pass.</p>
+
+    <div id="banner" class="banner hidden">
+      <p id="bannertext"></p>
+      <button type="button" id="dobtn">Update</button>
+    </div>
+
+    <div class="lbl">ROUND</div>
+    <div class="seg" id="seg">
+      <button type="button" data-t="60">60s</button>
+      <button type="button" data-t="90">90s</button>
+      <button type="button" data-t="120">120s</button>
+    </div>
+
+    <div class="lbl">TEAMS</div>
+    <div class="seg" id="tseg">
+      <button type="button" data-n="0">Off</button>
+      <button type="button" data-n="2">2</button>
+      <button type="button" data-n="3">3</button>
+      <button type="button" data-n="4">4</button>
+    </div>
+
+    <div class="lbl">DECKS</div>
+    <div class="list" id="decks"></div>
+
+    <div class="foot">
+      <span id="version">Loading cards…</span>
+      <button type="button" class="link" id="update">UPDATE</button>
+    </div>
+    <button type="button" class="fs hidden" id="fshelp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg>
+      <span>You're in a browser tab — <b>add Ramza to your home screen</b></span>
+    </button>
+  </div>
+</section>
+
+<!-- ===== PLAY ===== -->
+<section class="screen" id="play">
+  <div id="stage">
+    <div id="stagebody"></div>
+    <div id="hud">
+      <div class="bar">
+        <button type="button" id="quit" aria-label="End round">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12"/><path d="M18 6L6 18"/></svg>
+        </button>
+        <span id="clock"></span>
+      </div>
+    </div>
+    <div id="taps"><div id="tapno"></div><div id="tapok"></div></div>
+  </div>
+</section>
+
+<!-- ===== RESULTS ===== -->
+<section class="screen" id="results">
+  <div class="wrap">
+    <div class="score" id="fscore">0</div>
+    <div class="scap" id="fcap"></div>
+    <span class="best hidden" id="fbest">New best</span>
+    <div class="bar2">
+      <button type="button" class="primary" id="again">Play again</button>
+      <button type="button" class="ghost" id="back">Decks</button>
+    </div>
+    <div class="lbl hidden" id="tlbl">TEAMS</div>
+    <div class="list hidden" id="tlist"></div>
+    <div class="lbl">THIS ROUND</div>
+    <div class="list" id="rlist"></div>
+    <p class="note">Tap any card to read about it.</p>
+  </div>
+</section>
+
+<div id="sheet">
+  <div id="sheetbox">
+    <div id="sheetscroll">
+      <h3 id="sword"></h3>
+      <p id="sinfo"></p>
+      <div id="ssteps" class="hidden"></div>
+      <div class="clues" id="sclues"></div>
+    </div>
+    <button type="button" id="sclose">Done</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+const $ = (id) => document.getElementById(id);
+const BUILD = "b16";
+const PAPER = "#F2F1EC", TEAL = "#0E6F63", FLASH_OK = "#127A3E", FLASH_NO = "#B4611F";
+// Android paints its status bar from theme-color, so move it with the flash.
+function themeColor(c) {
+  const m = document.querySelector('meta[name="theme-color"]');
+  if (m && m.getAttribute("content") !== c) m.setAttribute("content", c);
+}   // shown on the home screen so we can both see what's running
+const KEY_DECK = "ramza.deck", KEY_BEST = "ramza.best", KEY_LEN = "ramza.len",
+      KEY_TEAMS = "ramza.teams";
+
+const ICONS = {
+  Mixed:   ["M3 7h5l8 10h5", "M3 17h5l8-10h5", "#6E6E76"],
+  Seerah:  ["M17 4a8 8 0 1 0 3 9 6.5 6.5 0 0 1-3-9Z", "M6.6 5.4l.8 1.8 1.8.8-1.8.8-.8 1.8-.8-1.8L4 8l1.8-.8Z", "#0E6F63"],
+  "Shamaa'il": ["M12 3.4l2 4.6 4.6 2-4.6 2-2 4.6-2-4.6-4.6-2 4.6-2Z", "", "#B5732A"],
+  Fiqh:    ["M12 3.2s6 6.2 6 10a6 6 0 0 1-12 0c0-3.8 6-10 6-10Z", "", "#2D6099"],
+  Hadith:  ["M9.5 7H5v5h4.5l-2 5", "M19 7h-4.5v5H19l-2 5", "#8A5A3B"],
+  "Qur'an":["M4 5.6A2.6 2.6 0 0 1 6.6 3H20v13.4H6.6A2.6 2.6 0 0 0 4 19Z", "M4 19a2.6 2.6 0 0 1 2.6-2.6H20V21H6.6A2.6 2.6 0 0 1 4 19Z", "#4C4B9E"],
+  Names:   ["M9.4 11.2a3.3 3.3 0 1 0 0-6.6 3.3 3.3 0 0 0 0 6.6Z", "M3.4 19.2c0-3.1 2.7-5.2 6-5.2s6 2.1 6 5.2", "#7A3E8C"]
+};
+
+const store = {
+  get(k, f) { try { const v = localStorage.getItem(k); return v === null ? f : JSON.parse(v); } catch (e) { return f; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+};
+
+let deckFile = null;              // {version, updated, decks:[...]}
+let roundLen = store.get(KEY_LEN, 60);
+let best = store.get(KEY_BEST, {});
+let motionOK = false, motionAsked = false;
+
+/* ---------------- cards ---------------- */
+function mixedDecks() {
+  return deckFile.decks.filter((d) => d.inMixed !== false);
+}
+function allDecks() {
+  if (!deckFile) return [];
+  const pool = mixedDecks();
+  const mixed = { name: "Mixed", subtitle: "An even spread of the main decks", mixed: true,
+                  cards: pool.reduce((a, d) => a.concat(d.cards), []) };
+  return [mixed].concat(deckFile.decks);
+}
+
+function shuffled(list) {          // Fisher-Yates; sort(() => random) is biased
+  const a = list.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+// Mixed gives every category the same chance on each draw, so Names with 110
+// cards is no more likely to come up than Hadith with 52.
+// Harder cards are rationed rather than offered as a difficulty setting: one in
+// every five, never two together. Players get the stretch without opting out of it.
+const HARD_EVERY = 5;
+// Cards already played this session go to the back of their pile, so nothing
+// comes round twice until the deck has been used up.
+const seen = new Set();
+const fresh = (cards) => shuffled(cards.filter((c) => !seen.has(c)))
+                 .concat(shuffled(cards.filter((c) => seen.has(c))));
+const split = (cards) => ({ easy: fresh(cards.filter((c) => !c.hard)),
+                            hard: fresh(cards.filter((c) => c.hard)) });
+// Each pile is already ordered unseen-first, so its head tells us whether any
+// fresh cards are left in it. A fresh card always beats a repeat: if the pile
+// this draw asked for has nothing new but the other one does, take from the
+// other. Late in a long session that lifts the share of hard cards a little,
+// which is a fairer trade than showing a word twice.
+const anyFresh = (pile) => pile.length > 0 && !seen.has(pile[0]);
+const takeFrom = (p, wantHard) => {
+  const first = wantHard ? p.hard : p.easy;
+  const other = wantHard ? p.easy : p.hard;
+  if (first.length && (anyFresh(first) || !anyFresh(other))) return first;
+  return other.length ? other : first;
+};
+
+function buildQueue(d) {
+  // Mixed gives every category the same chance on each draw, so Names with 110
+  // cards is no more likely to come up than Hadith with 52.
+  const piles = d.mixed ? mixedDecks().map((x) => split(x.cards)) : [split(d.cards)];
+  const out = [];
+  for (;;) {
+    const wantHard = out.length % HARD_EVERY === HARD_EVERY - 1;
+    const live = piles.filter((p) => p.easy.length || p.hard.length);
+    if (!live.length) return out;
+    const p = live[Math.floor(Math.random() * live.length)];
+    out.push(takeFrom(p, wantHard).shift());
+  }
+}
+function cardCount() { return deckFile ? deckFile.decks.reduce((n, d) => n + d.cards.length, 0) : 0; }
+
+async function loadCards() {
+  const cached = store.get(KEY_DECK, null);
+  if (cached && cached.decks) { deckFile = cached; paint(); }
+  if (!deckFile) {
+    try {
+      const r = await fetch("cards.json", { cache: "no-store" });
+      if (!r.ok) throw new Error("http " + r.status);
+      deckFile = await r.json();
+      store.set(KEY_DECK, deckFile);
+      paint();
+    } catch (e) {
+      $("version").textContent = "Couldn't load the cards — check your connection and reload.";
+      return;
+    }
+  }
+  checkUpdate(false);
+}
+
+async function checkUpdate(loud) {
+  try {
+    const r = await fetch("manifest.json", { cache: "no-store" });
+    if (!r.ok) throw new Error("http " + r.status);
+    const m = await r.json();
+    if (deckFile && m.version > deckFile.version) {
+      const extra = (m.cardCount || 0) - cardCount();
+      const what = extra > 0 ? extra + " new card" + (extra === 1 ? "" : "s") : "Updated cards";
+      $("bannertext").textContent = what + " available." + (m.note ? " " + m.note : "");
+      $("banner").classList.remove("hidden");
+    } else if (loud) {
+      $("version").textContent = cardCount() + " cards · you're up to date";
+    }
+  } catch (e) {
+    if (loud) $("version").textContent = cardCount() + " cards · couldn't reach the card list";
+  }
+}
+
+async function doUpdate() {
+  $("dobtn").textContent = "…";
+  try {
+    const r = await fetch("cards.json", { cache: "no-store" });
+    if (!r.ok) throw new Error("http " + r.status);
+    deckFile = await r.json();
+    store.set(KEY_DECK, deckFile);
+    $("banner").classList.add("hidden");
+    paint();
+  } catch (e) {
+    $("bannertext").textContent = "Download failed — try again in a moment.";
+  }
+  $("dobtn").textContent = "Update";
+}
+
+/* ---------------- home ---------------- */
+function paint() {
+  const box = $("decks");
+  box.textContent = "";
+  allDecks().forEach((d) => {
+    const ic = ICONS[d.name] || ["M12 3v18", "", "#6E6E76"];
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "row";
+    const chip = document.createElement("span");
+    chip.className = "chip"; chip.style.background = ic[2];
+    chip.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="' + ic[0] + '"/><path d="' + ic[1] + '"/></svg>';
+    const nm = document.createElement("span");
+    nm.className = "rname"; nm.textContent = d.name;
+    const mt = document.createElement("span");
+    mt.className = "rmeta";
+    mt.textContent = d.cards.length + " cards" + (best[d.name] ? " · best " + best[d.name] : "");
+    const cv = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    cv.setAttribute("viewBox", "0 0 24 24"); cv.setAttribute("class", "chev");
+    cv.innerHTML = '<path d="M9 5l7 7-7 7"/>';
+    b.append(chip, nm, mt, cv);
+    b.addEventListener("click", () => startRound(d));
+    box.appendChild(b);
+  });
+  $("version").textContent = cardCount() + " cards · deck v" + (deckFile ? deckFile.version : "?") + " · " + BUILD;
+}
+
+function paintSeg() {
+  [].forEach.call($("seg").children, (b) =>
+    b.setAttribute("aria-pressed", String(Number(b.dataset.t) === roundLen)));
+}
+$("seg").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  roundLen = Number(b.dataset.t); store.set(KEY_LEN, roundLen); paintSeg();
+});
+function paintTeams() {
+  [].forEach.call($("tseg").children, (b) =>
+    b.setAttribute("aria-pressed", String(Number(b.dataset.n) === teams)));
+}
+$("tseg").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  teams = Number(b.dataset.n); store.set(KEY_TEAMS, teams); paintTeams();
+});
+// One button for both jobs: take the newest cards, then throw away the offline
+// copy of the app itself and come back fresh. Scores and settings are untouched.
+$("update").addEventListener("click", async () => {
+  $("update").textContent = "UPDATING…";
+  try {
+    const r = await fetch("cards.json", { cache: "no-store" });
+    if (r.ok) {
+      const j = await r.json();
+      if (j && j.decks) { deckFile = j; store.set(KEY_DECK, j); }
+    }
+  } catch (e) {}
+  try {
+    if (navigator.serviceWorker) {
+      const regs = await navigator.serviceWorker.getRegistrations();
+      await Promise.all(regs.map((r) => r.unregister()));
+    }
+  } catch (e) {}
+  try {
+    if (window.caches) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map((k) => caches.delete(k)));
+    }
+  } catch (e) {}
+  location.reload(true);
+});
+$("dobtn").addEventListener("click", doUpdate);
+
+/* ---------------- sound ---------------- */
+let actx = null;
+// Safari only allows audio started from a real gesture, so open the context on
+// the tap that begins a round rather than on the first sound.
+function primeAudio() {
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (actx.state === "suspended") actx.resume();
+  } catch (e) {}
+}
+function tone(freq, at, dur, type, vol) {
+  const t0 = actx.currentTime + at;
+  const o = actx.createOscillator(), g = actx.createGain();
+  o.type = type; o.frequency.setValueAtTime(freq, t0);
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(vol, t0 + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  o.connect(g); g.connect(actx.destination);
+  o.start(t0); o.stop(t0 + dur + 0.02);
+}
+// Correct: a bright two-note rise.  Pass: a flat double buzz.
+// Meant to be told apart across a noisy room without anyone looking.
+function beep(up) {
+  try {
+    primeAudio();
+    if (up) { tone(660, 0, 0.10, "sine", 0.32); tone(990, 0.085, 0.20, "sine", 0.34); }
+    else { tone(196, 0, 0.09, "square", 0.17); tone(196, 0.125, 0.13, "square", 0.17); }
+  } catch (e) {}
+  if (navigator.vibrate) { try { navigator.vibrate(up ? 45 : [30, 55, 30]); } catch (e) {} }
+}
+
+// Ten seconds left: three dry ticks. Nothing like the rise or the buzz, so it
+// reads as the clock rather than a score.
+function warnBeep() {
+  try {
+    primeAudio();
+    tone(784, 0, 0.055, "triangle", 0.20);
+    tone(784, 0.13, 0.055, "triangle", 0.20);
+    tone(784, 0.26, 0.055, "triangle", 0.20);
+  } catch (e) {}
+}
+
+/* ---------------- motion ---------------- */
+// Signs below are as measured on a real iPhone, not as the spec reads:
+//   phone sideways and upright → |nx| ≈ 1, nz ≈ 0   (the playing position)
+//   screen tipped to the floor → nz → +1            (correct)
+//   screen tipped to the sky   → nz → -1            (pass)
+// A tilt must also be held for DWELL ms, which keeps a stray jolt from scoring.
+const TRIG = 0.62, REARM = 0.30, DWELL = 60;
+let nx = 0, nz = 0, haveMotion = false, tiltDir = 0, tiltSince = 0;
+// cx/cz are a slow copy of nx/nz, used only for the "which way up" wording on
+// the ready screen. The raw values still judge the tilt, so scoring keeps the
+// sensitivity it was tuned to.
+let cx = 0, cz = 0;
+function onMotion(e) {
+  const a = e.accelerationIncludingGravity;
+  if (!a || a.x === null) return;
+  if (!haveMotion) { cx = a.x / 9.81; cz = a.z / 9.81; }
+  haveMotion = true;
+  nx = a.x / 9.81; nz = a.z / 9.81;
+  cx += (nx - cx) * 0.10; cz += (nz - cz) * 0.10;
+}
+async function askMotion() {
+  if (motionAsked) return motionOK;
+  motionAsked = true;
+  try {
+    if (typeof DeviceMotionEvent !== "undefined" && typeof DeviceMotionEvent.requestPermission === "function") {
+      motionOK = (await DeviceMotionEvent.requestPermission()) === "granted";
+    } else {
+      motionOK = typeof DeviceMotionEvent !== "undefined";
+    }
+  } catch (e) { motionOK = false; }
+  if (motionOK) window.addEventListener("devicemotion", onMotion);
+  return motionOK;
+}
+
+/* ---------------- wake lock ---------------- */
+let lock = null;
+async function keepAwake(on) {
+  try {
+    if (on && "wakeLock" in navigator) lock = await navigator.wakeLock.request("screen");
+    else if (lock) { lock.release(); lock = null; }
+  } catch (e) {}
+}
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && phase !== "home" && phase !== "results") keepAwake(true);
+});
+
+/* ---------------- round ---------------- */
+let phase = "home", deck = null, queue = [], card = null, results = [];
+let armed = false, judging = false, inPos = 0, tEnd = 0, tPhase = 0, raf = 0, warned = false;
+// Team play is a series of rounds on one deck: each team takes the phone in turn
+// and the scores add up. 0 means one player, scoring for themselves.
+let teams = store.get(KEY_TEAMS, 0), tscore = [], turn = 0;
+const teamName = (i) => "Team " + (i + 1);
+// The wording on the ready screen only changes after it has been wrong for a
+// moment — otherwise a slow hand swings it back and forth.
+let cueWant = "", cueShown = "", cueSince = 0;
+
+function lockScroll(on) {
+  document.body.classList.toggle("locked", on);
+}
+function show(id) {
+  ["install", "home", "play", "results"].forEach((s) => $(s).classList.toggle("on", s === id));
+  lockScroll(id === "play");
+  document.body.classList.toggle("playing", id === "play");
+  themeColor(id === "play" ? TEAL : PAPER);
+  if (id !== "play") window.scrollTo(0, 0);
+}
+
+/* ---------------- install gate ---------------- */
+// Neither iOS nor the standards give a page any way to install itself, so the
+// most we can do is refuse to start until it is installed, and show the steps.
+function isInstalled() {
+  try {
+    return window.matchMedia("(display-mode: standalone)").matches ||
+           window.navigator.standalone === true;
+  } catch (e) { return false; }
+}
+
+let installEvent = null;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  installEvent = e;                      // Android Chrome only
+  $("installbtn").classList.remove("hidden");
+});
+$("installbtn").addEventListener("click", async () => {
+  if (!installEvent) return;
+  installEvent.prompt();
+  try { await installEvent.userChoice; } catch (e) {}
+  installEvent = null;
+  $("installbtn").classList.add("hidden");
+});
+$("skip").addEventListener("click", () => show("home"));
+
+function gate() {
+  if (isInstalled()) { show("home"); return; }
+  $("fshelp").classList.remove("hidden");   // only meaningful in a browser tab
+  const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  $("stepsios").classList.toggle("hidden", !ios && /Android/.test(navigator.userAgent));
+  $("stepsandroid").classList.toggle("hidden", ios);
+  show("install");
+}
+function setStage(html) { $("stagebody").innerHTML = html; }
+
+async function startRound(d, sameMatch) {
+  deck = d;
+  if (teams && !sameMatch) { tscore = []; for (let i = 0; i < teams; i++) tscore.push(0); turn = 0; }
+  queue = buildQueue(d);
+  results = []; card = null; judging = false; armed = false; inPos = 0;
+  primeAudio();
+  await askMotion();
+  document.body.classList.toggle("taps", !motionOK);
+  $("clock").textContent = "";
+  phase = "ready"; tPhase = performance.now();
+  cueWant = cueShown = "Hold it to your forehead"; cueSince = tPhase;
+  show("play"); keepAwake(true);
+  setStage('<div>' + (teams ? '<div class="tname">' + teamName(turn).toUpperCase() + "</div>" : "") +
+           '<div class="big">Hold it to your forehead</div><div class="sub">' +
+           (motionOK ? "Sideways, screen facing out" : "Tap anywhere to start") + "</div></div>");
+  if (!raf) raf = requestAnimationFrame(tick);
+}
+
+function enter(p) {
+  phase = p; tPhase = performance.now();
+  if (p === "count") { setStage('<div class="count">3</div>'); beep(true); }
+  if (p === "play") {
+    tEnd = performance.now() + roundLen * 1000;
+    armed = false; warned = false; nextCard();
+  }
+  if (p === "up") { setStage('<div class="big">Time’s up</div>'); $("clock").textContent = ""; beep(false); }
+}
+
+// Grow the word until it just fills the screen — a binary search over font
+// size, so "Nikah" is enormous and "Treaty of Hudaybiyyah" still fits.
+function fitWord() {
+  const box = $("stagebody");
+  const el = box && box.querySelector(".word");
+  if (!el) return;
+  const W = box.clientWidth, H = box.clientHeight;
+  if (!W || !H) return;
+  let lo = 20, hi = 136;   // big, but not so big it reads as clumsy
+  for (let i = 0; i < 11; i++) {
+    const mid = (lo + hi) / 2;
+    el.style.fontSize = mid + "px";
+    if (el.scrollHeight <= H && el.scrollWidth <= W + 1) lo = mid; else hi = mid;
+  }
+  el.style.fontSize = Math.floor(lo) + "px";
+}
+
+function nextCard() {
+  if (!queue.length) { enter("up"); return; }
+  card = queue.shift();
+  seen.add(card);
+  setStage('<div class="word"></div>');
+  $("stagebody").firstChild.textContent = card.word;
+  fitWord();
+}
+
+window.addEventListener("resize", fitWord);
+window.addEventListener("orientationchange", () => setTimeout(fitWord, 250));
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWord).catch(() => {});
+
+function judge(ok) {
+  if (phase !== "play" || judging || !card) return;
+  judging = true; armed = false;
+  results.push({ card: card, ok: ok });
+  document.body.classList.add(ok ? "flash-ok" : "flash-no");
+  themeColor(ok ? FLASH_OK : FLASH_NO);
+  setStage('<div class="big">' + (ok ? "Correct" : "Pass") + "</div>");
+  beep(ok);
+  setTimeout(() => {
+    document.body.classList.remove("flash-ok", "flash-no");
+    themeColor(TEAL);
+    judging = false;
+    if (phase === "play") nextCard();
+  }, 680);
+}
+
+// Rotation lock leaves the browser reporting portrait however the phone is
+// held, so read the held direction off the sensor instead.
+function setRotation() {
+  if (!haveMotion) return;
+  let portrait = true;
+  try { portrait = window.matchMedia("(orientation: portrait)").matches; } catch (e) {}
+  if (!portrait) { document.body.classList.remove("rot-cw"); return; }
+  if (Math.abs(nx) > 0.5) document.body.classList.toggle("rot-cw", nx > 0);
+}
+
+function tick(now) {
+  raf = requestAnimationFrame(tick);
+  if (phase === "ready") {
+    setRotation();
+    // Permission granted but no sensor ever reports (desktop, odd hardware):
+    // don't strand the player on this screen — offer the taps instead.
+    if (motionOK && !haveMotion && now - tPhase > 4000) {
+      motionOK = false;
+      document.body.classList.add("taps");
+      const s = $("stagebody").querySelector(".sub");
+      if (s) s.textContent = "Tap anywhere to start";
+    }
+    if (motionOK && haveMotion) {
+      const ready = Math.abs(nx) > 0.8 && Math.abs(nz) < 0.35;
+      if (ready) { if (!inPos) inPos = now; if (now - inPos > 600) enter("count"); }
+      else {
+        inPos = 0;
+        // Read the wording off the smoothed values, and off a lower threshold
+        // than the one that starts the round, so the gap between 0.65 and 0.8
+        // is a dead band rather than a place the two messages trade places.
+        const portraitUp = Math.abs(cz) < 0.35 && Math.abs(cx) <= 0.65;
+        const want = portraitUp ? "Turn the phone sideways" : "Hold it to your forehead";
+        if (want !== cueWant) { cueWant = want; cueSince = now; }
+        else if (want !== cueShown && now - cueSince > 450) {
+          cueShown = want;
+          const el = $("stagebody").querySelector(".big");
+          if (el) el.textContent = want;
+        }
+      }
+    }
+  } else if (phase === "count") {
+    const left = 3 - Math.floor((now - tPhase) / 1000);
+    if (left <= 0) enter("play");
+    else {
+      const el = $("stagebody").querySelector(".count");
+      if (el && el.textContent !== String(left)) { el.textContent = String(left); beep(true); }
+    }
+  } else if (phase === "play") {
+    const secs = Math.max(0, Math.ceil((tEnd - now) / 1000));
+    if ($("clock").textContent !== String(secs)) $("clock").textContent = String(secs);
+    if (secs === 0) { enter("up"); return; }
+    if (!warned && secs <= 10) { warned = true; warnBeep(); }
+    if (!judging && motionOK && haveMotion) {
+      if (armed) {
+        const dir = nz > TRIG ? 1 : (nz < -TRIG ? -1 : 0);
+        if (!dir) { tiltDir = 0; }
+        else if (dir !== tiltDir) { tiltDir = dir; tiltSince = now; }
+        else if (now - tiltSince > DWELL) { tiltDir = 0; judge(dir > 0); }
+      } else if (Math.abs(nz) < REARM) { armed = true; tiltDir = 0; }
+    }
+  } else if (phase === "up") {
+    if (now - tPhase > 1400) finish(true);
+  }
+}
+
+function finish(toResults) {
+  cancelAnimationFrame(raf); raf = 0;
+  keepAwake(false);
+  document.body.classList.remove("flash-ok", "flash-no", "taps", "playing");
+  themeColor(PAPER);
+  const score = results.filter((r) => r.ok).length;
+  if (!toResults || !results.length) { phase = "home"; show("home"); return; }
+  phase = "results";
+  $("fscore").textContent = String(score);
+  $("fcap").textContent = (teams ? teamName(turn) + " · " : "") +
+                          deck.name + " · " + score + " of " + results.length;
+  const isBest = score > (best[deck.name] || 0) && score > 0;
+  if (isBest) { best[deck.name] = score; store.set(KEY_BEST, best); }
+  $("fbest").classList.toggle("hidden", !isBest);
+  if (teams) { tscore[turn] = (tscore[turn] || 0) + score; paintStandings(); }
+  $("tlbl").classList.toggle("hidden", !teams);
+  $("tlist").classList.toggle("hidden", !teams);
+  $("again").textContent = !teams ? "Play again"
+    : (turn < teams - 1 ? teamName(turn + 1) + "'s turn" : "New match");
+
+  // Show the screen BEFORE filling the list. Rows laid out while the screen is
+  // display:none can keep stale tap regions on iOS — which is how a tap ends up
+  // opening the row below the one you touched.
+  show("results"); paint();
+  requestAnimationFrame(() => fillResults());
+}
+
+// Standings, highest first, with the team that has just played marked.
+function paintStandings() {
+  const list = $("tlist"); list.textContent = "";
+  const rows = tscore.map((v, i) => ({ i: i, v: v })).sort((a, b) => b.v - a.v);
+  const top = rows.length ? rows[0].v : 0;
+  rows.forEach((r) => {
+    const el = document.createElement("div");
+    el.className = "row";
+    const nm = document.createElement("span");
+    nm.className = "rname";
+    nm.textContent = teamName(r.i) + (r.i === turn ? " ·" : "");
+    const mt = document.createElement("span");
+    mt.className = "rmeta";
+    mt.textContent = r.v + (r.v === top && top > 0 ? " · leading" : "");
+    el.append(nm, mt);
+    list.appendChild(el);
+  });
+}
+
+function fillResults() {
+  const list = $("rlist"); list.textContent = "";
+  results.forEach((r) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "row";
+    const nm = document.createElement("span");
+    nm.className = "rname"; nm.textContent = r.card.word;
+    const sv = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    sv.setAttribute("viewBox", "0 0 24 24"); sv.setAttribute("class", "mk");
+    sv.setAttribute("stroke", r.ok ? "#127A3E" : "#B4611F");
+    sv.innerHTML = r.ok ? '<path d="M5 13l4 4L19 7"/>' : '<path d="M6 6l12 12"/><path d="M18 6L6 18"/>';
+    b.append(nm, sv);
+    b.addEventListener("click", () => openSheet(r.card));
+    list.appendChild(b);
+  });
+}
+
+function openSheet(c) {
+  $("sheet").classList.add("on");
+  lockScroll(true);
+  requestAnimationFrame(() => {
+    $("sword").textContent = c.word;
+    $("sinfo").textContent = c.info;
+    $("sclues").textContent = (c.clues || []).join(" · ");
+    $("ssteps").classList.add("hidden");
+    $("sclues").classList.remove("hidden");
+    $("sheetscroll").scrollTop = 0;
+  });
+}
+
+$("fshelp").addEventListener("click", () => show("install"));
+function closeSheet() { $("sheet").classList.remove("on"); lockScroll(false); }
+$("sclose").addEventListener("click", closeSheet);
+$("sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") closeSheet(); });
+
+$("quit").addEventListener("click", () => finish(results.length > 0));
+$("again").addEventListener("click", () => {
+  if (!teams) { startRound(deck); return; }
+  if (turn < teams - 1) { turn += 1; startRound(deck, true); }
+  else startRound(deck, false);          // match over — start a fresh one
+});
+$("back").addEventListener("click", () => { phase = "home"; show("home"); });
+$("tapok").addEventListener("click", () => { if (phase === "play") judge(true); else if (phase === "ready") enter("count"); });
+$("tapno").addEventListener("click", () => { if (phase === "play") judge(false); else if (phase === "ready") enter("count"); });
+$("stage").addEventListener("click", () => { if (phase === "ready" && !motionOK) enter("count"); });
+
+paintSeg();
+paintTeams();
+loadCards();
+gate();
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    // updateViaCache:"none" stops the browser serving an old worker script,
+    // which GitHub Pages otherwise lets it keep for ten minutes.
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" })
+      .then((reg) => { try { reg.update(); } catch (e) {} })
+      .catch(() => {});
+  });
+}
+</script>
+</body>
+</html>
