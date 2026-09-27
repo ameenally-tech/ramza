@@ -114,6 +114,7 @@ body.playing.flash-no{background:var(--pass)}
       text-align:center;overflow-wrap:normal;word-break:normal;hyphens:none;-webkit-hyphens:none}
 .big{font-size:clamp(34px,8vmin,60px);font-weight:700;text-align:center;line-height:1.15}
 .sub{font-size:clamp(14px,2.6vmin,19px);opacity:.78;text-align:center;margin-top:12px}
+.tname{font-size:clamp(13px,2.4vmin,17px);font-weight:700;letter-spacing:.14em;opacity:.7;text-align:center;margin-bottom:14px}
 .count{font-size:clamp(90px,26vmin,190px);font-weight:700;line-height:1}
 #hud{position:absolute;inset:0;pointer-events:none}   /* inside #stage, so it turns with it */
 #hud .bar{position:absolute;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;
@@ -141,12 +142,15 @@ body.taps #taps{display:flex}
 #sheet{position:fixed;top:0;left:0;right:0;height:100%;height:100dvh;
        background:rgba(20,20,22,.45);display:none;align-items:flex-end;z-index:20}
 #sheet.on{display:flex}
-#sheetbox{background:var(--card);width:100%;max-height:84%;overflow-y:auto;border-radius:20px 20px 0 0;
+#sheetbox{background:var(--card);width:100%;max-height:84%;border-radius:20px 20px 0 0;
+          display:flex;flex-direction:column;min-height:0;
           padding:24px 22px calc(30px + env(safe-area-inset-bottom))}
+#sheetscroll{flex:1 1 auto;min-height:0;overflow-y:auto}
 #sheetbox h3{font-size:21px;font-weight:700;margin-bottom:11px}
 #sheetbox p{font-size:15.5px;line-height:1.62}
 #sheetbox .clues{margin-top:13px;font-size:13px;color:var(--dim)}
-#sheetbox button{margin-top:20px;width:100%;padding:14px;border-radius:13px;background:var(--teal);color:#fff;font-weight:700}
+#sheetbox button{flex:0 0 auto;margin-top:20px;width:100%;padding:17px;border-radius:13px;
+                 background:var(--teal);color:#fff;font-weight:700;touch-action:manipulation}
 .hidden{display:none !important}
 
 /* ---------- install gate ---------- */
@@ -230,14 +234,21 @@ body.taps #taps{display:flex}
       <button type="button" data-t="120">120s</button>
     </div>
 
+    <div class="lbl">TEAMS</div>
+    <div class="seg" id="tseg">
+      <button type="button" data-n="0">Off</button>
+      <button type="button" data-n="2">2</button>
+      <button type="button" data-n="3">3</button>
+      <button type="button" data-n="4">4</button>
+    </div>
+
     <div class="lbl">DECKS</div>
     <div class="list" id="decks"></div>
 
     <div class="foot">
       <span id="version">Loading cards…</span>
-      <button type="button" class="link" id="check">Check for new cards</button>
+      <button type="button" class="link" id="update">UPDATE</button>
     </div>
-    <div class="foot"><span></span><button type="button" class="link" id="hard">Force app refresh</button></div>
     <button type="button" class="fs hidden" id="fshelp">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5"/><path d="M15 20h5v-5"/><path d="M4 4l6 6"/><path d="M20 20l-6-6"/></svg>
       <span>You're in a browser tab — <b>add Ramza to your home screen</b></span>
@@ -271,6 +282,8 @@ body.taps #taps{display:flex}
       <button type="button" class="primary" id="again">Play again</button>
       <button type="button" class="ghost" id="back">Decks</button>
     </div>
+    <div class="lbl hidden" id="tlbl">TEAMS</div>
+    <div class="list hidden" id="tlist"></div>
     <div class="lbl">THIS ROUND</div>
     <div class="list" id="rlist"></div>
     <p class="note">Tap any card to read about it.</p>
@@ -279,10 +292,12 @@ body.taps #taps{display:flex}
 
 <div id="sheet">
   <div id="sheetbox">
-    <h3 id="sword"></h3>
-    <p id="sinfo"></p>
-    <div id="ssteps" class="hidden"></div>
-    <div class="clues" id="sclues"></div>
+    <div id="sheetscroll">
+      <h3 id="sword"></h3>
+      <p id="sinfo"></p>
+      <div id="ssteps" class="hidden"></div>
+      <div class="clues" id="sclues"></div>
+    </div>
     <button type="button" id="sclose">Done</button>
   </div>
 </div>
@@ -290,14 +305,15 @@ body.taps #taps{display:flex}
 <script>
 "use strict";
 const $ = (id) => document.getElementById(id);
-const BUILD = "b13";
+const BUILD = "b16";
 const PAPER = "#F2F1EC", TEAL = "#0E6F63", FLASH_OK = "#127A3E", FLASH_NO = "#B4611F";
 // Android paints its status bar from theme-color, so move it with the flash.
 function themeColor(c) {
   const m = document.querySelector('meta[name="theme-color"]');
   if (m && m.getAttribute("content") !== c) m.setAttribute("content", c);
 }   // shown on the home screen so we can both see what's running
-const KEY_DECK = "ramza.deck", KEY_BEST = "ramza.best", KEY_LEN = "ramza.len";
+const KEY_DECK = "ramza.deck", KEY_BEST = "ramza.best", KEY_LEN = "ramza.len",
+      KEY_TEAMS = "ramza.teams";
 
 const ICONS = {
   Mixed:   ["M3 7h5l8 10h5", "M3 17h5l8-10h5", "#6E6E76"],
@@ -320,11 +336,63 @@ let best = store.get(KEY_BEST, {});
 let motionOK = false, motionAsked = false;
 
 /* ---------------- cards ---------------- */
+function mixedDecks() {
+  return deckFile.decks.filter((d) => d.inMixed !== false);
+}
 function allDecks() {
   if (!deckFile) return [];
-  const mixed = { name: "Mixed", subtitle: "A bit of everything",
-                  cards: deckFile.decks.reduce((a, d) => a.concat(d.cards), []) };
+  const pool = mixedDecks();
+  const mixed = { name: "Mixed", subtitle: "An even spread of the main decks", mixed: true,
+                  cards: pool.reduce((a, d) => a.concat(d.cards), []) };
   return [mixed].concat(deckFile.decks);
+}
+
+function shuffled(list) {          // Fisher-Yates; sort(() => random) is biased
+  const a = list.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+// Mixed gives every category the same chance on each draw, so Names with 110
+// cards is no more likely to come up than Hadith with 52.
+// Harder cards are rationed rather than offered as a difficulty setting: one in
+// every five, never two together. Players get the stretch without opting out of it.
+const HARD_EVERY = 5;
+// Cards already played this session go to the back of their pile, so nothing
+// comes round twice until the deck has been used up.
+const seen = new Set();
+const fresh = (cards) => shuffled(cards.filter((c) => !seen.has(c)))
+                 .concat(shuffled(cards.filter((c) => seen.has(c))));
+const split = (cards) => ({ easy: fresh(cards.filter((c) => !c.hard)),
+                            hard: fresh(cards.filter((c) => c.hard)) });
+// Each pile is already ordered unseen-first, so its head tells us whether any
+// fresh cards are left in it. A fresh card always beats a repeat: if the pile
+// this draw asked for has nothing new but the other one does, take from the
+// other. Late in a long session that lifts the share of hard cards a little,
+// which is a fairer trade than showing a word twice.
+const anyFresh = (pile) => pile.length > 0 && !seen.has(pile[0]);
+const takeFrom = (p, wantHard) => {
+  const first = wantHard ? p.hard : p.easy;
+  const other = wantHard ? p.easy : p.hard;
+  if (first.length && (anyFresh(first) || !anyFresh(other))) return first;
+  return other.length ? other : first;
+};
+
+function buildQueue(d) {
+  // Mixed gives every category the same chance on each draw, so Names with 110
+  // cards is no more likely to come up than Hadith with 52.
+  const piles = d.mixed ? mixedDecks().map((x) => split(x.cards)) : [split(d.cards)];
+  const out = [];
+  for (;;) {
+    const wantHard = out.length % HARD_EVERY === HARD_EVERY - 1;
+    const live = piles.filter((p) => p.easy.length || p.hard.length);
+    if (!live.length) return out;
+    const p = live[Math.floor(Math.random() * live.length)];
+    out.push(takeFrom(p, wantHard).shift());
+  }
 }
 function cardCount() { return deckFile ? deckFile.decks.reduce((n, d) => n + d.cards.length, 0) : 0; }
 
@@ -413,10 +481,25 @@ $("seg").addEventListener("click", (e) => {
   const b = e.target.closest("button"); if (!b) return;
   roundLen = Number(b.dataset.t); store.set(KEY_LEN, roundLen); paintSeg();
 });
-$("check").addEventListener("click", () => checkUpdate(true));
-// Clears the offline copy and reloads from GitHub. Scores are untouched.
-$("hard").addEventListener("click", async () => {
-  $("hard").textContent = "refreshing…";
+function paintTeams() {
+  [].forEach.call($("tseg").children, (b) =>
+    b.setAttribute("aria-pressed", String(Number(b.dataset.n) === teams)));
+}
+$("tseg").addEventListener("click", (e) => {
+  const b = e.target.closest("button"); if (!b) return;
+  teams = Number(b.dataset.n); store.set(KEY_TEAMS, teams); paintTeams();
+});
+// One button for both jobs: take the newest cards, then throw away the offline
+// copy of the app itself and come back fresh. Scores and settings are untouched.
+$("update").addEventListener("click", async () => {
+  $("update").textContent = "UPDATING…";
+  try {
+    const r = await fetch("cards.json", { cache: "no-store" });
+    if (r.ok) {
+      const j = await r.json();
+      if (j && j.decks) { deckFile = j; store.set(KEY_DECK, j); }
+    }
+  } catch (e) {}
   try {
     if (navigator.serviceWorker) {
       const regs = await navigator.serviceWorker.getRegistrations();
@@ -464,6 +547,17 @@ function beep(up) {
   if (navigator.vibrate) { try { navigator.vibrate(up ? 45 : [30, 55, 30]); } catch (e) {} }
 }
 
+// Ten seconds left: three dry ticks. Nothing like the rise or the buzz, so it
+// reads as the clock rather than a score.
+function warnBeep() {
+  try {
+    primeAudio();
+    tone(784, 0, 0.055, "triangle", 0.20);
+    tone(784, 0.13, 0.055, "triangle", 0.20);
+    tone(784, 0.26, 0.055, "triangle", 0.20);
+  } catch (e) {}
+}
+
 /* ---------------- motion ---------------- */
 // Signs below are as measured on a real iPhone, not as the spec reads:
 //   phone sideways and upright → |nx| ≈ 1, nz ≈ 0   (the playing position)
@@ -472,11 +566,17 @@ function beep(up) {
 // A tilt must also be held for DWELL ms, which keeps a stray jolt from scoring.
 const TRIG = 0.62, REARM = 0.30, DWELL = 60;
 let nx = 0, nz = 0, haveMotion = false, tiltDir = 0, tiltSince = 0;
+// cx/cz are a slow copy of nx/nz, used only for the "which way up" wording on
+// the ready screen. The raw values still judge the tilt, so scoring keeps the
+// sensitivity it was tuned to.
+let cx = 0, cz = 0;
 function onMotion(e) {
   const a = e.accelerationIncludingGravity;
   if (!a || a.x === null) return;
+  if (!haveMotion) { cx = a.x / 9.81; cz = a.z / 9.81; }
   haveMotion = true;
   nx = a.x / 9.81; nz = a.z / 9.81;
+  cx += (nx - cx) * 0.10; cz += (nz - cz) * 0.10;
 }
 async function askMotion() {
   if (motionAsked) return motionOK;
@@ -506,7 +606,14 @@ document.addEventListener("visibilitychange", () => {
 
 /* ---------------- round ---------------- */
 let phase = "home", deck = null, queue = [], card = null, results = [];
-let armed = false, judging = false, inPos = 0, tEnd = 0, tPhase = 0, raf = 0;
+let armed = false, judging = false, inPos = 0, tEnd = 0, tPhase = 0, raf = 0, warned = false;
+// Team play is a series of rounds on one deck: each team takes the phone in turn
+// and the scores add up. 0 means one player, scoring for themselves.
+let teams = store.get(KEY_TEAMS, 0), tscore = [], turn = 0;
+const teamName = (i) => "Team " + (i + 1);
+// The wording on the ready screen only changes after it has been wrong for a
+// moment — otherwise a slow hand swings it back and forth.
+let cueWant = "", cueShown = "", cueSince = 0;
 
 function lockScroll(on) {
   document.body.classList.toggle("locked", on);
@@ -555,17 +662,20 @@ function gate() {
 }
 function setStage(html) { $("stagebody").innerHTML = html; }
 
-async function startRound(d) {
+async function startRound(d, sameMatch) {
   deck = d;
-  queue = d.cards.slice().sort(() => Math.random() - 0.5);
+  if (teams && !sameMatch) { tscore = []; for (let i = 0; i < teams; i++) tscore.push(0); turn = 0; }
+  queue = buildQueue(d);
   results = []; card = null; judging = false; armed = false; inPos = 0;
   primeAudio();
   await askMotion();
   document.body.classList.toggle("taps", !motionOK);
   $("clock").textContent = "";
   phase = "ready"; tPhase = performance.now();
+  cueWant = cueShown = "Hold it to your forehead"; cueSince = tPhase;
   show("play"); keepAwake(true);
-  setStage('<div><div class="big">Hold it to your forehead</div><div class="sub">' +
+  setStage('<div>' + (teams ? '<div class="tname">' + teamName(turn).toUpperCase() + "</div>" : "") +
+           '<div class="big">Hold it to your forehead</div><div class="sub">' +
            (motionOK ? "Sideways, screen facing out" : "Tap anywhere to start") + "</div></div>");
   if (!raf) raf = requestAnimationFrame(tick);
 }
@@ -575,7 +685,7 @@ function enter(p) {
   if (p === "count") { setStage('<div class="count">3</div>'); beep(true); }
   if (p === "play") {
     tEnd = performance.now() + roundLen * 1000;
-    armed = false; nextCard();
+    armed = false; warned = false; nextCard();
   }
   if (p === "up") { setStage('<div class="big">Time’s up</div>'); $("clock").textContent = ""; beep(false); }
 }
@@ -600,6 +710,7 @@ function fitWord() {
 function nextCard() {
   if (!queue.length) { enter("up"); return; }
   card = queue.shift();
+  seen.add(card);
   setStage('<div class="word"></div>');
   $("stagebody").firstChild.textContent = card.word;
   fitWord();
@@ -652,10 +763,17 @@ function tick(now) {
       if (ready) { if (!inPos) inPos = now; if (now - inPos > 600) enter("count"); }
       else {
         inPos = 0;
-        const portraitUp = Math.abs(nz) < 0.35 && Math.abs(nx) <= 0.8;
+        // Read the wording off the smoothed values, and off a lower threshold
+        // than the one that starts the round, so the gap between 0.65 and 0.8
+        // is a dead band rather than a place the two messages trade places.
+        const portraitUp = Math.abs(cz) < 0.35 && Math.abs(cx) <= 0.65;
         const want = portraitUp ? "Turn the phone sideways" : "Hold it to your forehead";
-        const el = $("stagebody").querySelector(".big");
-        if (el && el.textContent !== want) el.textContent = want;
+        if (want !== cueWant) { cueWant = want; cueSince = now; }
+        else if (want !== cueShown && now - cueSince > 450) {
+          cueShown = want;
+          const el = $("stagebody").querySelector(".big");
+          if (el) el.textContent = want;
+        }
       }
     }
   } else if (phase === "count") {
@@ -669,6 +787,7 @@ function tick(now) {
     const secs = Math.max(0, Math.ceil((tEnd - now) / 1000));
     if ($("clock").textContent !== String(secs)) $("clock").textContent = String(secs);
     if (secs === 0) { enter("up"); return; }
+    if (!warned && secs <= 10) { warned = true; warnBeep(); }
     if (!judging && motionOK && haveMotion) {
       if (armed) {
         const dir = nz > TRIG ? 1 : (nz < -TRIG ? -1 : 0);
@@ -691,16 +810,41 @@ function finish(toResults) {
   if (!toResults || !results.length) { phase = "home"; show("home"); return; }
   phase = "results";
   $("fscore").textContent = String(score);
-  $("fcap").textContent = deck.name + " · " + score + " of " + results.length;
+  $("fcap").textContent = (teams ? teamName(turn) + " · " : "") +
+                          deck.name + " · " + score + " of " + results.length;
   const isBest = score > (best[deck.name] || 0) && score > 0;
   if (isBest) { best[deck.name] = score; store.set(KEY_BEST, best); }
   $("fbest").classList.toggle("hidden", !isBest);
+  if (teams) { tscore[turn] = (tscore[turn] || 0) + score; paintStandings(); }
+  $("tlbl").classList.toggle("hidden", !teams);
+  $("tlist").classList.toggle("hidden", !teams);
+  $("again").textContent = !teams ? "Play again"
+    : (turn < teams - 1 ? teamName(turn + 1) + "'s turn" : "New match");
 
   // Show the screen BEFORE filling the list. Rows laid out while the screen is
   // display:none can keep stale tap regions on iOS — which is how a tap ends up
   // opening the row below the one you touched.
   show("results"); paint();
   requestAnimationFrame(() => fillResults());
+}
+
+// Standings, highest first, with the team that has just played marked.
+function paintStandings() {
+  const list = $("tlist"); list.textContent = "";
+  const rows = tscore.map((v, i) => ({ i: i, v: v })).sort((a, b) => b.v - a.v);
+  const top = rows.length ? rows[0].v : 0;
+  rows.forEach((r) => {
+    const el = document.createElement("div");
+    el.className = "row";
+    const nm = document.createElement("span");
+    nm.className = "rname";
+    nm.textContent = teamName(r.i) + (r.i === turn ? " ·" : "");
+    const mt = document.createElement("span");
+    mt.className = "rmeta";
+    mt.textContent = r.v + (r.v === top && top > 0 ? " · leading" : "");
+    el.append(nm, mt);
+    list.appendChild(el);
+  });
 }
 
 function fillResults() {
@@ -721,13 +865,16 @@ function fillResults() {
 }
 
 function openSheet(c) {
-  $("sword").textContent = c.word;
-  $("sinfo").textContent = c.info;
-  $("sclues").textContent = (c.clues || []).join(" · ");
-  $("ssteps").classList.add("hidden");
-  $("sclues").classList.remove("hidden");
   $("sheet").classList.add("on");
   lockScroll(true);
+  requestAnimationFrame(() => {
+    $("sword").textContent = c.word;
+    $("sinfo").textContent = c.info;
+    $("sclues").textContent = (c.clues || []).join(" · ");
+    $("ssteps").classList.add("hidden");
+    $("sclues").classList.remove("hidden");
+    $("sheetscroll").scrollTop = 0;
+  });
 }
 
 $("fshelp").addEventListener("click", () => show("install"));
@@ -736,13 +883,18 @@ $("sclose").addEventListener("click", closeSheet);
 $("sheet").addEventListener("click", (e) => { if (e.target.id === "sheet") closeSheet(); });
 
 $("quit").addEventListener("click", () => finish(results.length > 0));
-$("again").addEventListener("click", () => startRound(deck));
+$("again").addEventListener("click", () => {
+  if (!teams) { startRound(deck); return; }
+  if (turn < teams - 1) { turn += 1; startRound(deck, true); }
+  else startRound(deck, false);          // match over — start a fresh one
+});
 $("back").addEventListener("click", () => { phase = "home"; show("home"); });
 $("tapok").addEventListener("click", () => { if (phase === "play") judge(true); else if (phase === "ready") enter("count"); });
 $("tapno").addEventListener("click", () => { if (phase === "play") judge(false); else if (phase === "ready") enter("count"); });
 $("stage").addEventListener("click", () => { if (phase === "ready" && !motionOK) enter("count"); });
 
 paintSeg();
+paintTeams();
 loadCards();
 gate();
 
